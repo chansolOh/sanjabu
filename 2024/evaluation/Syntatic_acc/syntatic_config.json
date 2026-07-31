@@ -1,0 +1,54 @@
+{
+    "inst_seg_classes":[
+        "BACKGROUND", "UNLABELLED", "aircon_remote", "belt",
+        "bottle", "broom", "brush", "cleansing_foam", "clock", 
+        "cola", "cream", "cup", "doll", "driver", "dumbell", 
+        "fliper", "gas", "glass_case", "hair_dry", "hammer", 
+        "hand_soap", "headphone", "interphone", "iron", "knife",
+        "lock_tite2", "melon", "milk", "mouse", "multi_tap", 
+        "name_pen", "nipper", "pench", "pencil_case", "phone_stand", 
+        "pongpong", "pouch", "qcy_closed", "qcy_opened", "rice", 
+        "saw", "scissors", "scoop", "scotch_tape", "shampoo", "shaver", 
+        "skincare", "sliper", "spatula", "spoon", "spray", "sprayer",
+        "squeeze", "stamp", "tape", "tape_measure", "tissue", "tongue_cleaner",
+        "tooth_brush", "tooth_paste", "tv_remote", "ukulele", "umbrella", 
+        "vitamin", "wallet", "water_scooper"
+    ],
+    "bbox_classes":[
+        "aircon_remote", "belt",
+        "bottle", "broom", "brush", "cleansing_foam", "clock", 
+        "cola", "cream", "cup", "doll", "driver", "dumbell", 
+        "fliper", "gas", "glass_case", "hair_dry", "hammer", 
+        "hand_soap", "headphone", "interphone", "iron", "knife",
+        "lock_tite2", "melon", "milk", "mouse", "multi_tap", 
+        "name_pen", "nipper", "pench", "pencil_case", "phone_stand", 
+        "pongpong", "pouch", "qcy_closed", "qcy_opened", "rice", 
+        "saw", "scissors", "scoop", "scotch_tape", "shampoo", "shaver", 
+        "skincare", "sliper", "spatula", "spoon", "spray", "sprayer",
+        "squeeze", "stamp", "tape", "tape_measure", "tissue", "tongue_cleaner",
+        "tooth_brush", "tooth_paste", "tv_remote", "ukulele", "umbrella", 
+        "vitamin", "wallet", "water_scooper"
+    ],
+
+    "grasp_classes":[
+        "aircon_remote", "belt",
+        "bottle", "broom", "brush", "cleansing_foam", "clock", 
+        "cola", "cream", "cup", "doll", "driver", "dumbell", 
+        "fliper", "gas", "glass_case", "hair_dry", "hammer", 
+        "hand_soap", "headphone", "interphone", "iron", "knife",
+        "lock_tite2", "melon", "milk", "mouse", "multi_tap", 
+        "name_pen", "nipper", "pench", "pencil_case", "phone_stand", 
+        "pongpong", "pouch", "qcy_closed", "qcy_opened", "rice", 
+        "saw", "scissors", "scoop", "scotch_tape", "shampoo", "shaver", 
+        "skincare", "sliper", "spatula", "spoon", "spray", "sprayer",
+        "squeeze", "stamp", "tape", "tape_measure", "tissue", "tongue_cleaner",
+        "tooth_brush", "tooth_paste", "tv_remote", "ukulele", "umbrella", 
+        "vitamin", "wallet", "water_scooper"
+    ],
+    "grasp_attr_classes":[
+        "center","width","height","angle","gripper_model"
+    ],
+    "gripper_models":[
+        "Custom_onrobot", "Custom_GEP2016IO", "Custom_schunk_parallel"
+    ]
+}

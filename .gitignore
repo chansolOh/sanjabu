@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.vscode/
+.idea/
+build/
+dist/
+Data_samples/
+sharing_code_kaist/
+*.zip
+*.gif

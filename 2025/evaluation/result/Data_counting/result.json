@@ -1,0 +1,10 @@
+{
+    "rgb_count": 100690,
+    "depth_count": 100690,
+    "normal_count": 100690,
+    "inst_seg_img_count": 100690,
+    "inst_seg_label_count": 100690,
+    "bbox_count": 100690,
+    "grasp_count": 100690,
+    "scene_meta_count": 100690
+}

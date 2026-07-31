@@ -1,0 +1,16 @@
+{
+    "gripper_model_count": 11,
+    "gripper_model_list": [
+        "DH_Robotics_DH3",
+        "Hitbot_z_efg_100",
+        "OnRobot_2FG14_custom",
+        "OnRobot_RG2FTv2",
+        "OnRobot_RG6_v1_2",
+        "Robotiq_2f_140",
+        "Robotiq_3Finger_Adaptive_Gripper",
+        "Schunk_PGB_custom",
+        "Schunk_SGW64",
+        "UON_Robotics_Jamin_Gripper",
+        "Zimmer_Electric_GEP2016IO_custom"
+    ]
+}

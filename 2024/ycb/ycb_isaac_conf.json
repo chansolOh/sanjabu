@@ -1,0 +1,93 @@
+{
+    "/0000/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [-0.46734, 2.2, -0.06716], 
+            "orientation": [0.62246,0.00947,-0.02592,0.78217],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+
+    "/0001/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [6.7, -0.9, -0.961], 
+            "orientation": [0.69466,0.71934,0,0],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0002/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [6.0, -0.6, -0.951], 
+            "orientation": [0.70401,0.71019,0.00031,-0.00031],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0003/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [4.7, -0.7, -0.926], 
+            "orientation": [0.71202,0.70215,0.00214,-0.00217],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0004/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [-0.43218, 0, -0.43982], 
+            "orientation": [0.67799,0.67799,0.20083,-0.20083],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0005/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [6.6, -0.1, 0.889], 
+            "orientation": [-0.70711,0.70711,0,0],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0006/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [-1.8, -0.8, -0.587], 
+            "orientation": [0.70091,0.71325,0,0],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0007/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [-1.60256, 0.85071, -0.06716], 
+            "orientation": [0.70088,0.71322,0.00622,-0.00612],
+            "scale" : [0.01,0.01,0.01]
+        }
+    },
+    "/0008/":
+    {
+        "usd_path":"/media/nia/6d737125-0a20-46a5-94bc-b44a6aec1a2e/ochansol/isaac_sim/sanjabu/Home/Home_scene1_2204_flatten.usd",
+        "usd_pose": 
+        {
+            "position" : [2.8, -0.54, -3.4], 
+            "orientation": [0.99995,0.00436,0.00004,-0.00873],
+            "scale" : [0.01,0.01,0.01]
+        }
+    }
+}
