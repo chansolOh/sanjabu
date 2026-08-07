@@ -64,6 +64,18 @@ def main(output_root_path,
     from Utils.isaac_utils_51 import light_set as light
     from Utils.isaac_utils_51 import sanjabu_Writer as SW
 
+    required_writer_version = "2026-08-08-raw-id-labels-v7"
+    installed_writer_version = getattr(SW, "SEMANTICS_WRITER_VERSION", None)
+    if installed_writer_version != required_writer_version:
+        raise RuntimeError(
+            "SceneGen semantics writer version mismatch: "
+            f"required={required_writer_version}, "
+            f"installed={installed_writer_version}. "
+            "Update sanjabu_scene_generator.py and sanjabu_Writer.py together."
+        )
+    print(f"SceneGen > SEMANTICS_FIX:{installed_writer_version}")
+    sys.stdout.flush()
+
 
 
 
@@ -226,12 +238,16 @@ def main(output_root_path,
         distance_to_camera              = writer_dict["distance_to_camera"],
         distance_to_image_plane         = writer_dict["distance_to_image_plane"],
         instance_segmentation           = writer_dict["instance_segmentation"],
+        colorize_instance_segmentation  = False,
         normals                         = writer_dict["normals"],
         semantic_segmentation           = writer_dict["semantic_segmentation"],
         use_common_output_dir           = writer_dict["use_common_output_dir"],
         pointcloud_include_unlabelled   = writer_dict["pointcloud_include_unlabelled"],
         pointcloud                      = writer_dict["pointcloud"]
     )
+    # New SceneGen suppresses validation-frame disk writes explicitly. The
+    # writer default remains enabled for compatibility with old SceneGen.
+    writer.set_disk_writes_enabled(False)
     writer.set_path(output_path,
                     rgb_path = "rgb",
                     bounding_box_path = "bbox",
@@ -250,6 +266,8 @@ def main(output_root_path,
     # depth_plane_annotator = rep.AnnotatorRegistry.get_annotator("distance_to_image_plane")
     # depth_plane_annotator.attach([render_product])
 
+    # Keep annotator data refreshed on every camera-validation frame. The
+    # custom writer suppresses disk I/O until the final frame below.
     writer.attach([render_product_top, render_product_side])
     rep.orchestrator.pause()
     rep.orchestrator.set_capture_on_play(False)
@@ -303,6 +321,7 @@ def main(output_root_path,
     sdg_pipe_children = sdg_pipe_prim.GetChildren()
 
     def remove_all_objects(obj_rep_all_list, sdg_pipe_prim, sdg_pipe_children):
+        rep.orchestrator.wait_until_complete()
         for OBJ in obj_rep_all_list:
             og.GraphController.delete_node(OBJ.node.node.get_prim_path())
             stage.RemovePrim(OBJ.prim.GetPath())
@@ -310,6 +329,33 @@ def main(output_root_path,
         for prim in sdg_pipe_prim.GetChildren():
             if prim not in sdg_pipe_children:
                 stage.RemovePrim(prim.GetPath())
+
+    model_class_names = {str(model["name"]).lower() for model in model_list}
+
+    def canonical_object_class(class_name):
+        if class_name is None:
+            return None
+        class_name = str(class_name).lower()
+        if class_name in model_class_names:
+            return class_name
+        path_name = class_name.rstrip("/").rsplit("/", 1)[-1]
+        if path_name in model_class_names:
+            return path_name
+        return None
+
+    def instance_object_classes(writer_data, render_product_name):
+        try:
+            instance_data = writer_data["annotators"]["instance_segmentation_fast"][render_product_name]
+            labels = instance_data["idToLabels"]
+        except (KeyError, TypeError):
+            return set()
+        return {
+            canonical_class
+            for value in labels.values()
+            for class_name in [value.get("class") if isinstance(value, dict) else value]
+            for canonical_class in [canonical_object_class(class_name)]
+            if canonical_class is not None
+        }
 
     import time
     import select
@@ -392,6 +438,12 @@ def main(output_root_path,
         csr.scatter_in_platform_area(obj_rep_all_list[0],obj_rep_all_list)
 
         obj_rep_list = obj_rep_all_list[1:]
+        expected_object_classes = {
+            str(obj.class_name).lower() for obj in obj_rep_list
+        }
+        writer.set_canonical_class_names(
+            [obj.class_name for obj in obj_rep_list]
+        )
         
         my_world.play()
         obj_rotation_buf = []
@@ -430,11 +482,20 @@ def main(output_root_path,
         ########
         with top_view_camera:
             rep.modify.pose(position = [center[0],center[1],center[2]+1.2])
-        rep.orchestrator.step()
-
-
-        if writer.get_data()["annotators"]["instance_segmentation_fast"]["Replicator"]["idToSemantics"].keys().__len__()<7:
-            print("scene_reset, 탑뷰 카메라 오류")
+        top_object_classes = set()
+        for _ in range(5):
+            rep.orchestrator.step()
+            top_object_classes = instance_object_classes(
+                writer.get_data(), "Replicator"
+            )
+            if top_object_classes == expected_object_classes:
+                break
+        if top_object_classes != expected_object_classes:
+            print(
+                "scene_reset, top-view instance label mismatch: "
+                f"expected={sorted(expected_object_classes)}, "
+                f"actual={sorted(top_object_classes)}"
+            )
             # import pdb; pdb.set_trace()
             remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
             continue
@@ -450,13 +511,19 @@ def main(output_root_path,
     
 
 
-            side_view_obj_count = writer.get_data()["annotators"]["instance_segmentation_fast"]["Replicator_01"]["idToSemantics"].keys().__len__()
-            if side_view_obj_count<7:
-                print("side_view_obj_count : ", side_view_obj_count)
+            side_object_classes = instance_object_classes(
+                writer.get_data(), "Replicator_01"
+            )
+            if side_object_classes != expected_object_classes:
+                print(
+                    "side-view instance label mismatch: "
+                    f"expected={sorted(expected_object_classes)}, "
+                    f"actual={sorted(side_object_classes)}"
+                )
                 continue
             else:
                 break
-        if side_view_obj_count<7:
+        if side_object_classes != expected_object_classes:
             remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
             continue
 
@@ -508,6 +575,36 @@ def main(output_root_path,
             rt_subframes=255,
             wait_for_render=True,
         )
+        rep.orchestrator.wait_until_complete()
+
+        final_writer_data = writer.get_data()
+        top_object_classes = instance_object_classes(
+            final_writer_data, "Replicator"
+        )
+        side_object_classes = instance_object_classes(
+            final_writer_data, "Replicator_01"
+        )
+        if (
+            top_object_classes != expected_object_classes
+            or side_object_classes != expected_object_classes
+        ):
+            print(
+                "scene_reset, final instance label mismatch: "
+                f"expected={sorted(expected_object_classes)}, "
+                f"top={sorted(top_object_classes)}, "
+                f"side={sorted(side_object_classes)}"
+            )
+            remove_all_objects(
+                obj_rep_list, sdg_pipe_prim, sdg_pipe_children
+            )
+            continue
+
+        writer.set_disk_writes_enabled(True)
+        try:
+            writer.write(final_writer_data)
+            rep.BackendDispatch.wait_until_done()
+        finally:
+            writer.set_disk_writes_enabled(False)
 
         print("spp complete")
         
