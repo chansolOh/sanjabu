@@ -226,6 +226,10 @@ def main(output_root_path,
         distance_to_camera              = writer_dict["distance_to_camera"],
         distance_to_image_plane         = writer_dict["distance_to_image_plane"],
         instance_segmentation           = writer_dict["instance_segmentation"],
+        # Isaac Sim 5.1's colorized instance annotator may keep a stale
+        # idToSemantics table after scene prims are replaced. SanjabuWriter
+        # colorizes raw IDs itself using the current frame's idToLabels.
+        colorize_instance_segmentation  = False,
         normals                         = writer_dict["normals"],
         semantic_segmentation           = writer_dict["semantic_segmentation"],
         use_common_output_dir           = writer_dict["use_common_output_dir"],
@@ -303,6 +307,9 @@ def main(output_root_path,
     sdg_pipe_children = sdg_pipe_prim.GetChildren()
 
     def remove_all_objects(obj_rep_all_list, sdg_pipe_prim, sdg_pipe_children):
+        # Backend writes run on worker threads. Keep the source prims alive
+        # until every image and mapping from the current frame is on disk.
+        rep.orchestrator.wait_until_complete()
         for OBJ in obj_rep_all_list:
             og.GraphController.delete_node(OBJ.node.node.get_prim_path())
             stage.RemovePrim(OBJ.prim.GetPath())
@@ -310,6 +317,27 @@ def main(output_root_path,
         for prim in sdg_pipe_prim.GetChildren():
             if prim not in sdg_pipe_children:
                 stage.RemovePrim(prim.GetPath())
+
+    model_class_names = {str(model["name"]).lower() for model in model_list}
+
+    def instance_object_classes(writer_data, render_product_name):
+        """Return visible dataset-object classes from the current writer frame."""
+        try:
+            label_map = writer_data["annotators"]["instance_segmentation_fast"][render_product_name]["idToLabels"]
+        except (KeyError, TypeError):
+            return set()
+
+        classes = set()
+        for labels in label_map.values():
+            if not isinstance(labels, dict):
+                continue
+            class_name = labels.get("class")
+            if class_name is None:
+                continue
+            normalized = str(class_name).lower()
+            if normalized in model_class_names:
+                classes.add(normalized)
+        return classes
 
 
 
@@ -394,6 +422,12 @@ def main(output_root_path,
         csr.scatter_in_platform_area(obj_rep_all_list[0],obj_rep_all_list)
 
         obj_rep_list = obj_rep_all_list[1:]
+        expected_object_classes = {
+            str(obj.class_name).lower() for obj in obj_rep_list
+        }
+        writer.set_canonical_class_names(
+            [obj.class_name for obj in obj_rep_list]
+        )
         
         my_world.play()
         obj_rotation_buf = []
@@ -435,9 +469,13 @@ def main(output_root_path,
         rep.orchestrator.step()
 
 
-        if writer.get_data()["annotators"]["instance_segmentation_fast"]["Replicator"]["idToSemantics"].keys().__len__()<7:
-            # writer.get_data()["annotators"]["instance_segmentation_fast"]["Replicator"]["data"].min() == 0:
-            print("scene_reset, 탑뷰 카메라 오류")
+        top_object_classes = instance_object_classes(writer.get_data(), "Replicator")
+        if top_object_classes != expected_object_classes:
+            print(
+                "scene_reset, top-view instance labels are not current: "
+                f"expected={sorted(expected_object_classes)}, "
+                f"actual={sorted(top_object_classes)}"
+            )
             # import pdb; pdb.set_trace()
             remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
             continue
@@ -453,13 +491,17 @@ def main(output_root_path,
     
 
 
-            side_view_obj_count = writer.get_data()["annotators"]["instance_segmentation_fast"]["Replicator_01"]["idToSemantics"].keys().__len__()
-            if side_view_obj_count<7:
-                print("side_view_obj_count : ", side_view_obj_count)
+            side_object_classes = instance_object_classes(writer.get_data(), "Replicator_01")
+            if side_object_classes != expected_object_classes:
+                print(
+                    "side-view instance labels are not current: "
+                    f"expected={sorted(expected_object_classes)}, "
+                    f"actual={sorted(side_object_classes)}"
+                )
                 continue
             else:
                 break
-        if side_view_obj_count<7:
+        if side_object_classes != expected_object_classes:
             remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
             continue
 
@@ -511,6 +553,26 @@ def main(output_root_path,
             rt_subframes=255,
             wait_for_render=True,
         )
+
+        # The writer backend is asynchronous. Complete this scene's writes
+        # before validating or deleting any of its source prims.
+        rep.orchestrator.wait_until_complete()
+
+        final_writer_data = writer.get_data()
+        top_object_classes = instance_object_classes(final_writer_data, "Replicator")
+        side_object_classes = instance_object_classes(final_writer_data, "Replicator_01")
+        if (
+            top_object_classes != expected_object_classes
+            or side_object_classes != expected_object_classes
+        ):
+            print(
+                "scene_reset, instance segmentation label mismatch: "
+                f"expected={sorted(expected_object_classes)}, "
+                f"top={sorted(top_object_classes)}, "
+                f"side={sorted(side_object_classes)}"
+            )
+            remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
+            continue
 
         print("spp complete")
         

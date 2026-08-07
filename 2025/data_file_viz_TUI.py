@@ -39,7 +39,7 @@ class DataMonitorTUI:
         curses.init_pair(6, curses.COLOR_WHITE, curses.COLOR_BLUE)  # 선택됨
         
         # 상태 변수
-        self.monitor_path = initial_path or "/nas/Dataset/Dataset_2025/dataset_v1"
+        self.monitor_path = initial_path or "/nas/Dataset/Dataset_2026/dataset_v2"
         self.monitoring = False
         self.monitor_thread = None
         self.data_structure = {}
@@ -985,7 +985,7 @@ class DataMonitorTUI:
 
 def main():
     parser = argparse.ArgumentParser(description="Data Structure Monitor - TUI")
-    parser.add_argument("--path", "-p", default="/nas/Dataset/Dataset_2025/dataset_v1",
+    parser.add_argument("--path", "-p", default="/nas/Dataset/Dataset_2026/dataset_v2",
                        help="Initial monitoring path")
     parser.add_argument("--auto-start", "-a", action="store_true",
                        help="Start monitoring automatically")

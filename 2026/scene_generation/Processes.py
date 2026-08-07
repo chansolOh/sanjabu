@@ -4,7 +4,40 @@ import threading
 import time
 import json
 import os
+import signal
 import numpy as np
+
+
+def _start_python_process(python_path, target_path, arguments, workdir=None):
+    environment = os.environ.copy()
+    environment["PYTHONUNBUFFERED"] = "1"
+    return subprocess.Popen(
+        [python_path, "-u", target_path, *arguments],
+        cwd=workdir,
+        env=environment,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,
+        start_new_session=(os.name != "nt"),
+    )
+
+
+def _stop_process_group(process):
+    if process is None or process.poll() is not None:
+        return
+    if os.name == "nt":
+        process.kill()
+        process.wait(timeout=10)
+        return
+    try:
+        os.killpg(process.pid, signal.SIGTERM)
+        process.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        os.killpg(process.pid, signal.SIGKILL)
+        process.wait(timeout=10)
+    except ProcessLookupError:
+        pass
 
 
 def get_scenegen_pid(process_name=""):
@@ -36,7 +69,8 @@ class MainProcess_SceneGen:
                  reset_time_th,
                  scene_gen_time_th,
                  sock,
-                 pid_name,):
+                 pid_name,
+                 workdir=None,):
         self.stage = "INIT"
         self.timer = time.time()
         self.python_path = python_path
@@ -46,6 +80,8 @@ class MainProcess_SceneGen:
         self.sock = sock
         self.process = None
         self.pid_name = pid_name
+        self.workdir = workdir
+        self.restart_requested = False
 
 
     def start(self, 
@@ -57,17 +93,21 @@ class MainProcess_SceneGen:
               scene_end,
               object_num=5):
         self.timer = time.time()
-        self.process = subprocess.Popen([self.python_path, self.target_path,
-                            "--output_root_path", output_root_path,
-                            "--env_name", env_name,
-                            "--section_name", section_name,
-                            "--platform_name", platform_name,
-                            "--scene_start", str(scene_start),
-                            "--scene_end",  str(scene_end),
-                            "--object_num", str(object_num),],
-                            stdout=subprocess.PIPE, 
-                            stderr=subprocess.STDOUT,
-                            text=True)  # close_fds=True is not supported on Windows
+        self.restart_requested = False
+        self.process = _start_python_process(
+            self.python_path,
+            self.target_path,
+            [
+                "--output_root_path", output_root_path,
+                "--env_name", env_name,
+                "--section_name", section_name,
+                "--platform_name", platform_name,
+                "--scene_start", str(scene_start),
+                "--scene_end", str(scene_end),
+                "--object_num", str(object_num),
+            ],
+            self.workdir,
+        )
 
 
         threading.Thread(target=self.stream_output).start()
@@ -92,15 +132,13 @@ class MainProcess_SceneGen:
                     self.sock.sendall(json.dumps({"cmd": "complete",
                             "name":self.sock.getsockname()[0],
                             "data":""}).encode())
+            elif output:
+                print(output)
 
     def stop(self):
         if self.process:
-            self.process.kill()
+            _stop_process_group(self.process)
             print("Process terminated.")
-            time.sleep(3)
-            pid = get_scenegen_pid(self.pid_name)
-            if pid is not None: os.kill(pid, 9)
-            time.sleep(3)
 
 
 
@@ -109,12 +147,14 @@ class MainProcess_SceneGen:
         if self.stage == "INIT":
             if time.time() - self.timer > self.reset_time_th:
                 print("\033[1;31mResetting the scene generator...\033[0m")
+                self.restart_requested = True
                 self.stop()
 
 
         elif self.stage == "START":
             if time.time() - self.timer > self.scene_gen_time_th:
                 print("\033[1;31mScene generation timed out, restarting...\033[0m")
+                self.restart_requested = True
                 self.stop()
 
     def is_running(self):
@@ -141,7 +181,8 @@ class MainProcess_PreGrasp:
                  target_path, 
                  gen_time_th,
                  sock,
-                 pid_name,):
+                 pid_name,
+                 workdir=None,):
         self.timer = time.time()
         self.python_path = python_path
         self.target_path = target_path
@@ -150,6 +191,8 @@ class MainProcess_PreGrasp:
         self.process = None
         self.pid_name = pid_name
         self.stage = "INIT"
+        self.workdir = workdir
+        self.restart_requested = False
 
 
     def start(self, 
@@ -159,15 +202,19 @@ class MainProcess_PreGrasp:
               platform_name,
               scene_start,):
         self.timer = time.time()
-        self.process = subprocess.Popen([self.python_path, self.target_path,
-                            "--output_root_path", output_root_path,
-                            "--env_name", env_name,
-                            "--section_name", section_name,
-                            "--platform_name", platform_name,
-                            "--scene_start", str(scene_start),],
-                            stdout=subprocess.PIPE, 
-                            stderr=subprocess.STDOUT,
-                            text=True)  # close_fds=True is not supported on Windows
+        self.restart_requested = False
+        self.process = _start_python_process(
+            self.python_path,
+            self.target_path,
+            [
+                "--output_root_path", output_root_path,
+                "--env_name", env_name,
+                "--section_name", section_name,
+                "--platform_name", platform_name,
+                "--scene_start", str(scene_start),
+            ],
+            self.workdir,
+        )
         
         # self.process2 = subprocess.Popen([self.python_path, self.target_path,
         #                     "--output_root_path", output_root_path,
@@ -197,16 +244,16 @@ class MainProcess_PreGrasp:
                     self.sock.sendall(json.dumps({"cmd": "scene_num_check",
                                                  "name": self.sock.getsockname()[0],
                                                  "data": msg.split(":")[1].strip()}).encode())
+                elif msg == "END":
+                    self.stage = "END"
+            elif output:
+                print(output)
 
 
     def stop(self):
         if self.process:
-            self.process.kill()
+            _stop_process_group(self.process)
             print("Process terminated.")
-            time.sleep(3)
-            pid = get_scenegen_pid(self.pid_name)
-            if pid is not None: os.kill(pid, 9)
-            time.sleep(3)
 
 
 
@@ -215,12 +262,14 @@ class MainProcess_PreGrasp:
         if self.stage == "INIT":
             if time.time() - self.timer > self.gen_time_th:
                 print("\033[1;31mResetting the generator...\033[0m")
+                self.restart_requested = True
                 self.stop()
 
 
         elif self.stage == "START":
             if time.time() - self.timer > self.gen_time_th:
                 print("\033[1;31mScene generation timed out, restarting...\033[0m")
+                self.restart_requested = True
                 self.stop()
 
     def is_running(self):
@@ -228,11 +277,16 @@ class MainProcess_PreGrasp:
 
     def current_scene_num_check(self, output_root_path, env_name, section_name, platform_name, scene_start, scene_end):
         dir_path = os.path.join(output_root_path, env_name, section_name, platform_name)
-        if not os.path.exists(os.path.join(dir_path,"pre_grasp")):
-            return scene_start
-        
-
-        num_list = [int(i.strip(".json")) for i in os.listdir(os.path.join(dir_path,"pre_grasp")) if i.endswith(".json")]
+        pre_grasp_dir = os.path.join(dir_path, "pre_grasp")
+        num_list = (
+            [
+                int(os.path.splitext(name)[0])
+                for name in os.listdir(pre_grasp_dir)
+                if name.endswith(".json") and os.path.splitext(name)[0].isdigit()
+            ]
+            if os.path.isdir(pre_grasp_dir)
+            else []
+        )
         for scene_num in range(scene_start, scene_end+1):
             if scene_num not in num_list and os.path.exists(os.path.join(dir_path, "conf", f"{scene_num:04d}.json")):
                 return scene_num
@@ -262,7 +316,8 @@ class MainProcess_Grasp:
                  output_root_path,
                 env_name,
                 section_name,
-                platform_name,):
+                platform_name,
+                workdir=None,):
         self.timer = time.time()
         self.python_path = python_path
         self.target_path = target_path
@@ -278,21 +333,27 @@ class MainProcess_Grasp:
         self.platform_name = platform_name
         self.scene_num = None
         self.pre_grasp_index = 0
+        self.workdir = workdir
+        self.restart_requested = False
         
 
 
     def start(self ):
         self.timer = time.time()
-        self.process = subprocess.Popen([self.python_path, self.target_path,
-                            "--root_path", self.output_root_path,
-                            "--env_name", self.env_name,
-                            "--section_name", self.section_name,
-                            "--platform_name", self.platform_name,
-                            "--scene_start", str(self.scene_num),
-                            "--pre_grasp_index", str(self.pre_grasp_index)],
-                            stdout=subprocess.PIPE, 
-                            stderr=subprocess.STDOUT,
-                            text=True)  # close_fds=True is not supported on Windows
+        self.restart_requested = False
+        self.process = _start_python_process(
+            self.python_path,
+            self.target_path,
+            [
+                "--root_path", self.output_root_path,
+                "--env_name", self.env_name,
+                "--section_name", self.section_name,
+                "--platform_name", self.platform_name,
+                "--scene_start", str(self.scene_num),
+                "--pre_grasp_index", str(self.pre_grasp_index),
+            ],
+            self.workdir,
+        )
 
         threading.Thread(target=self.stream_output).start()
 
@@ -311,16 +372,16 @@ class MainProcess_Grasp:
                     self.sock.sendall(json.dumps({"cmd": "scene_num_check",
                                                  "name": self.sock.getsockname()[0],
                                                  "data": msg.split(":")[1].strip()}).encode())
+                elif msg == "END":
+                    self.stage = "END"
+            elif output:
+                print(output)
 
 
     def stop(self):
         if self.process:
-            self.process.kill()
+            _stop_process_group(self.process)
             print("Process terminated.")
-            time.sleep(3)
-            pid = get_scenegen_pid(self.pid_name)
-            if pid is not None: os.kill(pid, 9)
-            time.sleep(3)
 
 
 
@@ -329,12 +390,14 @@ class MainProcess_Grasp:
         if self.stage == "INIT":
             if time.time() - self.timer > self.reset_time_th:
                 print(f"\033[1;31mResetting the generator...{time.time() - self.timer}\033[0m")
+                self.restart_requested = True
                 self.stop()
 
 
         elif self.stage == "START":
             if time.time() - self.timer > self.gen_time_th:
                 print(f"\033[1;31mScene generation timed out {time.time() - self.timer}, restarting...\033[0m")
+                self.restart_requested = True
                 self.stop()
 
     def is_running(self):
@@ -342,18 +405,26 @@ class MainProcess_Grasp:
 
     def current_num_check(self, scene_start, scene_end):
         dir_path = os.path.join(self.output_root_path, self.env_name, self.section_name, self.platform_name)
-        if not os.path.exists(os.path.join(dir_path,"output_grasp")):
-            self.scene_num = scene_start
-            self.pre_grasp_index = 0
-            return
-        
-
-        num_list = [int(i.strip(".json")) for i in os.listdir(os.path.join(dir_path,"output_grasp")) if i.endswith(".json")]
+        output_grasp_dir = os.path.join(dir_path, "output_grasp")
+        num_list = (
+            [
+                int(os.path.splitext(name)[0])
+                for name in os.listdir(output_grasp_dir)
+                if name.endswith(".json") and os.path.splitext(name)[0].isdigit()
+            ]
+            if os.path.isdir(output_grasp_dir)
+            else []
+        )
         for scene_num in range(scene_start, scene_end+1):
+            pre_grasp_path = os.path.join(
+                dir_path, "pre_grasp", f"{scene_num:04d}.json"
+            )
+            if not os.path.exists(pre_grasp_path):
+                continue
             if scene_num in num_list:
                 with open(os.path.join(dir_path, "output_grasp", f"{scene_num:04d}.json"), 'r') as f:
                     output_grasp_data = json.load(f)
-                with open(os.path.join(dir_path, "pre_grasp", f"{scene_num:04d}.json"), 'r') as f:
+                with open(pre_grasp_path, 'r') as f:
                     pre_grasp_data = json.load(f)
                 gripper_model_list = []
                 for gd in output_grasp_data:
@@ -367,11 +438,9 @@ class MainProcess_Grasp:
                         self.pre_grasp_index = idx
                         return
 
-            elif scene_num not in num_list and os.path.exists(os.path.join(dir_path, "pre_grasp", f"{scene_num:04d}.json")):
+            elif scene_num not in num_list:
                 self.scene_num = scene_num
                 self.pre_grasp_index = 0
                 return
 
         self.scene_num = None
-
-

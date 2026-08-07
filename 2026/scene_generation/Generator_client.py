@@ -8,24 +8,34 @@ import os
 import getpass
 import Processes
 
+user_name = getpass.getuser()
+isaaclab_root = f"/home/{user_name}/ochansol/isaaclab_232"
+scene_generation_root = (
+    f"/home/{user_name}/ochansol/isaac_code/python/sanjabu/2026/scene_generation"
+)
+
 python_path_dict = {
-    # "SceneGen": f"/home/{getpass.getuser()}/ochansol/isaac_sim_5.1/python.sh",
-    "SceneGen": f"/home/{getpass.getuser()}/ochansol/isaac_code/isaac_chansol/.venv/bin/python",
-    "PreGrasp": f"/home/{getpass.getuser()}/ochansol/isaac_sim_5.1/python.sh",
-    "Grasp":    f"/home/{getpass.getuser()}/ochansol/isaac_sim_5.1/python.sh",
+    "SceneGen": f"/home/{user_name}/ochansol/isaac_code/isaac_chansol/.venv/bin/python",
+    "PreGrasp": f"{isaaclab_root}/.venv/bin/python",
+    "Grasp": f"{isaaclab_root}/.venv/bin/python",
 }
 target_python_path_dict = {
-    "SceneGen": f"/home/{getpass.getuser()}/ochansol/isaac_code/python/sanjabu/2026/scene_generation/SceneGen_arg.py",
-    "PreGrasp": f"/home/{getpass.getuser()}/ochansol/IsaacLab/scripts/chansol/Pre_Grasp_arg.py",
-    "Grasp":    f"/home/{getpass.getuser()}/ochansol/IsaacLab/scripts/chansol/Grasp_arg.py",
+    "SceneGen": f"{scene_generation_root}/SceneGen_arg.py",
+    "PreGrasp": f"{isaaclab_root}/2026_Codex/pregrasp/Collect_Hand_PreGrasp_dataset.py",
+    "Grasp": f"{isaaclab_root}/2026_Codex/Grasp_arg_new_filter.py",
+}
+working_directory_dict = {
+    "SceneGen": scene_generation_root,
+    "PreGrasp": isaaclab_root,
+    "Grasp": isaaclab_root,
 }
 reset_time_th = 400
 scene_gen_time_th = 130
 
-pre_grasp_gen_time_th = 300
+pre_grasp_gen_time_th = 1800
 
-grasp_reset_time_th = 60
-grasp_gen_time_th = 400
+grasp_reset_time_th = 300
+grasp_gen_time_th = 900
 grasp_scene_num_loop_count_th = 4
 
 
@@ -50,8 +60,8 @@ def listen_to_server(sock):
     finally:
         sock.close()
         server_flag = False  # 연결 끊어지면 재연결하도록
-        pid = get_scenegen_pid(pid_name)
-        if pid is not None: os.kill(pid, 9)
+        if 'main_process' in globals() and main_process is not None:
+            main_process.stop()
 
 
 
@@ -81,13 +91,37 @@ def get_scenegen_pid(process_name=""):
 
 def kill_all():
     global start_flag, server_cmd, main_process
-    if 'main_process' in globals():
+    if 'main_process' in globals() and main_process is not None:
         main_process.stop()
         del main_process
     start_flag = False
     server_cmd["cmd"] = {}
-    pid = get_scenegen_pid(pid_name)
-    if pid is not None: os.kill(pid, 9)
+
+
+def handle_process_exit():
+    """Return True after handling a finished child process."""
+    global start_flag
+    if main_process.is_running():
+        return False
+    return_code = main_process.process.poll() if main_process.process else None
+    if return_code not in (None, 0) and not main_process.restart_requested:
+        message = (
+            f"{server_cmd.get('command')} failed with exit code {return_code}; "
+            "see Generator_client terminal output"
+        )
+        print(f"\033[1;31m{message}\033[0m")
+        try:
+            sock.sendall(json.dumps({
+                "cmd": "error",
+                "name": sock.getsockname()[0],
+                "data": message,
+            }).encode())
+        except OSError:
+            pass
+        kill_all()
+        return True
+    start_flag = False
+    return True
     
 
 
@@ -124,7 +158,8 @@ while True:
                     reset_time_th=reset_time_th,
                     scene_gen_time_th=scene_gen_time_th,
                     sock=sock,
-                    pid_name=pid_name,)
+                    pid_name=pid_name,
+                    workdir=working_directory_dict[server_cmd["command"]],)
                 scene_num = main_process.current_scene_num_check(
                                     output_root_path = server_cmd["output_root_path"],
                                     env_name        = server_cmd["env_name"],
@@ -154,8 +189,7 @@ while True:
             else:
                 try:
                     main_process.step()
-                    if not main_process.is_running():
-                        start_flag = False
+                    handle_process_exit()
                 except:
                     print("err")
 
@@ -171,13 +205,14 @@ while True:
                     
         elif server_cmd["command"] == "PreGrasp":
             if not start_flag:
-                print("\033[1;32mStarting the scene generator...\033[0m")
+                print("\033[1;32mStarting the pre-grasp generator...\033[0m")
                 main_process = Processes.MainProcess_PreGrasp(
                     python_path=python_path_dict[server_cmd["command"]], 
                     target_path=target_python_path_dict[server_cmd["command"]],
                     gen_time_th = pre_grasp_gen_time_th,
                     sock=sock,
-                    pid_name=pid_name,)
+                    pid_name=pid_name,
+                    workdir=working_directory_dict[server_cmd["command"]],)
                 scene_num = main_process.current_scene_num_check(
                                     output_root_path = server_cmd["output_root_path"],
                                     env_name        = server_cmd["env_name"],
@@ -205,9 +240,7 @@ while True:
             else:
                 # try:
                 main_process.step()
-            
-                if not main_process.is_running():
-                    start_flag = False
+                handle_process_exit()
                 # except:
                 #     print("err")
 
@@ -218,7 +251,7 @@ while True:
 
         elif server_cmd["command"] == "Grasp":
             if not start_flag:
-                print("\033[1;32mStarting the scene generator...\033[0m")
+                print("\033[1;32mStarting the grasp generator...\033[0m")
                 main_process = Processes.MainProcess_Grasp(
                     python_path=python_path_dict[server_cmd["command"]], 
                     target_path=target_python_path_dict[server_cmd["command"]],
@@ -229,7 +262,8 @@ while True:
                     output_root_path = server_cmd["output_root_path"],
                     env_name        = server_cmd["env_name"],
                     section_name    = server_cmd["section_name"],
-                    platform_name   = server_cmd["platform_name"],)
+                    platform_name   = server_cmd["platform_name"],
+                    workdir=working_directory_dict[server_cmd["command"]],)
                 
                 main_process.current_num_check(
                     scene_start       = server_cmd["scene_start"],
@@ -260,8 +294,7 @@ while True:
             else:
                 # try:
                 main_process.step()
-                if not main_process.is_running():
-                    start_flag = False
+                handle_process_exit()
 
     elif server_cmd["cmd"] == "stop":
         kill_all()

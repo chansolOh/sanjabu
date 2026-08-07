@@ -1,0 +1,18 @@
+[package]
+version = "1.0.0"
+category = "Robotics"
+title = "Hand Grip Preset Maker"
+description = "Interactive hand-gripper start/end pose authoring and grasp preview tool"
+authors = ["OChanSol"]
+readme = "docs/README.md"
+keywords = ["isaac sim", "gripper", "hand", "preset", "grasp"]
+
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.kit.menu.utils" = {}
+"omni.usd" = {}
+"omni.physx" = {}
+"isaacsim.core.prims" = {}
+
+[[python.module]]
+name = "hand_grip_making_tool"

@@ -686,6 +686,15 @@ class MultiPCController(App):
                     self.pc_status[client_name]['status'] = "Completed"
                     self.pc_status[client_name]['current_scene'] = "Completed"
                     self.refresh_table_silent()  # 조용한 새로고침 사용
+
+            elif data.get("cmd") == "error":
+                client_name = data.get("name", client_id)
+                if client_name in self.pc_status:
+                    self.pc_status[client_name]['status'] = "Error"
+                    self.pc_status[client_name]['current_scene'] = str(
+                        data.get("data", "worker failed")
+                    )
+                    self.refresh_table_silent()
                     
         except json.JSONDecodeError:
             pass
@@ -766,6 +775,8 @@ class MultiPCController(App):
                 status_display = f"[green]{status}[/green]"
             elif status == 'Stopped':
                 status_display = f"[red]{status}[/red]"
+            elif status == 'Error':
+                status_display = f"[bold red]{status}[/bold red]"
             elif status == 'Completed':
                 status_display = f"[blue]{status}[/blue]"
             elif status == 'Paused':
@@ -823,6 +834,8 @@ class MultiPCController(App):
                 status_display = f"[green]{status}[/green]"
             elif status == 'Stopped':
                 status_display = f"[red]{status}[/red]"
+            elif status == 'Error':
+                status_display = f"[bold red]{status}[/bold red]"
             elif status == 'Completed':
                 status_display = f"[blue]{status}[/blue]"
             elif status == 'Paused':
