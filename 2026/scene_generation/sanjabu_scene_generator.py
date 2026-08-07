@@ -320,15 +320,23 @@ def main(output_root_path,
 
     model_class_names = {str(model["name"]).lower() for model in model_list}
 
-    def instance_object_classes(writer_data, render_product_name):
-        """Return visible dataset-object classes from the current writer frame."""
+    def visible_bbox_count(writer_data, render_product_name):
+        """Return the current tight-BBox count without comparing class names."""
         try:
-            label_map = writer_data["annotators"]["instance_segmentation_fast"][render_product_name]["idToLabels"]
+            bbox_data = writer_data["annotators"]["bounding_box_2d_tight_fast"][render_product_name]["data"]
         except (KeyError, TypeError):
-            return set()
+            return 0
+        return len(bbox_data)
 
+    def saved_semantics_object_classes(mapping_path):
+        """Read object classes from the mapping that was actually written."""
+        try:
+            with open(mapping_path, "r", encoding="utf-8") as stream:
+                mapping = json.load(stream)
+        except (OSError, json.JSONDecodeError):
+            return set()
         classes = set()
-        for labels in label_map.values():
+        for labels in mapping.values():
             if not isinstance(labels, dict):
                 continue
             class_name = labels.get("class")
@@ -469,13 +477,9 @@ def main(output_root_path,
         rep.orchestrator.step()
 
 
-        top_object_classes = instance_object_classes(writer.get_data(), "Replicator")
-        if top_object_classes != expected_object_classes:
-            print(
-                "scene_reset, top-view instance labels are not current: "
-                f"expected={sorted(expected_object_classes)}, "
-                f"actual={sorted(top_object_classes)}"
-            )
+        top_view_obj_count = visible_bbox_count(writer.get_data(), "Replicator")
+        if top_view_obj_count < len(obj_rep_list):
+            print("scene_reset, 탑뷰 카메라 오류")
             # import pdb; pdb.set_trace()
             remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
             continue
@@ -491,17 +495,13 @@ def main(output_root_path,
     
 
 
-            side_object_classes = instance_object_classes(writer.get_data(), "Replicator_01")
-            if side_object_classes != expected_object_classes:
-                print(
-                    "side-view instance labels are not current: "
-                    f"expected={sorted(expected_object_classes)}, "
-                    f"actual={sorted(side_object_classes)}"
-                )
+            side_view_obj_count = visible_bbox_count(writer.get_data(), "Replicator_01")
+            if side_view_obj_count < len(obj_rep_list):
+                print("side_view_obj_count : ", side_view_obj_count)
                 continue
             else:
                 break
-        if side_object_classes != expected_object_classes:
+        if side_view_obj_count < len(obj_rep_list):
             remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
             continue
 
@@ -558,9 +558,21 @@ def main(output_root_path,
         # before validating or deleting any of its source prims.
         rep.orchestrator.wait_until_complete()
 
-        final_writer_data = writer.get_data()
-        top_object_classes = instance_object_classes(final_writer_data, "Replicator")
-        side_object_classes = instance_object_classes(final_writer_data, "Replicator_01")
+        mapping_file_name = f"semantics_mapping_{scene_num:04d}.json"
+        top_mapping_path = os.path.join(
+            writer.output_path,
+            "inst_seg",
+            "top_view_camera",
+            mapping_file_name,
+        )
+        side_mapping_path = os.path.join(
+            writer.output_path,
+            "inst_seg",
+            "side_view_camera",
+            mapping_file_name,
+        )
+        top_object_classes = saved_semantics_object_classes(top_mapping_path)
+        side_object_classes = saved_semantics_object_classes(side_mapping_path)
         if (
             top_object_classes != expected_object_classes
             or side_object_classes != expected_object_classes
