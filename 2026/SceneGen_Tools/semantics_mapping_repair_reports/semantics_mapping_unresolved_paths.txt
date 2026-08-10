@@ -1,21 +1,21 @@
-/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/bed_01/inst_seg/side_view_camera/semantics_mapping_1353.json
-/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/inst_seg/side_view_camera/semantics_mapping_1750.json
-/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/inst_seg/side_view_camera/semantics_mapping_2451.json
-/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/inst_seg/top_view_camera/semantics_mapping_0710.json
-/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/inst_seg/side_view_camera/semantics_mapping_2116.json
-/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/sideboard_01/inst_seg/side_view_camera/semantics_mapping_1719.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/conveyor_track_01/inst_seg/side_view_camera/semantics_mapping_2483.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/conveyor_track_02/inst_seg/side_view_camera/semantics_mapping_1956.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_long_A1_01/inst_seg/top_view_camera/semantics_mapping_1513.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A5_01/inst_seg/side_view_camera/semantics_mapping_0521.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A5_02/inst_seg/side_view_camera/semantics_mapping_1998.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A7_01/inst_seg/top_view_camera/semantics_mapping_2828.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A7_01/inst_seg/side_view_camera/semantics_mapping_2828.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/top_view_camera/semantics_mapping_2701.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_2701.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_2933.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/top_view_camera/semantics_mapping_3569.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_3569.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/top_view_camera/semantics_mapping_3570.json
-/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_3570.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/bed_01/inst_seg/side_view_camera/semantics_mapping_1353.json ## complete
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/inst_seg/side_view_camera/semantics_mapping_1750.json ## 
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/inst_seg/side_view_camera/semantics_mapping_2451.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/inst_seg/top_view_camera/semantics_mapping_0710.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/inst_seg/side_view_camera/semantics_mapping_2116.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/sideboard_01/inst_seg/side_view_camera/semantics_mapping_1719.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/conveyor_track_01/inst_seg/side_view_camera/semantics_mapping_2483.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/conveyor_track_02/inst_seg/side_view_camera/semantics_mapping_1956.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_long_A1_01/inst_seg/top_view_camera/semantics_mapping_1513.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A5_01/inst_seg/side_view_camera/semantics_mapping_0521.json  ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A5_02/inst_seg/side_view_camera/semantics_mapping_1998.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A7_01/inst_seg/top_view_camera/semantics_mapping_2828.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/rack_small_A7_01/inst_seg/side_view_camera/semantics_mapping_2828.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/top_view_camera/semantics_mapping_2701.json  ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_2701.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_2933.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/top_view_camera/semantics_mapping_3569.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_3569.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/top_view_camera/semantics_mapping_3570.json ##
+/nas/Dataset/Dataset_2026/dataset_v2/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/inst_seg/side_view_camera/semantics_mapping_3570.json ##
 /nas/Dataset/Dataset_2026/dataset_v2/Manufactory/Seongju_Melon_Processing_Facility/green_conveyor_01/inst_seg/side_view_camera/semantics_mapping_0324.json

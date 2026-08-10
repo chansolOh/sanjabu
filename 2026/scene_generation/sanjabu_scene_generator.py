@@ -64,7 +64,7 @@ def main(output_root_path,
     from Utils.isaac_utils_51 import light_set as light
     from Utils.isaac_utils_51 import sanjabu_Writer as SW
 
-    required_writer_version = "2026-08-08-raw-id-labels-v7"
+    required_writer_version = "2026-08-10-opaque-unlabelled-v8"
     installed_writer_version = getattr(SW, "SEMANTICS_WRITER_VERSION", None)
     if installed_writer_version != required_writer_version:
         raise RuntimeError(

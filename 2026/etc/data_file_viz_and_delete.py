@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
+import ast
 import os
 import json
 import threading
@@ -383,10 +384,14 @@ class ImageViewerWindow:
         # 이미지 타입 선택
         ttk.Label(control_frame, text="Image Type:").grid(row=0, column=0, sticky=tk.W)
         self.image_type_var = tk.StringVar(value='rgb')
-        image_type_combo = ttk.Combobox(control_frame, textvariable=self.image_type_var, 
-                                       values=self.image_types, state='readonly')
-        image_type_combo.grid(row=0, column=1, padx=(5, 20))
-        image_type_combo.bind('<<ComboboxSelected>>', self.on_type_change)
+        self.image_type_combo = ttk.Combobox(
+            control_frame,
+            textvariable=self.image_type_var,
+            values=self.image_types,
+            state='readonly'
+        )
+        self.image_type_combo.grid(row=0, column=1, padx=(5, 20))
+        self.image_type_combo.bind('<<ComboboxSelected>>', self.on_type_change)
         
         # 이미지 인덱스 네비게이션
         ttk.Label(control_frame, text="Index:").grid(row=0, column=2, sticky=tk.W)
@@ -415,6 +420,14 @@ class ImageViewerWindow:
         
         # 새로고침 버튼
         ttk.Button(control_frame, text="Refresh", command=self.refresh_data).grid(row=0, column=9)
+
+        # 현재 scene의 conf JSON만 삭제한다. 이미지 파일은 그대로 유지한다.
+        self.delete_btn = ttk.Button(
+            control_frame,
+            text="Delete Scene Conf",
+            command=self.delete_current_conf
+        )
+        self.delete_btn.grid(row=1, column=0, columnspan=10, sticky=tk.E, pady=(8, 0))
         
         # 이미지 표시 프레임 (1행 2열)
         self.image_frame = ttk.Frame(self.window)
@@ -464,6 +477,10 @@ class ImageViewerWindow:
         # 물체 정보 표시 라벨
         self.objects_label = ttk.Label(self.objects_frame, text="No data loaded", foreground="gray")
         self.objects_label.pack(anchor=tk.W)
+
+        # inst_seg 선택 시 현재 scene의 semantics mapping을 색상표로 표시한다.
+        self.seg_legend_title = ttk.Label(self.objects_frame, text="InstSeg Color Map")
+        self.seg_legend_frame = ttk.Frame(self.objects_frame)
         
     def load_available_indices(self):
         """사용 가능한 이미지 인덱스 로드"""
@@ -511,12 +528,22 @@ class ImageViewerWindow:
         """키보드 이벤트 처리"""
         if event.keysym == 'Left':
             self.prev_image()
+            return "break"
         elif event.keysym == 'Right':
             self.next_image()
+            return "break"
+        elif event.keysym == 'Up':
+            self.change_image_type(-1)
+            return "break"
+        elif event.keysym == 'Down':
+            self.change_image_type(1)
+            return "break"
         elif event.keysym == 'space':
             self.next_image()
+            return "break"
         elif event.keysym == 'BackSpace':
             self.prev_image()
+            return "break"
     
     def on_index_entry(self, event):
         """엔터키로 인덱스 이동"""
@@ -577,6 +604,71 @@ class ImageViewerWindow:
     def on_type_change(self, event=None):
         """이미지/뷰 타입 변경시 호출"""
         self.update_display()
+
+    def change_image_type(self, step):
+        """위/아래 방향키로 rgb, depth, inst_seg 타입을 순환한다."""
+        try:
+            current_type_index = self.image_types.index(self.image_type_var.get())
+        except ValueError:
+            current_type_index = 0
+
+        next_type_index = (current_type_index + step) % len(self.image_types)
+        self.image_type_var.set(self.image_types[next_type_index])
+        self.update_display()
+
+    def delete_current_conf(self):
+        """현재 표시 중인 scene의 conf JSON 한 파일만 확인 후 삭제한다."""
+        if not self.available_indices:
+            messagebox.showwarning(
+                "Delete Scene Conf",
+                "No scene is currently selected.",
+                parent=self.window
+            )
+            return
+
+        scene_position = self.current_image_index
+        scene_index = self.available_indices[scene_position]
+        conf_path = Path(self.platform_path) / 'conf' / f"{scene_index:04d}.json"
+
+        if not conf_path.is_file():
+            messagebox.showwarning(
+                "Delete Scene Conf",
+                f"Conf file not found:\n{conf_path}",
+                parent=self.window
+            )
+            self.refresh_data()
+            return
+
+        should_delete = messagebox.askyesno(
+            "Delete Scene Conf",
+            f"Delete this scene's conf file?\n\n"
+            f"Scene: {scene_index:04d}\n"
+            f"File: {conf_path}\n\n"
+            "RGB, depth, and inst_seg files will not be deleted.",
+            parent=self.window
+        )
+        if not should_delete:
+            self.window.focus_set()
+            return
+
+        try:
+            conf_path.unlink()
+        except OSError as error:
+            messagebox.showerror(
+                "Delete Failed",
+                f"Failed to delete conf file:\n{conf_path}\n\n{error}",
+                parent=self.window
+            )
+            return
+
+        # 삭제한 scene을 즉시 목록에서 제외하고, 다음 scene 또는 마지막이면 이전 scene을 표시한다.
+        self.available_indices.pop(scene_position)
+        if self.available_indices:
+            self.current_image_index = min(scene_position, len(self.available_indices) - 1)
+            self.update_display()
+        else:
+            self.current_image_index = 0
+            self.show_no_data()
         
     def prev_image(self):
         """이전 이미지"""
@@ -606,6 +698,8 @@ class ImageViewerWindow:
         # 버튼 상태 업데이트
         self.prev_btn.config(state=tk.NORMAL if self.current_image_index > 0 else tk.DISABLED)
         self.next_btn.config(state=tk.NORMAL if self.current_image_index < len(self.available_indices) - 1 else tk.DISABLED)
+        self.go_btn.config(state=tk.NORMAL)
+        self.delete_btn.config(state=tk.NORMAL)
         
         # 이미지 로드 및 표시
         self.load_and_display_image(current_index)
@@ -617,6 +711,7 @@ class ImageViewerWindow:
         """side와 top 이미지를 동시에 로드 및 표시"""
         try:
             image_type = self.image_type_var.get()
+            self.update_inst_seg_legend(index)
             
             # Side view 이미지 로드
             side_path = os.path.join(self.platform_path, image_type, 'side_view_camera', f"{index:04d}.png" if image_type != 'depth' else f"{index:04d}.npy")
@@ -628,6 +723,91 @@ class ImageViewerWindow:
                 
         except Exception as e:
             self.show_error(f"Failed to load images: {e}")
+
+    def load_semantics_mapping(self, index):
+        """현재 scene과 정확히 일치하는 inst_seg 색상/class mapping을 로드한다."""
+        for camera_name in ('top_view_camera', 'side_view_camera'):
+            mapping_path = (
+                Path(self.platform_path)
+                / 'inst_seg'
+                / camera_name
+                / f"semantics_mapping_{index:04d}.json"
+            )
+            if not mapping_path.is_file():
+                continue
+
+            try:
+                with mapping_path.open('r', encoding='utf-8') as mapping_file:
+                    mapping_data = json.load(mapping_file)
+            except (OSError, json.JSONDecodeError) as error:
+                print(f"Failed to load semantics mapping {mapping_path}: {error}")
+                continue
+
+            legend_entries = []
+            for color_text, semantic_info in mapping_data.items():
+                if not isinstance(semantic_info, dict):
+                    continue
+
+                class_name = str(semantic_info.get('class', 'UNKNOWN'))
+                if class_name.upper() == 'BACKGROUND':
+                    continue
+
+                try:
+                    rgba = tuple(int(value) for value in ast.literal_eval(color_text))
+                except (ValueError, SyntaxError, TypeError):
+                    continue
+
+                if len(rgba) not in (3, 4) or any(value < 0 or value > 255 for value in rgba):
+                    continue
+
+                legend_entries.append((rgba, class_name))
+
+            return legend_entries
+
+        return []
+
+    def clear_inst_seg_legend(self):
+        """기존 inst_seg 색상표 위젯을 제거한다."""
+        for child in self.seg_legend_frame.winfo_children():
+            child.destroy()
+        self.seg_legend_title.pack_forget()
+        self.seg_legend_frame.pack_forget()
+
+    def update_inst_seg_legend(self, index):
+        """inst_seg 화면에서 색상과 class명을 함께 표시한다."""
+        self.clear_inst_seg_legend()
+        if self.image_type_var.get() != 'inst_seg':
+            return
+
+        legend_entries = self.load_semantics_mapping(index)
+        self.seg_legend_title.pack(anchor=tk.W, pady=(6, 2))
+        self.seg_legend_frame.pack(fill=tk.X)
+
+        if not legend_entries:
+            ttk.Label(
+                self.seg_legend_frame,
+                text=f"semantics_mapping_{index:04d}.json not found or invalid",
+                foreground="orange"
+            ).grid(row=0, column=0, sticky=tk.W)
+            return
+
+        # 긴 class명도 읽을 수 있도록 한 행에 두 항목씩 배치한다.
+        for entry_index, (rgba, class_name) in enumerate(legend_entries):
+            row, column = divmod(entry_index, 2)
+            item_frame = ttk.Frame(self.seg_legend_frame)
+            item_frame.grid(row=row, column=column, sticky=tk.W, padx=(0, 18), pady=1)
+
+            color_hex = '#{:02x}{:02x}{:02x}'.format(*rgba[:3])
+            color_swatch = tk.Label(
+                item_frame,
+                background=color_hex,
+                width=2,
+                height=1,
+                relief=tk.SOLID,
+                borderwidth=1
+            )
+            color_swatch.pack(side=tk.LEFT, padx=(0, 5))
+            ttk.Label(item_frame, text=class_name).pack(side=tk.LEFT)
             
     def load_image_to_axes(self, image_path, ax, canvas, image_type, view_name):
         """matplotlib axes에 이미지 로드"""
@@ -759,6 +939,7 @@ class ImageViewerWindow:
         
     def show_no_data(self):
         """데이터 없음 메시지 표시"""
+        self.clear_inst_seg_legend()
         self.side_ax.clear()
         self.side_ax.axis('off')
         self.side_ax.text(0.5, 0.5, "No data available", ha='center', va='center', 
@@ -776,6 +957,7 @@ class ImageViewerWindow:
         self.prev_btn.config(state=tk.DISABLED)
         self.next_btn.config(state=tk.DISABLED)
         self.go_btn.config(state=tk.DISABLED)
+        self.delete_btn.config(state=tk.DISABLED)
         
         # 물체 정보도 초기화
         self.objects_label.config(text="No data loaded", foreground="gray")
