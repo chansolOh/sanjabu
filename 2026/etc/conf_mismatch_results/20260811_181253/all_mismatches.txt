@@ -1,0 +1,7 @@
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/bed_01/conf/4051.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/conf/3842.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/conf/3024.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/floor_01/conf/2560.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/floor_01/conf/2612.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/sideboard_01/conf/2918.json
+/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/vanity_01/conf/4278.json

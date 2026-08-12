@@ -8,6 +8,27 @@ import signal
 import numpy as np
 
 
+def _existing_json_scene_numbers(conf_dir):
+    """Return numeric stems from conf/*.json, ignoring unrelated JSON files."""
+    if not os.path.isdir(conf_dir):
+        return set()
+    scene_numbers = set()
+    for name in os.listdir(conf_dir):
+        stem, extension = os.path.splitext(name)
+        if extension.lower() == ".json" and stem.isdigit():
+            scene_numbers.add(int(stem))
+    return scene_numbers
+
+
+def _find_first_missing_scene_num(conf_dir, scene_start, scene_end):
+    """Find the first ungenerated scene in the inclusive requested range."""
+    existing = _existing_json_scene_numbers(conf_dir)
+    return next(
+        (scene_num for scene_num in range(scene_start, scene_end + 1) if scene_num not in existing),
+        None,
+    )
+
+
 def _start_python_process(python_path, target_path, arguments, workdir=None):
     environment = os.environ.copy()
     environment["PYTHONUNBUFFERED"] = "1"
@@ -161,13 +182,14 @@ class MainProcess_SceneGen:
         return self.process and self.process.poll() is None
 
     def current_scene_num_check(self, output_root_path, env_name, section_name, platform_name, scene_start, scene_end):
-        if not os.path.exists(os.path.join(output_root_path, env_name, section_name, platform_name, "conf")):
-            return scene_start
-        num_list = [int(i.strip(".json")) for i in os.listdir(os.path.join(output_root_path, env_name, section_name, platform_name, "conf")) if i.endswith(".json")]
-        for scene_num in range(scene_start, scene_end+1):
-            if scene_num not in num_list:
-                return scene_num
-        return None
+        conf_dir = os.path.join(
+            output_root_path,
+            env_name,
+            section_name,
+            platform_name,
+            "conf",
+        )
+        return _find_first_missing_scene_num(conf_dir, scene_start, scene_end)
     
 
 
@@ -332,7 +354,6 @@ class MainProcess_Grasp:
         self.section_name = section_name
         self.platform_name = platform_name
         self.scene_num = None
-        self.pre_grasp_index = 0
         self.workdir = workdir
         self.restart_requested = False
         
@@ -350,7 +371,6 @@ class MainProcess_Grasp:
                 "--section_name", self.section_name,
                 "--platform_name", self.platform_name,
                 "--scene_start", str(self.scene_num),
-                "--pre_grasp_index", str(self.pre_grasp_index),
             ],
             self.workdir,
         )
@@ -421,26 +441,8 @@ class MainProcess_Grasp:
             )
             if not os.path.exists(pre_grasp_path):
                 continue
-            if scene_num in num_list:
-                with open(os.path.join(dir_path, "output_grasp", f"{scene_num:04d}.json"), 'r') as f:
-                    output_grasp_data = json.load(f)
-                with open(pre_grasp_path, 'r') as f:
-                    pre_grasp_data = json.load(f)
-                gripper_model_list = []
-                for gd in output_grasp_data:
-                    gripper_model_list.append(gd["gripper_model"])
-
-                gripper_model_list = np.unique(gripper_model_list)
-
-                for idx, data in enumerate(pre_grasp_data):
-                    if data["gripper_model"] not in gripper_model_list:
-                        self.scene_num = scene_num
-                        self.pre_grasp_index = idx
-                        return
-
-            elif scene_num not in num_list:
+            if scene_num not in num_list:
                 self.scene_num = scene_num
-                self.pre_grasp_index = 0
                 return
 
         self.scene_num = None

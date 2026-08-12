@@ -361,7 +361,21 @@ def main(output_root_path,
     import select
     print("SceneGen > reset_complete")
     sys.stdout.flush()
+    platform_output_path = os.path.join(output_path, platform_name)
+    conf_output_path = os.path.join(platform_output_path, "conf")
     while scene_num<=scene_end:
+        scene_name = f"{scene_num:04d}"
+        scene_conf_path = os.path.join(conf_output_path, f"{scene_name}.json")
+
+        # A missing number may be followed by many already generated scenes.
+        # Never regenerate those files: fill the hole, skip existing confs,
+        # then continue from the first not-yet-generated number after the tail.
+        if os.path.isfile(scene_conf_path):
+            print(f"SceneGen > SKIP_EXISTING:{scene_num}")
+            sys.stdout.flush()
+            scene_num += 1
+            continue
+
         print("SceneGen > START")
         sys.stdout.flush()
         print(f"SceneGen > SCENE:{scene_num}")
@@ -369,8 +383,6 @@ def main(output_root_path,
         data_gen_time = time.time()
         print("####################    scene_num : ",scene_num)
         settings.set("/rtx/rendermode", "RayTraced")
-        scene_name = f"{scene_num:04d}"
-        
 
         print("platform_rep : ", platform_rep.prim)
 
@@ -569,7 +581,7 @@ def main(output_root_path,
         # settings.set("/rtx/pathtracing/optixDenoiser/enabled", False)
 
 
-        writer.output_path = output_path +"/"+platform_name
+        writer.output_path = platform_output_path
         rep.orchestrator.step(
             delta_time=0.0,
             rt_subframes=255,
@@ -597,6 +609,15 @@ def main(output_root_path,
             remove_all_objects(
                 obj_rep_list, sdg_pipe_prim, sdg_pipe_children
             )
+            continue
+
+        # Generation can take time. Recheck immediately before image writes so
+        # a conf created by another/restarted worker is not overwritten.
+        if os.path.isfile(scene_conf_path):
+            print(f"SceneGen > SKIP_EXISTING:{scene_num}")
+            sys.stdout.flush()
+            remove_all_objects(obj_rep_list, sdg_pipe_prim, sdg_pipe_children)
+            scene_num += 1
             continue
 
         writer.set_disk_writes_enabled(True)
@@ -652,7 +673,9 @@ def main(output_root_path,
 
 
 
-        with open(writer.output_path+f"/conf/{scene_name}.json", 'w') as f:
+        # Exclusive creation is the final overwrite guard for the completion
+        # marker. The normal path has already passed both existence checks.
+        with open(scene_conf_path, 'x') as f:
             json.dump(save_conf, f, indent=4)
         
         

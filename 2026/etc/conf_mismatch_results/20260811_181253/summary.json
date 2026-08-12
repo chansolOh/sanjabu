@@ -1,0 +1,211 @@
+{
+  "created_at": "2026-08-11T18:14:42",
+  "dataset_root": "/nas/Dataset/Dataset_2026/dataset_v2",
+  "expected_object_count": 5,
+  "comparisons": 161024,
+  "unique_mismatch_conf_count": 7,
+  "groups": {
+    "missing_mapping": {
+      "count": 7,
+      "list_file": "missing_mapping.txt"
+    }
+  },
+  "details": [
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/bed_01/conf/4051.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_4051.json",
+      "conf_classes": [
+        "aquarium_air_pump",
+        "bite_care_aid_pro",
+        "rubiks_cube",
+        "winnie_the_pooh_figure",
+        "winnie_the_pooh_silicone_airpods_case"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/bed_01/conf/4051.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_4051.json",
+      "conf_classes": [
+        "aquarium_air_pump",
+        "bite_care_aid_pro",
+        "rubiks_cube",
+        "winnie_the_pooh_figure",
+        "winnie_the_pooh_silicone_airpods_case"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/conf/3842.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_3842.json",
+      "conf_classes": [
+        "black_pepper_shaker",
+        "dumbbell_dog_squeaky_toy",
+        "etude_mineral_sunscreen",
+        "portable_electric_shaver_box",
+        "soda_bottle_toy"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/beside_table_01/conf/3842.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_3842.json",
+      "conf_classes": [
+        "black_pepper_shaker",
+        "dumbbell_dog_squeaky_toy",
+        "etude_mineral_sunscreen",
+        "portable_electric_shaver_box",
+        "soda_bottle_toy"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/conf/3024.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_3024.json",
+      "conf_classes": [
+        "awl",
+        "double_layer_lunch_box",
+        "honey_mustard_sauce_bottle",
+        "nivea_extra_bright_deodorant_spray",
+        "pooh_tumbler"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/desk_and_chair_01/conf/3024.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_3024.json",
+      "conf_classes": [
+        "awl",
+        "double_layer_lunch_box",
+        "honey_mustard_sauce_bottle",
+        "nivea_extra_bright_deodorant_spray",
+        "pooh_tumbler"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/floor_01/conf/2560.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_2560.json",
+      "conf_classes": [
+        "contact_lens_solution",
+        "e_office_ball_point_pen_box",
+        "facial_roller_massager",
+        "two_stage_knife_sharpener",
+        "white_measuring_spoon"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/floor_01/conf/2612.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_2612.json",
+      "conf_classes": [
+        "aquarium_gravel_scoop",
+        "disney_nylon_ladle",
+        "manual_balloon_pump",
+        "multi_purpose_wooden_tongs",
+        "stainless_steel_water_bottle"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/floor_01/conf/2560.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_2560.json",
+      "conf_classes": [
+        "contact_lens_solution",
+        "e_office_ball_point_pen_box",
+        "facial_roller_massager",
+        "two_stage_knife_sharpener",
+        "white_measuring_spoon"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/floor_01/conf/2612.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_2612.json",
+      "conf_classes": [
+        "aquarium_gravel_scoop",
+        "disney_nylon_ladle",
+        "manual_balloon_pump",
+        "multi_purpose_wooden_tongs",
+        "stainless_steel_water_bottle"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/sideboard_01/conf/2918.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_2918.json",
+      "conf_classes": [
+        "bite_care_aid_pro",
+        "camera_water_gun",
+        "cotton_rope_yarn",
+        "spam_classic_20g_can",
+        "wakemake_soft_sheer_multi_palette_box"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/sideboard_01/conf/2918.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_2918.json",
+      "conf_classes": [
+        "bite_care_aid_pro",
+        "camera_water_gun",
+        "cotton_rope_yarn",
+        "spam_classic_20g_can",
+        "wakemake_soft_sheer_multi_palette_box"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/vanity_01/conf/4278.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_4278.json",
+      "conf_classes": [
+        "c_type_multi_hub_box",
+        "chocolate_cereal_snack_cup",
+        "multi_purpose_seasoning_container",
+        "samyang_buldak_sauce_bottle",
+        "silicone_sealant_removal_tool"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2/Home/MasterBedroom/vanity_01/conf/4278.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_4278.json",
+      "conf_classes": [
+        "c_type_multi_hub_box",
+        "chocolate_cereal_snack_cup",
+        "multi_purpose_seasoning_container",
+        "samyang_buldak_sauce_bottle",
+        "silicone_sealant_removal_tool"
+      ],
+      "inst_classes": []
+    }
+  ]
+}

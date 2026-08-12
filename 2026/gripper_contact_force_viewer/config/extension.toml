@@ -1,0 +1,19 @@
+[package]
+version = "1.0.0"
+category = "Robotics"
+title = "Gripper Contact Force Viewer"
+description = "Import a gripper and visualize per-sensor XYZ contact forces in Isaac Sim 5.1"
+authors = ["OChanSol"]
+readme = "docs/README.md"
+keywords = ["isaac sim", "gripper", "contact sensor", "force", "physx"]
+
+[dependencies]
+"omni.kit.uiapp" = {}
+"omni.kit.menu.utils" = {}
+"omni.usd" = {}
+"omni.physx" = {}
+"isaacsim.core.prims" = {}
+"isaacsim.sensors.physics" = {}
+
+[[python.module]]
+name = "gripper_contact_force_viewer"
