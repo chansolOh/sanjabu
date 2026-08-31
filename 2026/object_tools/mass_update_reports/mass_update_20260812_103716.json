@@ -1,0 +1,4761 @@
+{
+  "created_at": "2026-08-12T10:37:16",
+  "dry_run": false,
+  "root_path": "/nas/ochansol/3d_model/peel3_scan_data_2026",
+  "csv_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/2026_objects_cat_attr.csv",
+  "results": [
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/adjustable_shower_head_holder/edited/adjustable_shower_head_holder.usd",
+      "weight_g": 38.0,
+      "object_name": "adjustable_shower_head_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/adjustable_shower_head_holder/edited/adjustable_shower_head_holder_rigid.usd",
+      "weight_g": 38.0,
+      "changes": [
+        {
+          "prim_path": "/World/adjustable_shower_head_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.038
+        }
+      ],
+      "object_name": "adjustable_shower_head_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/air_plunger/edited/air_plunger.usd",
+      "weight_g": 323.0,
+      "object_name": "air_plunger"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/air_plunger/edited/air_plunger_rigid.usd",
+      "weight_g": 323.0,
+      "changes": [
+        {
+          "prim_path": "/World/air_plunger",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.323
+        }
+      ],
+      "object_name": "air_plunger"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aluminium_cooking_foil_box/edited/aluminium_cooking_foil_box.usd",
+      "weight_g": 300.0,
+      "object_name": "aluminium_cooking_foil_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aluminium_cooking_foil_box/edited/aluminium_cooking_foil_box_rigid.usd",
+      "weight_g": 300.0,
+      "changes": [
+        {
+          "prim_path": "/World/aluminium_cooking_foil_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.3
+        }
+      ],
+      "object_name": "aluminium_cooking_foil_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/amos_multi_purpose_wood_glue/edited/amos_multi_purpose_wood_glue.usd",
+      "weight_g": 80.0,
+      "object_name": "amos_multi_purpose_wood_glue"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/amos_multi_purpose_wood_glue/edited/amos_multi_purpose_wood_glue_rigid.usd",
+      "weight_g": 80.0,
+      "changes": [
+        {
+          "prim_path": "/World/amos_multi_purpose_wood_glue",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.08
+        }
+      ],
+      "object_name": "amos_multi_purpose_wood_glue"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/animal_shaped_mini_whiteboard_eraser/edited/animal_shaped_mini_whiteboard_eraser.usd",
+      "weight_g": 9.0,
+      "object_name": "animal_shaped_mini_whiteboard_eraser"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/animal_shaped_mini_whiteboard_eraser/edited/animal_shaped_mini_whiteboard_eraser_rigid.usd",
+      "weight_g": 9.0,
+      "changes": [
+        {
+          "prim_path": "/World/animal_shaped_mini_whiteboard_eraser",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.009
+        }
+      ],
+      "object_name": "animal_shaped_mini_whiteboard_eraser"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_air_pump/edited/aquarium_air_pump.usd",
+      "weight_g": 135.0,
+      "object_name": "aquarium_air_pump"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_air_pump/edited/aquarium_air_pump_rigid.usd",
+      "weight_g": 135.0,
+      "changes": [
+        {
+          "prim_path": "/World/aquarium_air_pump",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.135
+        }
+      ],
+      "object_name": "aquarium_air_pump"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_air_pump_box/edited/aquarium_air_pump_box.usd",
+      "weight_g": 160.0,
+      "object_name": "aquarium_air_pump_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_air_pump_box/edited/aquarium_air_pump_box_rigid.usd",
+      "weight_g": 160.0,
+      "changes": [
+        {
+          "prim_path": "/World/aquarium_air_pump_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.16
+        }
+      ],
+      "object_name": "aquarium_air_pump_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_cleaning_sponge_brush/edited/aquarium_cleaning_sponge_brush.usd",
+      "weight_g": 72.0,
+      "object_name": "aquarium_cleaning_sponge_brush"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_cleaning_sponge_brush/edited/aquarium_cleaning_sponge_brush_rigid.usd",
+      "weight_g": 72.0,
+      "changes": [
+        {
+          "prim_path": "/World/aquarium_cleaning_sponge_brush",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.072
+        }
+      ],
+      "object_name": "aquarium_cleaning_sponge_brush"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/attachable_soft_door_handle/edited/attachable_soft_door_handle.usd",
+      "weight_g": 40.0,
+      "object_name": "attachable_soft_door_handle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/attachable_soft_door_handle/edited/attachable_soft_door_handle_rigid.usd",
+      "weight_g": 40.0,
+      "changes": [
+        {
+          "prim_path": "/World/attachable_soft_door_handle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.04
+        }
+      ],
+      "object_name": "attachable_soft_door_handle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/automatic_air_freshener/edited/automatic_air_freshener.usd",
+      "weight_g": 90.0,
+      "object_name": "automatic_air_freshener"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/automatic_air_freshener/edited/automatic_air_freshener_rigid.usd",
+      "weight_g": 90.0,
+      "changes": [
+        {
+          "prim_path": "/World/automatic_air_freshener",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.09
+        }
+      ],
+      "object_name": "automatic_air_freshener"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/automatic_air_freshener_box/edited/automatic_air_freshener_box.usd",
+      "weight_g": 110.0,
+      "object_name": "automatic_air_freshener_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/automatic_air_freshener_box/edited/automatic_air_freshener_box_rigid.usd",
+      "weight_g": 110.0,
+      "changes": [
+        {
+          "prim_path": "/World/automatic_air_freshener_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.11
+        }
+      ],
+      "object_name": "automatic_air_freshener_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/awl/edited/awl.usd",
+      "weight_g": 60.0,
+      "object_name": "awl"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/awl/edited/awl_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/awl",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "awl"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/baking_paper_box/edited/baking_paper_box.usd",
+      "weight_g": 150.0,
+      "object_name": "baking_paper_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/baking_paper_box/edited/baking_paper_box_rigid.usd",
+      "weight_g": 150.0,
+      "changes": [
+        {
+          "prim_path": "/World/baking_paper_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.15
+        }
+      ],
+      "object_name": "baking_paper_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bike_bell/edited/bike_bell.usd",
+      "weight_g": 25.0,
+      "object_name": "bike_bell"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bike_bell/edited/bike_bell_rigid.usd",
+      "weight_g": 25.0,
+      "changes": [
+        {
+          "prim_path": "/World/bike_bell_01",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.025
+        }
+      ],
+      "object_name": "bike_bell"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bike_chain_dry_lube_bottle/edited/bike_chain_dry_lube_bottle.usd",
+      "weight_g": 100.0,
+      "object_name": "bike_chain_dry_lube_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bike_chain_dry_lube_bottle/edited/bike_chain_dry_lube_bottle_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/bike_chain_dry_lube_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "bike_chain_dry_lube_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bite_care_aid_pro/edited/bite_care_aid_pro.usd",
+      "weight_g": 70.0,
+      "object_name": "bite_care_aid_pro"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bite_care_aid_pro/edited/bite_care_aid_pro_rigid.usd",
+      "weight_g": 70.0,
+      "changes": [
+        {
+          "prim_path": "/World/bite_care_aid_pro",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.07
+        }
+      ],
+      "object_name": "bite_care_aid_pro"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bite_care_aid_pro_box/edited/bite_care_aid_pro_box.usd",
+      "weight_g": 79.0,
+      "object_name": "bite_care_aid_pro_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bite_care_aid_pro_box/edited/bite_care_aid_pro_box_rigid.usd",
+      "weight_g": 79.0,
+      "changes": [
+        {
+          "prim_path": "/World/bite_care_aid_pro_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.079
+        }
+      ],
+      "object_name": "bite_care_aid_pro_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/black_pepper_shaker/edited/black_pepper_shaker.usd",
+      "weight_g": 88.0,
+      "object_name": "black_pepper_shaker"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/black_pepper_shaker/edited/black_pepper_shaker_rigid.usd",
+      "weight_g": 88.0,
+      "changes": [
+        {
+          "prim_path": "/World/black_pepper_shaker",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.088
+        }
+      ],
+      "object_name": "black_pepper_shaker"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bo_chan_storage_case/edited/bo_chan_storage_case.usd",
+      "weight_g": 46.0,
+      "object_name": "bo_chan_storage_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bo_chan_storage_case/edited/bo_chan_storage_case_rigid.usd",
+      "weight_g": 46.0,
+      "changes": [
+        {
+          "prim_path": "/World/bo_chan_storage_case",
+          "old_mass_kg": 0.10000000149011612,
+          "new_mass_kg": 0.046
+        }
+      ],
+      "object_name": "bo_chan_storage_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/boriung_livae_pet_doctor_total_care_powder_box/edited/boriung_livae_pet_doctor_total_care_powder_box.usd",
+      "weight_g": 51.0,
+      "object_name": "boriung_livae_pet_doctor_total_care_powder_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/boriung_livae_pet_doctor_total_care_powder_box/edited/boriung_livae_pet_doctor_total_care_powder_box_rigid.usd",
+      "weight_g": 51.0,
+      "changes": [
+        {
+          "prim_path": "/World/boriung_livae_pet_doctor_total_care_powder_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.051
+        }
+      ],
+      "object_name": "boriung_livae_pet_doctor_total_care_powder_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/brown_shoe_polish/edited/brown_shoe_polish.usd",
+      "weight_g": 60.0,
+      "object_name": "brown_shoe_polish"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/brown_shoe_polish/edited/brown_shoe_polish_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/brown_shoe_polish",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "brown_shoe_polish"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bullsone_engine_cleaner/edited/bullsone_engine_cleaner.usd",
+      "weight_g": 310.0,
+      "object_name": "bullsone_engine_cleaner"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/bullsone_engine_cleaner/edited/bullsone_engine_cleaner_rigid.usd",
+      "weight_g": 310.0,
+      "changes": [
+        {
+          "prim_path": "/World/bullsone_engine_cleaner",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.31
+        }
+      ],
+      "object_name": "bullsone_engine_cleaner"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/butter_braised_beef_can/edited/butter_braised_beef_can.usd",
+      "weight_g": 134.0,
+      "object_name": "butter_braised_beef_can"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/butter_braised_beef_can/edited/butter_braised_beef_can_rigid.usd",
+      "weight_g": 134.0,
+      "changes": [
+        {
+          "prim_path": "/World/butter_braised_beef_can",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.134
+        }
+      ],
+      "object_name": "butter_braised_beef_can"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/c_type_multi_hub/edited/c_type_multi_hub.usd",
+      "weight_g": 60.0,
+      "object_name": "c_type_multi_hub"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/c_type_multi_hub/edited/c_type_multi_hub_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/c_type_multi_hub",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "c_type_multi_hub"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/c_type_multi_hub_box/edited/c_type_multi_hub_box.usd",
+      "weight_g": 80.0,
+      "object_name": "c_type_multi_hub_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/c_type_multi_hub_box/edited/c_type_multi_hub_box_rigid.usd",
+      "weight_g": 80.0,
+      "changes": [
+        {
+          "prim_path": "/World/c_type_multi_hub_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.08
+        }
+      ],
+      "object_name": "c_type_multi_hub_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/camera_water_gun/edited/camera_water_gun.usd",
+      "weight_g": 60.0,
+      "object_name": "camera_water_gun"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/camera_water_gun/edited/camera_water_gun_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/camera_water_gun",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "camera_water_gun"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/camping_multi_purpose_mini_box/edited/camping_multi_purpose_mini_box.usd",
+      "weight_g": 70.0,
+      "object_name": "camping_multi_purpose_mini_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/camping_multi_purpose_mini_box/edited/camping_multi_purpose_mini_box_rigid.usd",
+      "weight_g": 70.0,
+      "changes": [
+        {
+          "prim_path": "/World/camping_multi_purpose_mini_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.07
+        }
+      ],
+      "object_name": "camping_multi_purpose_mini_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/car_leather_conditioner_bottle/edited/car_leather_conditioner_bottle.usd",
+      "weight_g": 175.0,
+      "object_name": "car_leather_conditioner_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/car_leather_conditioner_bottle/edited/car_leather_conditioner_bottle_rigid.usd",
+      "weight_g": 175.0,
+      "changes": [
+        {
+          "prim_path": "/World/car_leather_conditioner_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.175
+        }
+      ],
+      "object_name": "car_leather_conditioner_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/car_repair_putty/edited/car_repair_putty.usd",
+      "weight_g": 110.0,
+      "object_name": "car_repair_putty"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/car_repair_putty/edited/car_repair_putty_rigid.usd",
+      "weight_g": 110.0,
+      "changes": [
+        {
+          "prim_path": "/World/car_repair_putty",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.11
+        }
+      ],
+      "object_name": "car_repair_putty"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/car_repair_putty_box/edited/car_repair_putty_box.usd",
+      "weight_g": 130.0,
+      "object_name": "car_repair_putty_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/car_repair_putty_box/edited/car_repair_putty_box_rigid.usd",
+      "weight_g": 130.0,
+      "changes": [
+        {
+          "prim_path": "/World/car_repair_putty_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.13
+        }
+      ],
+      "object_name": "car_repair_putty_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cat_litter_scoop/edited/cat_litter_scoop.usd",
+      "weight_g": 53.0,
+      "object_name": "cat_litter_scoop"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cat_litter_scoop/edited/cat_litter_scoop_rigid.usd",
+      "weight_g": 53.0,
+      "changes": [
+        {
+          "prim_path": "/World/cat_litter_scoop",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.053
+        }
+      ],
+      "object_name": "cat_litter_scoop"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cat_wobble_toy_box/edited/cat_wobble_toy_box.usd",
+      "weight_g": 205.0,
+      "object_name": "cat_wobble_toy_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cat_wobble_toy_box/edited/cat_wobble_toy_box_rigid.usd",
+      "weight_g": 205.0,
+      "changes": [
+        {
+          "prim_path": "/World/cat_wobble_toy_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.205
+        }
+      ],
+      "object_name": "cat_wobble_toy_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ceramic_4_slot_toothbrush_holder/edited/ceramic_4_slot_toothbrush_holder.usd",
+      "weight_g": 229.0,
+      "object_name": "ceramic_4_slot_toothbrush_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ceramic_4_slot_toothbrush_holder/edited/ceramic_4_slot_toothbrush_holder_rigid.usd",
+      "weight_g": 229.0,
+      "changes": [
+        {
+          "prim_path": "/World/ceramic_4_slot_toothbrush_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.229
+        }
+      ],
+      "object_name": "ceramic_4_slot_toothbrush_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ceramic_coated_frying_pan/edited/ceramic_coated_frying_pan.usd",
+      "weight_g": 391.0,
+      "object_name": "ceramic_coated_frying_pan"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ceramic_coated_frying_pan/edited/ceramic_coated_frying_pan_rigid.usd",
+      "weight_g": 391.0,
+      "changes": [
+        {
+          "prim_path": "/World/ceramic_coated_frying_pan",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.391
+        }
+      ],
+      "object_name": "ceramic_coated_frying_pan"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/chair_leg_caps/edited/chair_leg_caps.usd",
+      "weight_g": 24.0,
+      "object_name": "chair_leg_caps"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/chair_leg_caps/edited/chair_leg_caps_rigid.usd",
+      "weight_g": 24.0,
+      "changes": [
+        {
+          "prim_path": "/World/chair_leg_caps",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.024
+        }
+      ],
+      "object_name": "chair_leg_caps"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/comet_pull_out_kitchen_towel_pack/edited/comet_pull_out_kitchen_towel_pack.usd",
+      "weight_g": 184.0,
+      "object_name": "comet_pull_out_kitchen_towel_pack"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/comet_pull_out_kitchen_towel_pack/edited/comet_pull_out_kitchen_towel_pack_rigid.usd",
+      "weight_g": 184.0,
+      "changes": [
+        {
+          "prim_path": "/World/comet_pull_out_kitchen_towel_pack",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.184
+        }
+      ],
+      "object_name": "comet_pull_out_kitchen_towel_pack"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/contact_lens_solution/edited/contact_lens_solution.usd",
+      "weight_g": 405.0,
+      "object_name": "contact_lens_solution"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/contact_lens_solution/edited/contact_lens_solution_rigid.usd",
+      "weight_g": 405.0,
+      "changes": [
+        {
+          "prim_path": "/World/contact_lens_solution",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.405
+        }
+      ],
+      "object_name": "contact_lens_solution"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/contact_lens_solution_box/edited/contact_lens_solution_box.usd",
+      "weight_g": 428.0,
+      "object_name": "contact_lens_solution_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/contact_lens_solution_box/edited/contact_lens_solution_box_rigid.usd",
+      "weight_g": 428.0,
+      "changes": [
+        {
+          "prim_path": "/World/contact_lens_solution_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.428
+        }
+      ],
+      "object_name": "contact_lens_solution_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cooling_spray_70ml/edited/cooling_spray_70ml.usd",
+      "weight_g": 98.0,
+      "object_name": "cooling_spray_70ml"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cooling_spray_70ml/edited/cooling_spray_70ml_rigid.usd",
+      "weight_g": 98.0,
+      "changes": [
+        {
+          "prim_path": "/World/cooling_spray_70ml",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.098
+        }
+      ],
+      "object_name": "cooling_spray_70ml"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cotton_rope_yarn/edited/cotton_rope_yarn.usd",
+      "weight_g": 42.0,
+      "object_name": "cotton_rope_yarn"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cotton_rope_yarn/edited/cotton_rope_yarn_rigid.usd",
+      "weight_g": 42.0,
+      "changes": [
+        {
+          "prim_path": "/World/cotton_rope_yarn",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.042
+        }
+      ],
+      "object_name": "cotton_rope_yarn"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cycling_water_bottle/edited/cycling_water_bottle.usd",
+      "weight_g": 80.0,
+      "object_name": "cycling_water_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/cycling_water_bottle/edited/cycling_water_bottle_rigid.usd",
+      "weight_g": 80.0,
+      "changes": [
+        {
+          "prim_path": "/World/cycling_water_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.08
+        }
+      ],
+      "object_name": "cycling_water_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dermablock_vital_sun_ampoule_box/edited/dermablock_vital_sun_ampoule_box.usd",
+      "weight_g": 50.0,
+      "object_name": "dermablock_vital_sun_ampoule_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dermablock_vital_sun_ampoule_box/edited/dermablock_vital_sun_ampoule_box_rigid.usd",
+      "weight_g": 50.0,
+      "changes": [
+        {
+          "prim_path": "/World/dermablock_vital_sun_ampoule_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.05
+        }
+      ],
+      "object_name": "dermablock_vital_sun_ampoule_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dewytree_toneup_shade_sun_cushion/edited/dewytree_toneup_shade_sun_cushion.usd",
+      "weight_g": 74.0,
+      "object_name": "dewytree_toneup_shade_sun_cushion"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dewytree_toneup_shade_sun_cushion/edited/dewytree_toneup_shade_sun_cushion_rigid.usd",
+      "weight_g": 74.0,
+      "changes": [
+        {
+          "prim_path": "/World/dewytree_toneup_shade_sun_cushion",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.074
+        }
+      ],
+      "object_name": "dewytree_toneup_shade_sun_cushion"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/diatomite_toothbrush_holder/edited/diatomite_toothbrush_holder.usd",
+      "weight_g": 120.0,
+      "object_name": "diatomite_toothbrush_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/diatomite_toothbrush_holder/edited/diatomite_toothbrush_holder_rigid.usd",
+      "weight_g": 120.0,
+      "changes": [
+        {
+          "prim_path": "/World/diatomite_toothbrush_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.12
+        }
+      ],
+      "object_name": "diatomite_toothbrush_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/diatomite_toothbrush_holder_box/edited/diatomite_toothbrush_holder_box.usd",
+      "weight_g": 140.0,
+      "object_name": "diatomite_toothbrush_holder_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/diatomite_toothbrush_holder_box/edited/diatomite_toothbrush_holder_box_rigid.usd",
+      "weight_g": 140.0,
+      "changes": [
+        {
+          "prim_path": "/World/diatomite_toothbrush_holder_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.14
+        }
+      ],
+      "object_name": "diatomite_toothbrush_holder_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/digital_desk_clock/edited/digital_desk_clock.usd",
+      "weight_g": 136.0,
+      "object_name": "digital_desk_clock"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/digital_desk_clock/edited/digital_desk_clock_rigid.usd",
+      "weight_g": 136.0,
+      "changes": [
+        {
+          "prim_path": "/World/digital_desk_clock",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.136
+        }
+      ],
+      "object_name": "digital_desk_clock"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/digital_desk_clock_box/edited/digital_desk_clock_box.usd",
+      "weight_g": 159.0,
+      "object_name": "digital_desk_clock_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/digital_desk_clock_box/edited/digital_desk_clock_box_rigid.usd",
+      "weight_g": 159.0,
+      "changes": [
+        {
+          "prim_path": "/World/digital_desk_clock_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.159
+        }
+      ],
+      "object_name": "digital_desk_clock_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/disney_mickey_handled_dipper/edited/disney_mickey_handled_dipper.usd",
+      "weight_g": 63.0,
+      "object_name": "disney_mickey_handled_dipper"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/disney_mickey_handled_dipper/edited/disney_mickey_handled_dipper_rigid.usd",
+      "weight_g": 63.0,
+      "changes": [
+        {
+          "prim_path": "/World/disney_mickey_handled_dipper",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.063
+        }
+      ],
+      "object_name": "disney_mickey_handled_dipper"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/disney_nylon_ladle/edited/disney_nylon_ladle.usd",
+      "weight_g": 78.0,
+      "object_name": "disney_nylon_ladle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/disney_nylon_ladle/edited/disney_nylon_ladle_rigid.usd",
+      "weight_g": 78.0,
+      "changes": [
+        {
+          "prim_path": "/World/disney_nylon_ladle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.078
+        }
+      ],
+      "object_name": "disney_nylon_ladle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dog_deodorizing_spray/edited/dog_deodorizing_spray.usd",
+      "weight_g": 580.0,
+      "object_name": "dog_deodorizing_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dog_deodorizing_spray/edited/dog_deodorizing_spray_rigid.usd",
+      "weight_g": 580.0,
+      "changes": [
+        {
+          "prim_path": "/World/dog_deodorizing_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.58
+        }
+      ],
+      "object_name": "dog_deodorizing_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/scissor_pooper_scooper/edited/scissor_pooper_scooper.usd",
+      "weight_g": 98.0,
+      "object_name": "scissor_pooper_scooper"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/scissor_pooper_scooper/edited/scissor_pooper_scooper_rigid.usd",
+      "weight_g": 98.0,
+      "changes": [
+        {
+          "prim_path": "/World/dog_sanitary_scissors",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.098
+        }
+      ],
+      "object_name": "scissor_pooper_scooper"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/donut_shaped_toy/edited/donut_shaped_toy.usd",
+      "weight_g": 15.0,
+      "object_name": "donut_shaped_toy"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/donut_shaped_toy/edited/donut_shaped_toy_rigid.usd",
+      "weight_g": 15.0,
+      "changes": [
+        {
+          "prim_path": "/World/donut_shaped_toy",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.015
+        }
+      ],
+      "object_name": "donut_shaped_toy"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/door_stopper/edited/door_stopper.usd",
+      "weight_g": 35.0,
+      "object_name": "door_stopper"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/door_stopper/edited/door_stopper_rigid.usd",
+      "weight_g": 35.0,
+      "changes": [
+        {
+          "prim_path": "/World/door_stopper",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.035
+        }
+      ],
+      "object_name": "door_stopper"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/double_sided_rectangular_scrubber/edited/double_sided_rectangular_scrubber.usd",
+      "weight_g": 10.0,
+      "object_name": "double_sided_rectangular_scrubber"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/double_sided_rectangular_scrubber/edited/double_sided_rectangular_scrubber_rigid.usd",
+      "weight_g": 10.0,
+      "changes": [
+        {
+          "prim_path": "/World/double_sided_rectangular_scrubber",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.01
+        }
+      ],
+      "object_name": "double_sided_rectangular_scrubber"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/double_zipper_bag_box/edited/double_zipper_bag_box.usd",
+      "weight_g": 150.0,
+      "object_name": "double_zipper_bag_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/double_zipper_bag_box/edited/double_zipper_bag_box_rigid.usd",
+      "weight_g": 150.0,
+      "changes": [
+        {
+          "prim_path": "/World/double_zipper_bag_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.15
+        }
+      ],
+      "object_name": "double_zipper_bag_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dr_bear_calcium_box/edited/dr_bear_calcium_box.usd",
+      "weight_g": 55.0,
+      "object_name": "dr_bear_calcium_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dr_bear_calcium_box/edited/dr_bear_calcium_box_rigid.usd",
+      "weight_g": 55.0,
+      "changes": [
+        {
+          "prim_path": "/World/dr_bear_calcium_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.055
+        }
+      ],
+      "object_name": "dr_bear_calcium_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dr_bear_vitamin_c_box/edited/dr_bear_vitamin_c_box.usd",
+      "weight_g": 54.0,
+      "object_name": "dr_bear_vitamin_c_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dr_bear_vitamin_c_box/edited/dr_bear_vitamin_c_box_rigid.usd",
+      "weight_g": 54.0,
+      "changes": [
+        {
+          "prim_path": "/World/dr_bear_vitamin_c_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.054
+        }
+      ],
+      "object_name": "dr_bear_vitamin_c_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/drain_odor_trap_box/edited/drain_odor_trap_box.usd",
+      "weight_g": 37.0,
+      "object_name": "drain_odor_trap_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/drain_odor_trap_box/edited/drain_odor_trap_box_rigid.usd",
+      "weight_g": 37.0,
+      "changes": [
+        {
+          "prim_path": "/World/drain_odor_trap_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.037
+        }
+      ],
+      "object_name": "drain_odor_trap_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dried_pollock_egg_soup_box/edited/dried_pollock_egg_soup_box.usd",
+      "weight_g": 74.0,
+      "object_name": "dried_pollock_egg_soup_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dried_pollock_egg_soup_box/edited/dried_pollock_egg_soup_box_rigid.usd",
+      "weight_g": 74.0,
+      "changes": [
+        {
+          "prim_path": "/World/dried_pollock_egg_soup_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.074
+        }
+      ],
+      "object_name": "dried_pollock_egg_soup_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dry_comfort_roll_on_deodorant_box/edited/dry_comfort_roll_on_deodorant_box.usd",
+      "weight_g": 117.0,
+      "object_name": "dry_comfort_roll_on_deodorant_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dry_comfort_roll_on_deodorant_box/edited/dry_comfort_roll_on_deodorant_box_rigid.usd",
+      "weight_g": 117.0,
+      "changes": [
+        {
+          "prim_path": "/World/dry_comfort_roll_on_deodorant_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.117
+        }
+      ],
+      "object_name": "dry_comfort_roll_on_deodorant_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dual_port_car_charger_box/edited/dual_port_car_charger_box.usd",
+      "weight_g": 26.0,
+      "object_name": "dual_port_car_charger_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dual_port_car_charger_box/edited/dual_port_car_charger_box_rigid.usd",
+      "weight_g": 26.0,
+      "changes": [
+        {
+          "prim_path": "/World/dual_port_car_charger_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.026
+        }
+      ],
+      "object_name": "dual_port_car_charger_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dumbbell_dog_squeaky_toy/edited/dumbbell_dog_squeaky_toy.usd",
+      "weight_g": 31.0,
+      "object_name": "dumbbell_dog_squeaky_toy"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dumbbell_dog_squeaky_toy/edited/dumbbell_dog_squeaky_toy_rigid.usd",
+      "weight_g": 31.0,
+      "changes": [
+        {
+          "prim_path": "/World/dumbbell_dog_squeaky_toy",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.031
+        }
+      ],
+      "object_name": "dumbbell_dog_squeaky_toy"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/duracell_aa_battery_box/edited/duracell_aa_battery_box.usd",
+      "weight_g": 140.0,
+      "object_name": "duracell_aa_battery_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/duracell_aa_battery_box/edited/duracell_aa_battery_box_rigid.usd",
+      "weight_g": 140.0,
+      "changes": [
+        {
+          "prim_path": "/World/duracell_aa_battery_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.14
+        }
+      ],
+      "object_name": "duracell_aa_battery_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dust_air_blower_pump/edited/dust_air_blower_pump.usd",
+      "weight_g": 32.0,
+      "object_name": "dust_air_blower_pump"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dust_air_blower_pump/edited/dust_air_blower_pump_rigid.usd",
+      "weight_g": 32.0,
+      "changes": [
+        {
+          "prim_path": "/World/dust_air_blower_pump",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.032
+        }
+      ],
+      "object_name": "dust_air_blower_pump"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/e_office_ball_point_pen_box/edited/e_office_ball_point_pen_box.usd",
+      "weight_g": 90.0,
+      "object_name": "e_office_ball_point_pen_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/e_office_ball_point_pen_box/edited/e_office_ball_point_pen_box_rigid.usd",
+      "weight_g": 90.0,
+      "changes": [
+        {
+          "prim_path": "/World/e_office_ball_point_pen_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.09
+        }
+      ],
+      "object_name": "e_office_ball_point_pen_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ediya_smoked_americano_stick_coffee_box/edited/ediya_smoked_americano_stick_coffee_box.usd",
+      "weight_g": 31.0,
+      "object_name": "ediya_smoked_americano_stick_coffee_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ediya_smoked_americano_stick_coffee_box/edited/ediya_smoked_americano_stick_coffee_box_rigid.usd",
+      "weight_g": 31.0,
+      "changes": [
+        {
+          "prim_path": "/World/ediya_smoked_americano_stick_coffee_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.031
+        }
+      ],
+      "object_name": "ediya_smoked_americano_stick_coffee_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/elastine_argan_oil_shine_repair_shampoo/edited/elastine_argan_oil_shine_repair_shampoo.usd",
+      "weight_g": 242.0,
+      "object_name": "elastine_argan_oil_shine_repair_shampoo"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/elastine_argan_oil_shine_repair_shampoo/edited/elastine_argan_oil_shine_repair_shampoo_rigid.usd",
+      "weight_g": 242.0,
+      "changes": [
+        {
+          "prim_path": "/World/elastine_argan_oil_shine_repair_shampoo",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.242
+        }
+      ],
+      "object_name": "elastine_argan_oil_shine_repair_shampoo"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_acupressure_massager_ball/edited/electric_acupressure_massager_ball.usd",
+      "weight_g": 150.0,
+      "object_name": "electric_acupressure_massager_ball"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_acupressure_massager_ball/edited/electric_acupressure_massager_ball_rigid.usd",
+      "weight_g": 150.0,
+      "changes": [
+        {
+          "prim_path": "/World/electric_acupressure_massager_ball",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.15
+        }
+      ],
+      "object_name": "electric_acupressure_massager_ball"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_acupressure_massager_ball_box/edited/electric_acupressure_massager_ball_box.usd",
+      "weight_g": 174.0,
+      "object_name": "electric_acupressure_massager_ball_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_acupressure_massager_ball_box/edited/electric_acupressure_massager_ball_box_rigid.usd",
+      "weight_g": 174.0,
+      "changes": [
+        {
+          "prim_path": "/World/electric_acupressure_massager_ball_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.174
+        }
+      ],
+      "object_name": "electric_acupressure_massager_ball_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_callus_remover/edited/electric_callus_remover.usd",
+      "weight_g": 149.0,
+      "object_name": "electric_callus_remover"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_callus_remover/edited/electric_callus_remover_rigid.usd",
+      "weight_g": 149.0,
+      "changes": [
+        {
+          "prim_path": "/World/electric_callus_remover",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.149
+        }
+      ],
+      "object_name": "electric_callus_remover"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_callus_remover_box/edited/electric_callus_remover_box.usd",
+      "weight_g": 216.0,
+      "object_name": "electric_callus_remover_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_callus_remover_box/edited/electric_callus_remover_box_rigid.usd",
+      "weight_g": 216.0,
+      "changes": [
+        {
+          "prim_path": "/World/electric_callus_remover_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.216
+        }
+      ],
+      "object_name": "electric_callus_remover_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_mosquito_swatter/edited/electric_mosquito_swatter.usd",
+      "weight_g": 129.0,
+      "object_name": "electric_mosquito_swatter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/electric_mosquito_swatter/edited/electric_mosquito_swatter_rigid.usd",
+      "weight_g": 129.0,
+      "changes": [
+        {
+          "prim_path": "/World/electric_mosquito_swatter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.129
+        }
+      ],
+      "object_name": "electric_mosquito_swatter"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/etude_mineral_sunscreen/edited/etude_mineral_sunscreen.usd",
+      "weight_g": 68.0,
+      "object_name": "etude_mineral_sunscreen"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/etude_mineral_sunscreen/edited/etude_mineral_sunscreen_rigid.usd",
+      "weight_g": 68.0,
+      "changes": [
+        {
+          "prim_path": "/World/etude_mineral_sunscreen",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.068
+        }
+      ],
+      "object_name": "etude_mineral_sunscreen"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/extremely_sour_candy_box/edited/extremely_sour_candy_box.usd",
+      "weight_g": 57.0,
+      "object_name": "extremely_sour_candy_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/extremely_sour_candy_box/edited/extremely_sour_candy_box_rigid.usd",
+      "weight_g": 57.0,
+      "changes": [
+        {
+          "prim_path": "/World/extremely_sour_candy_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.057
+        }
+      ],
+      "object_name": "extremely_sour_candy_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fabric_bluetooth_speaker/edited/fabric_bluetooth_speaker.usd",
+      "weight_g": 186.0,
+      "object_name": "fabric_bluetooth_speaker"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fabric_bluetooth_speaker/edited/fabric_bluetooth_speaker_rigid.usd",
+      "weight_g": 186.0,
+      "changes": [
+        {
+          "prim_path": "/World/fabric_bluetooth_speaker",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.186
+        }
+      ],
+      "object_name": "fabric_bluetooth_speaker"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fabric_bluetooth_speaker_box/edited/fabric_bluetooth_speaker_box.usd",
+      "weight_g": 206.0,
+      "object_name": "fabric_bluetooth_speaker_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fabric_bluetooth_speaker_box/edited/fabric_bluetooth_speaker_box_rigid.usd",
+      "weight_g": 206.0,
+      "changes": [
+        {
+          "prim_path": "/World/fabric_bluetooth_speaker_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.206
+        }
+      ],
+      "object_name": "fabric_bluetooth_speaker_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/facial_roller_massager/edited/facial_roller_massager.usd",
+      "weight_g": 27.0,
+      "object_name": "facial_roller_massager"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/facial_roller_massager/edited/facial_roller_massager_rigid.usd",
+      "weight_g": 27.0,
+      "changes": [
+        {
+          "prim_path": "/World/facial_roller_massager",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.027
+        }
+      ],
+      "object_name": "facial_roller_massager"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fish_shaped_pet_latex_toy/edited/fish_shaped_pet_latex_toy.usd",
+      "weight_g": 27.0,
+      "object_name": "fish_shaped_pet_latex_toy"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fish_shaped_pet_latex_toy/edited/fish_shaped_pet_latex_toy_rigid.usd",
+      "weight_g": 27.0,
+      "changes": [
+        {
+          "prim_path": "/World/fish_shaped_pet_latex_toy",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.027
+        }
+      ],
+      "object_name": "fish_shaped_pet_latex_toy"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/flex_neck_lighter/edited/flex_neck_lighter.usd",
+      "weight_g": 69.0,
+      "object_name": "flex_neck_lighter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/flex_neck_lighter/edited/flex_neck_lighter_rigid.usd",
+      "weight_g": 69.0,
+      "changes": [
+        {
+          "prim_path": "/World/flex_neck_lighter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.069
+        }
+      ],
+      "object_name": "flex_neck_lighter"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/foldable_camping_cup/edited/foldable_camping_cup.usd",
+      "weight_g": 53.0,
+      "object_name": "foldable_camping_cup"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/foldable_camping_cup/edited/foldable_camping_cup_rigid.usd",
+      "weight_g": 53.0,
+      "changes": [
+        {
+          "prim_path": "/World/foldable_camping_cup",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.053
+        }
+      ],
+      "object_name": "foldable_camping_cup"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/food_stain_removal_spray/edited/food_stain_removal_spray.usd",
+      "weight_g": 36.0,
+      "object_name": "food_stain_removal_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/food_stain_removal_spray/edited/food_stain_removal_spray_rigid.usd",
+      "weight_g": 36.0,
+      "changes": [
+        {
+          "prim_path": "/World/food_stain_removal_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.036
+        }
+      ],
+      "object_name": "food_stain_removal_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/food_stain_removal_spray_box/edited/food_stain_removal_spray_box.usd",
+      "weight_g": 42.0,
+      "object_name": "food_stain_removal_spray_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/food_stain_removal_spray_box/edited/food_stain_removal_spray_box_rigid.usd",
+      "weight_g": 42.0,
+      "changes": [
+        {
+          "prim_path": "/World/food_stain_removal_spray_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.042
+        }
+      ],
+      "object_name": "food_stain_removal_spray_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/foot_shampoo_spray/edited/foot_shampoo_spray.usd",
+      "weight_g": 490.0,
+      "object_name": "foot_shampoo_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/foot_shampoo_spray/edited/foot_shampoo_spray_rigid.usd",
+      "weight_g": 490.0,
+      "changes": [
+        {
+          "prim_path": "/World/foot_shampoo_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.49
+        }
+      ],
+      "object_name": "foot_shampoo_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/french_fries_toy/edited/french_fries_toy.usd",
+      "weight_g": 19.0,
+      "object_name": "french_fries_toy"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/french_fries_toy/edited/french_fries_toy_rigid.usd",
+      "weight_g": 19.0,
+      "changes": [
+        {
+          "prim_path": "/World/french_fries_toy",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.019
+        }
+      ],
+      "object_name": "french_fries_toy"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fruit_fly_trap_box/edited/fruit_fly_trap_box.usd",
+      "weight_g": 83.0,
+      "object_name": "fruit_fly_trap_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/fruit_fly_trap_box/edited/fruit_fly_trap_box_rigid.usd",
+      "weight_g": 83.0,
+      "changes": [
+        {
+          "prim_path": "/World/fruit_fly_trap_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.083
+        }
+      ],
+      "object_name": "fruit_fly_trap_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/garden_hose_nozzle/edited/garden_hose_nozzle.usd",
+      "weight_g": 93.0,
+      "object_name": "garden_hose_nozzle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/garden_hose_nozzle/edited/garden_hose_nozzle_rigid.usd",
+      "weight_g": 93.0,
+      "changes": [
+        {
+          "prim_path": "/World/garden_hose_nozzle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.093
+        }
+      ],
+      "object_name": "garden_hose_nozzle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gas_can_puncher/edited/gas_can_puncher.usd",
+      "weight_g": 60.0,
+      "object_name": "gas_can_puncher"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gas_can_puncher/edited/gas_can_puncher_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/gas_can_puncher",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "gas_can_puncher"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gas_lighter/edited/gas_lighter.usd",
+      "weight_g": 52.0,
+      "object_name": "gas_lighter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gas_lighter/edited/gas_lighter_rigid.usd",
+      "weight_g": 52.0,
+      "changes": [
+        {
+          "prim_path": "/World/gas_lighter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.052
+        }
+      ],
+      "object_name": "gas_lighter"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gochujang_stir_fried_pork_can/edited/gochujang_stir_fried_pork_can.usd",
+      "weight_g": 107.0,
+      "object_name": "gochujang_stir_fried_pork_can"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gochujang_stir_fried_pork_can/edited/gochujang_stir_fried_pork_can_rigid.usd",
+      "weight_g": 107.0,
+      "changes": [
+        {
+          "prim_path": "/World/gochujang_stir_fried_pork_can",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.107
+        }
+      ],
+      "object_name": "gochujang_stir_fried_pork_can"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/grape_kombucha_box/edited/grape_kombucha_box.usd",
+      "weight_g": 42.0,
+      "object_name": "grape_kombucha_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/grape_kombucha_box/edited/grape_kombucha_box_rigid.usd",
+      "weight_g": 42.0,
+      "changes": [
+        {
+          "prim_path": "/World/grape_kombucha_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.042
+        }
+      ],
+      "object_name": "grape_kombucha_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/grapefruit_honey_black_tea_powder_box/edited/grapefruit_honey_black_tea_powder_box.usd",
+      "weight_g": 60.0,
+      "object_name": "grapefruit_honey_black_tea_powder_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/grapefruit_honey_black_tea_powder_box/edited/grapefruit_honey_black_tea_powder_box_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/grapefruit_honey_black_tea_powder_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "grapefruit_honey_black_tea_powder_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gray_parts_bin/edited/gray_parts_bin.usd",
+      "weight_g": 90.0,
+      "object_name": "gray_parts_bin"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/gray_parts_bin/edited/gray_parts_bin_rigid.usd",
+      "weight_g": 90.0,
+      "changes": [
+        {
+          "prim_path": "/World/gray_parts_bin",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.09
+        }
+      ],
+      "object_name": "gray_parts_bin"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/grip_strengthener_30KG/edited/grip_strengthener_30KG.usd",
+      "weight_g": 93.0,
+      "object_name": "grip_strengthener_30KG"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/grip_strengthener_30KG/edited/grip_strengthener_30KG_rigid.usd",
+      "weight_g": 93.0,
+      "changes": [
+        {
+          "prim_path": "/World/grip_strengthener_30KG",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.093
+        }
+      ],
+      "object_name": "grip_strengthener_30KG"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/handled_earthenware_pot/edited/handled_earthenware_pot.usd",
+      "weight_g": 631.0,
+      "object_name": "handled_earthenware_pot"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/handled_earthenware_pot/edited/handled_earthenware_pot_rigid.usd",
+      "weight_g": 631.0,
+      "changes": [
+        {
+          "prim_path": "/World/handled_earthenware_pot",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.631
+        }
+      ],
+      "object_name": "handled_earthenware_pot"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/handled_stainless_steel_measuring_bowl/edited/handled_stainless_steel_measuring_bowl.usd",
+      "weight_g": 108.0,
+      "object_name": "handled_stainless_steel_measuring_bowl"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/handled_stainless_steel_measuring_bowl/edited/handled_stainless_steel_measuring_bowl_rigid.usd",
+      "weight_g": 108.0,
+      "changes": [
+        {
+          "prim_path": "/World/handled_stainless_steel_measuring_bowl",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.108
+        }
+      ],
+      "object_name": "handled_stainless_steel_measuring_bowl"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hanger_bag_hook/edited/hanger_bag_hook.usd",
+      "weight_g": 14.0,
+      "object_name": "hanger_bag_hook"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hanger_bag_hook/edited/hanger_bag_hook_rigid.usd",
+      "weight_g": 14.0,
+      "changes": [
+        {
+          "prim_path": "/World/hanger_bag_hook",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.014
+        }
+      ],
+      "object_name": "hanger_bag_hook"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hanging_camping_led_light/edited/hanging_camping_led_light.usd",
+      "weight_g": 53.0,
+      "object_name": "hanging_camping_led_light"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hanging_camping_led_light/edited/hanging_camping_led_light_rigid.usd",
+      "weight_g": 53.0,
+      "changes": [
+        {
+          "prim_path": "/World/hanging_camping_led_light",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.053
+        }
+      ],
+      "object_name": "hanging_camping_led_light"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hanging_soap_case/edited/hanging_soap_case.usd",
+      "weight_g": 80.0,
+      "object_name": "hanging_soap_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hanging_soap_case/edited/hanging_soap_case_rigid.usd",
+      "weight_g": 80.0,
+      "changes": [
+        {
+          "prim_path": "/World/hanging_soap_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.08
+        }
+      ],
+      "object_name": "hanging_soap_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hello_bear_press_air_freshener/edited/hello_bear_press_air_freshener.usd",
+      "weight_g": 20.0,
+      "object_name": "hello_bear_press_air_freshener"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hello_bear_press_air_freshener/edited/hello_bear_press_air_freshener_rigid.usd",
+      "weight_g": 20.0,
+      "changes": [
+        {
+          "prim_path": "/World/hello_bear_press_air_freshener",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.02
+        }
+      ],
+      "object_name": "hello_bear_press_air_freshener"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hexagon_toothbrush_cup/edited/hexagon_toothbrush_cup.usd",
+      "weight_g": 75.0,
+      "object_name": "hexagon_toothbrush_cup"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/hexagon_toothbrush_cup/edited/hexagon_toothbrush_cup_rigid.usd",
+      "weight_g": 75.0,
+      "changes": [
+        {
+          "prim_path": "/World/hexagon_toothbrush_cup",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.075
+        }
+      ],
+      "object_name": "hexagon_toothbrush_cup"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/homekeeper_water_based_bug_spray/edited/homekeeper_water_based_bug_spray.usd",
+      "weight_g": 495.0,
+      "object_name": "homekeeper_water_based_bug_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/homekeeper_water_based_bug_spray/edited/homekeeper_water_based_bug_spray_rigid.usd",
+      "weight_g": 495.0,
+      "changes": [
+        {
+          "prim_path": "/World/homekeeper_water_based_bug_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.495
+        }
+      ],
+      "object_name": "homekeeper_water_based_bug_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/homestar_mold_remover_paste/edited/homestar_mold_remover_paste.usd",
+      "weight_g": 148.0,
+      "object_name": "homestar_mold_remover_paste"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/homestar_mold_remover_paste/edited/homestar_mold_remover_paste_rigid.usd",
+      "weight_g": 148.0,
+      "changes": [
+        {
+          "prim_path": "/World/homestar_mold_remover_paste",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.148
+        }
+      ],
+      "object_name": "homestar_mold_remover_paste"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/honey_lemon_flavored_halls_pack/edited/honey_lemon_flavored_halls_pack.usd",
+      "weight_g": 31.0,
+      "object_name": "honey_lemon_flavored_halls_pack"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/honey_lemon_flavored_halls_pack/edited/honey_lemon_flavored_halls_pack_rigid.usd",
+      "weight_g": 31.0,
+      "changes": [
+        {
+          "prim_path": "/World/honey_lemon_flavored_halls_pack",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.031
+        }
+      ],
+      "object_name": "honey_lemon_flavored_halls_pack"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/honey_mustard_sauce_bottle/edited/honey_mustard_sauce_bottle.usd",
+      "weight_g": 306.0,
+      "object_name": "honey_mustard_sauce_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/honey_mustard_sauce_bottle/edited/honey_mustard_sauce_bottle_rigid.usd",
+      "weight_g": 306.0,
+      "changes": [
+        {
+          "prim_path": "/World/honey_mustard_sauce_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.306
+        }
+      ],
+      "object_name": "honey_mustard_sauce_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/im_real_blueberry_concentrate_pack/edited/im_real_blueberry_concentrate_pack.usd",
+      "weight_g": 70.0,
+      "object_name": "im_real_blueberry_concentrate_pack"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/im_real_blueberry_concentrate_pack/edited/im_real_blueberry_concentrate_pack_rigid.usd",
+      "weight_g": 70.0,
+      "changes": [
+        {
+          "prim_path": "/World/im_real_blueberry_concentrate_pack",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.07
+        }
+      ],
+      "object_name": "im_real_blueberry_concentrate_pack"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/in_shower_body_hair_removal_cream_box/edited/in_shower_body_hair_removal_cream_box.usd",
+      "weight_g": 112.0,
+      "object_name": "in_shower_body_hair_removal_cream_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/in_shower_body_hair_removal_cream_box/edited/in_shower_body_hair_removal_cream_box_rigid.usd",
+      "weight_g": 112.0,
+      "changes": [
+        {
+          "prim_path": "/World/in_shower_body_hair_removal_cream_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.112
+        }
+      ],
+      "object_name": "in_shower_body_hair_removal_cream_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/in_shower_body_hair_removal_cream_tube/edited/in_shower_body_hair_removal_cream_tube.usd",
+      "weight_g": 93.0,
+      "object_name": "in_shower_body_hair_removal_cream_tube"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/in_shower_body_hair_removal_cream_tube/edited/in_shower_body_hair_removal_cream_tube_rigid.usd",
+      "weight_g": 93.0,
+      "changes": [
+        {
+          "prim_path": "/World/in_shower_body_hair_removal_cream_tube",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.093
+        }
+      ],
+      "object_name": "in_shower_body_hair_removal_cream_tube"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/jewelry_cleaner_bottle/edited/jewelry_cleaner_bottle.usd",
+      "weight_g": 236.0,
+      "object_name": "jewelry_cleaner_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/jewelry_cleaner_bottle/edited/jewelry_cleaner_bottle_rigid.usd",
+      "weight_g": 236.0,
+      "changes": [
+        {
+          "prim_path": "/World/jewelry_cleaner_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.236
+        }
+      ],
+      "object_name": "jewelry_cleaner_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/jewelry_cleaning_kit_box/edited/jewelry_cleaning_kit_box.usd",
+      "weight_g": 257.0,
+      "object_name": "jewelry_cleaning_kit_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/jewelry_cleaning_kit_box/edited/jewelry_cleaning_kit_box_rigid.usd",
+      "weight_g": 257.0,
+      "changes": [
+        {
+          "prim_path": "/World/jewelry_cleaning_kit_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.257
+        }
+      ],
+      "object_name": "jewelry_cleaning_kit_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/kids_toy_guitar/edited/kids_toy_guitar.usd",
+      "weight_g": 47.0,
+      "object_name": "kids_toy_guitar"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/kids_toy_guitar/edited/kids_toy_guitar_rigid.usd",
+      "weight_g": 47.0,
+      "changes": [
+        {
+          "prim_path": "/World/kids_toy_guitar",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.047
+        }
+      ],
+      "object_name": "kids_toy_guitar"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/large_duvet_clips/edited/large_duvet_clips.usd",
+      "weight_g": 133.0,
+      "object_name": "large_duvet_clips"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/large_duvet_clips/edited/large_duvet_clips_rigid.usd",
+      "weight_g": 133.0,
+      "changes": [
+        {
+          "prim_path": "/World/large_duvet_clips",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.133
+        }
+      ],
+      "object_name": "large_duvet_clips"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/larocheposay_cotton_pads_box/edited/larocheposay_cotton_pads_box.usd",
+      "weight_g": 23.0,
+      "object_name": "larocheposay_cotton_pads_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/larocheposay_cotton_pads_box/edited/larocheposay_cotton_pads_box_rigid.usd",
+      "weight_g": 23.0,
+      "changes": [
+        {
+          "prim_path": "/World/larocheposay_cotton_pads_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.023
+        }
+      ],
+      "object_name": "larocheposay_cotton_pads_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lavender_fabric_deodorizer_spray/edited/lavender_fabric_deodorizer_spray.usd",
+      "weight_g": 121.0,
+      "object_name": "lavender_fabric_deodorizer_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lavender_fabric_deodorizer_spray/edited/lavender_fabric_deodorizer_spray_rigid.usd",
+      "weight_g": 121.0,
+      "changes": [
+        {
+          "prim_path": "/World/lavender_fabric_deodorizer_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.121
+        }
+      ],
+      "object_name": "lavender_fabric_deodorizer_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lavender_trash_can_deodorizer_box/edited/lavender_trash_can_deodorizer_box.usd",
+      "weight_g": 30.0,
+      "object_name": "lavender_trash_can_deodorizer_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lavender_trash_can_deodorizer_box/edited/lavender_trash_can_deodorizer_box_rigid.usd",
+      "weight_g": 30.0,
+      "changes": [
+        {
+          "prim_path": "/World/lavender_trash_can_deodorizer_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.03
+        }
+      ],
+      "object_name": "lavender_trash_can_deodorizer_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/led_jar_bluetooth_speaker/edited/led_jar_bluetooth_speaker.usd",
+      "weight_g": 100.0,
+      "object_name": "led_jar_bluetooth_speaker"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/led_jar_bluetooth_speaker/edited/led_jar_bluetooth_speaker_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/led_jar_bluetooth_speaker",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "led_jar_bluetooth_speaker"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/led_jar_bluetooth_speaker_box/edited/led_jar_bluetooth_speaker_box.usd",
+      "weight_g": 120.0,
+      "object_name": "led_jar_bluetooth_speaker_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/led_jar_bluetooth_speaker_box/edited/led_jar_bluetooth_speaker_box_rigid.usd",
+      "weight_g": 120.0,
+      "changes": [
+        {
+          "prim_path": "/World/led_jar_bluetooth_speaker_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.12
+        }
+      ],
+      "object_name": "led_jar_bluetooth_speaker_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/led_magnifying_glass/edited/led_magnifying_glass.usd",
+      "weight_g": 130.0,
+      "object_name": "led_magnifying_glass"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/led_magnifying_glass/edited/led_magnifying_glass_rigid.usd",
+      "weight_g": 130.0,
+      "changes": [
+        {
+          "prim_path": "/World/led_magnifying_glass",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.13
+        }
+      ],
+      "object_name": "led_magnifying_glass"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lemon_squeezer/edited/lemon_squeezer.usd",
+      "weight_g": 132.0,
+      "object_name": "lemon_squeezer"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lemon_squeezer/edited/lemon_squeezer_rigid.usd",
+      "weight_g": 132.0,
+      "changes": [
+        {
+          "prim_path": "/World/lemon_squeezer",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.132
+        }
+      ],
+      "object_name": "lemon_squeezer"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lens_cleaner_box/edited/lens_cleaner_box.usd",
+      "weight_g": 105.0,
+      "object_name": "lens_cleaner_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lens_cleaner_box/edited/lens_cleaner_box_rigid.usd",
+      "weight_g": 105.0,
+      "changes": [
+        {
+          "prim_path": "/World/lens_cleaner_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.105
+        }
+      ],
+      "object_name": "lens_cleaner_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lime_kombucha_box/edited/lime_kombucha_box.usd",
+      "weight_g": 45.0,
+      "object_name": "lime_kombucha_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/lime_kombucha_box/edited/lime_kombucha_box_rigid.usd",
+      "weight_g": 45.0,
+      "changes": [
+        {
+          "prim_path": "/World/lime_kombucha_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.045
+        }
+      ],
+      "object_name": "lime_kombucha_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/liquid_shoe_polish/edited/liquid_shoe_polish.usd",
+      "weight_g": 103.0,
+      "object_name": "liquid_shoe_polish"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/liquid_shoe_polish/edited/liquid_shoe_polish_rigid.usd",
+      "weight_g": 103.0,
+      "changes": [
+        {
+          "prim_path": "/World/liquid_shoe_polish",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.103
+        }
+      ],
+      "object_name": "liquid_shoe_polish"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/long_aluminum_flashlight/edited/long_aluminum_flashlight.usd",
+      "weight_g": 56.0,
+      "object_name": "long_aluminum_flashlight"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/long_aluminum_flashlight/edited/long_aluminum_flashlight_rigid.usd",
+      "weight_g": 56.0,
+      "changes": [
+        {
+          "prim_path": "/World/long_aluminum_flashlight",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.056
+        }
+      ],
+      "object_name": "long_aluminum_flashlight"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/loop_toothbrush_case/edited/loop_toothbrush_case.usd",
+      "weight_g": 62.0,
+      "object_name": "loop_toothbrush_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/loop_toothbrush_case/edited/loop_toothbrush_case_rigid.usd",
+      "weight_g": 62.0,
+      "changes": [
+        {
+          "prim_path": "/World/loop_toothbrush_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.062
+        }
+      ],
+      "object_name": "loop_toothbrush_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/madecassol_oint_box/edited/madecassol_oint_box.usd",
+      "weight_g": 17.0,
+      "object_name": "madecassol_oint_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/madecassol_oint_box/edited/madecassol_oint_box_rigid.usd",
+      "weight_g": 17.0,
+      "changes": [
+        {
+          "prim_path": "/World/madecassol_oint_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.017
+        }
+      ],
+      "object_name": "madecassol_oint_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/magnetic_towel_holder/edited/magnetic_towel_holder.usd",
+      "weight_g": 79.0,
+      "object_name": "magnetic_towel_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/magnetic_towel_holder/edited/magnetic_towel_holder_rigid.usd",
+      "weight_g": 79.0,
+      "changes": [
+        {
+          "prim_path": "/World/magnetic_towel_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.079
+        }
+      ],
+      "object_name": "magnetic_towel_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/manual_balloon_pump/edited/manual_balloon_pump.usd",
+      "weight_g": 83.0,
+      "object_name": "manual_balloon_pump"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/manual_balloon_pump/edited/manual_balloon_pump_rigid.usd",
+      "weight_g": 83.0,
+      "changes": [
+        {
+          "prim_path": "/World/manual_balloon_pump",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.083
+        }
+      ],
+      "object_name": "manual_balloon_pump"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/matte_shower_head/edited/matte_shower_head.usd",
+      "weight_g": 90.0,
+      "object_name": "matte_shower_head"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/matte_shower_head/edited/matte_shower_head_rigid.usd",
+      "weight_g": 90.0,
+      "changes": [
+        {
+          "prim_path": "/World/matte_shower_head",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.09
+        }
+      ],
+      "object_name": "matte_shower_head"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/matte_shower_head_box/edited/matte_shower_head_box.usd",
+      "weight_g": 110.0,
+      "object_name": "matte_shower_head_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/matte_shower_head_box/edited/matte_shower_head_box_rigid.usd",
+      "weight_g": 110.0,
+      "changes": [
+        {
+          "prim_path": "/World/matte_shower_head_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.11
+        }
+      ],
+      "object_name": "matte_shower_head_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/maxtill_silent_wireless_mouse/edited/maxtill_silent_wireless_mouse.usd",
+      "weight_g": 54.0,
+      "object_name": "maxtill_silent_wireless_mouse"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/maxtill_silent_wireless_mouse/edited/maxtill_silent_wireless_mouse_rigid.usd",
+      "weight_g": 54.0,
+      "changes": [
+        {
+          "prim_path": "/World/maxtill_silent_wireless_mouse",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.054
+        }
+      ],
+      "object_name": "maxtill_silent_wireless_mouse"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/maxtill_silent_wireless_mouse_box/edited/maxtill_silent_wireless_mouse_box.usd",
+      "weight_g": 69.0,
+      "object_name": "maxtill_silent_wireless_mouse_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/maxtill_silent_wireless_mouse_box/edited/maxtill_silent_wireless_mouse_box_rigid.usd",
+      "weight_g": 69.0,
+      "changes": [
+        {
+          "prim_path": "/World/maxtill_silent_wireless_mouse_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.069
+        }
+      ],
+      "object_name": "maxtill_silent_wireless_mouse_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/melamine_foam_handle_sponge/edited/melamine_foam_handle_sponge.usd",
+      "weight_g": 53.0,
+      "object_name": "melamine_foam_handle_sponge"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/melamine_foam_handle_sponge/edited/melamine_foam_handle_sponge_rigid.usd",
+      "weight_g": 53.0,
+      "changes": [
+        {
+          "prim_path": "/World/melamine_foam_handle_sponge",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.053
+        }
+      ],
+      "object_name": "melamine_foam_handle_sponge"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_choco_chip_cookies_box/edited/mini_choco_chip_cookies_box.usd",
+      "weight_g": 100.0,
+      "object_name": "mini_choco_chip_cookies_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_choco_chip_cookies_box/edited/mini_choco_chip_cookies_box_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/mini_choco_chip_cookies_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "mini_choco_chip_cookies_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_circulator_handheld_fan_box/edited/mini_circulator_handheld_fan_box.usd",
+      "weight_g": 110.0,
+      "object_name": "mini_circulator_handheld_fan_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_circulator_handheld_fan_box/edited/mini_circulator_handheld_fan_box_rigid.usd",
+      "weight_g": 110.0,
+      "changes": [
+        {
+          "prim_path": "/World/mini_circulator_handheld_fan_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.11
+        }
+      ],
+      "object_name": "mini_circulator_handheld_fan_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_korean_stone_bowl/edited/mini_korean_stone_bowl.usd",
+      "weight_g": 382.0,
+      "object_name": "mini_korean_stone_bowl"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_korean_stone_bowl/edited/mini_korean_stone_bowl_rigid.usd",
+      "weight_g": 382.0,
+      "changes": [
+        {
+          "prim_path": "/World/mini_korean_stone_bowl",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.382
+        }
+      ],
+      "object_name": "mini_korean_stone_bowl"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_piggy_bank/edited/mini_piggy_bank.usd",
+      "weight_g": 36.0,
+      "object_name": "mini_piggy_bank"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_piggy_bank/edited/mini_piggy_bank_rigid.usd",
+      "weight_g": 36.0,
+      "changes": [
+        {
+          "prim_path": "/World/mini_piggy_bank",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.036
+        }
+      ],
+      "object_name": "mini_piggy_bank"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_whiteboard_eraser/edited/mini_whiteboard_eraser.usd",
+      "weight_g": 22.0,
+      "object_name": "mini_whiteboard_eraser"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mini_whiteboard_eraser/edited/mini_whiteboard_eraser_rigid.usd",
+      "weight_g": 22.0,
+      "changes": [
+        {
+          "prim_path": "/World/mini_whiteboard_eraser",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.022
+        }
+      ],
+      "object_name": "mini_whiteboard_eraser"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mint_rechargeable_handheld_fan/edited/mint_rechargeable_handheld_fan.usd",
+      "weight_g": 123.0,
+      "object_name": "mint_rechargeable_handheld_fan"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mint_rechargeable_handheld_fan/edited/mint_rechargeable_handheld_fan_rigid.usd",
+      "weight_g": 123.0,
+      "changes": [
+        {
+          "prim_path": "/World/mint_rechargeable_handheld_fan",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.123
+        }
+      ],
+      "object_name": "mint_rechargeable_handheld_fan"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mint_rechargeable_handheld_fan_box/edited/mint_rechargeable_handheld_fan_box.usd",
+      "weight_g": 161.0,
+      "object_name": "mint_rechargeable_handheld_fan_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mint_rechargeable_handheld_fan_box/edited/mint_rechargeable_handheld_fan_box_rigid.usd",
+      "weight_g": 161.0,
+      "changes": [
+        {
+          "prim_path": "/World/mint_rechargeable_handheld_fan_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.161
+        }
+      ],
+      "object_name": "mint_rechargeable_handheld_fan_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/moisturizing_cream_box/edited/moisturizing_cream_box.usd",
+      "weight_g": 150.0,
+      "object_name": "moisturizing_cream_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/moisturizing_cream_box/edited/moisturizing_cream_box_rigid.usd",
+      "weight_g": 150.0,
+      "changes": [
+        {
+          "prim_path": "/World/moisturizing_cream_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.15
+        }
+      ],
+      "object_name": "moisturizing_cream_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/money_gun/edited/money_gun.usd",
+      "weight_g": 100.0,
+      "object_name": "money_gun"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/money_gun/edited/money_gun_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/money_gun",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "money_gun"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mosquito_repellent_liquid_refill_box/edited/mosquito_repellent_liquid_refill_box.usd",
+      "weight_g": 65.0,
+      "object_name": "mosquito_repellent_liquid_refill_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/mosquito_repellent_liquid_refill_box/edited/mosquito_repellent_liquid_refill_box_rigid.usd",
+      "weight_g": 65.0,
+      "changes": [
+        {
+          "prim_path": "/World/mosquito_repellent_liquid_refill_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.065
+        }
+      ],
+      "object_name": "mosquito_repellent_liquid_refill_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_purpose_cuttable_sheet/edited/multi_purpose_cuttable_sheet.usd",
+      "weight_g": 120.0,
+      "object_name": "multi_purpose_cuttable_sheet"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_purpose_cuttable_sheet/edited/multi_purpose_cuttable_sheet_rigid.usd",
+      "weight_g": 120.0,
+      "changes": [
+        {
+          "prim_path": "/World/multi_purpose_cuttable_sheet",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.12
+        }
+      ],
+      "object_name": "multi_purpose_cuttable_sheet"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_purpose_seasoning_container/edited/multi_purpose_seasoning_container.usd",
+      "weight_g": 110.0,
+      "object_name": "multi_purpose_seasoning_container"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_purpose_seasoning_container/edited/multi_purpose_seasoning_container_rigid.usd",
+      "weight_g": 110.0,
+      "changes": [
+        {
+          "prim_path": "/World/multi_purpose_seasoning_container",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.11
+        }
+      ],
+      "object_name": "multi_purpose_seasoning_container"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_purpose_wooden_tongs/edited/multi_purpose_wooden_tongs.usd",
+      "weight_g": 25.0,
+      "object_name": "multi_purpose_wooden_tongs"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_purpose_wooden_tongs/edited/multi_purpose_wooden_tongs_rigid.usd",
+      "weight_g": 25.0,
+      "changes": [
+        {
+          "prim_path": "/World/multi_purpose_wooden_tongs",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.025
+        }
+      ],
+      "object_name": "multi_purpose_wooden_tongs"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_surface_cleaning_wipes_container/edited/multi_surface_cleaning_wipes_container.usd",
+      "weight_g": 233.0,
+      "object_name": "multi_surface_cleaning_wipes_container"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/multi_surface_cleaning_wipes_container/edited/multi_surface_cleaning_wipes_container_rigid.usd",
+      "weight_g": 233.0,
+      "changes": [
+        {
+          "prim_path": "/World/multi_surface_cleaning_wipes_container",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.233
+        }
+      ],
+      "object_name": "multi_surface_cleaning_wipes_container"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nail_buffer_7_way/edited/nail_buffer_7_way.usd",
+      "weight_g": 8.0,
+      "object_name": "nail_buffer_7_way"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nail_buffer_7_way/edited/nail_buffer_7_way_rigid.usd",
+      "weight_g": 8.0,
+      "changes": [
+        {
+          "prim_path": "/World/nail_buffer_7_way",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.008
+        }
+      ],
+      "object_name": "nail_buffer_7_way"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nexcare_bandage_box/edited/nexcare_bandage_box.usd",
+      "weight_g": 30.0,
+      "object_name": "nexcare_bandage_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nexcare_bandage_box/edited/nexcare_bandage_box_rigid.usd",
+      "weight_g": 30.0,
+      "changes": [
+        {
+          "prim_path": "/World/nexcare_bandage_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.03
+        }
+      ],
+      "object_name": "nexcare_bandage_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nivea_extra_bright_deodorant_spray/edited/nivea_extra_bright_deodorant_spray.usd",
+      "weight_g": 78.0,
+      "object_name": "nivea_extra_bright_deodorant_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nivea_extra_bright_deodorant_spray/edited/nivea_extra_bright_deodorant_spray_rigid.usd",
+      "weight_g": 78.0,
+      "changes": [
+        {
+          "prim_path": "/World/nivea_extra_bright_deodorant_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.078
+        }
+      ],
+      "object_name": "nivea_extra_bright_deodorant_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/non_slip_scooter_handle_grips/edited/non_slip_scooter_handle_grips.usd",
+      "weight_g": 27.0,
+      "object_name": "non_slip_scooter_handle_grips"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/non_slip_scooter_handle_grips/edited/non_slip_scooter_handle_grips_rigid.usd",
+      "weight_g": 27.0,
+      "changes": [
+        {
+          "prim_path": "/World/non_slip_scooter_handle_grips",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.027
+        }
+      ],
+      "object_name": "non_slip_scooter_handle_grips"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nose_bridge_massager/edited/nose_bridge_massager.usd",
+      "weight_g": 16.0,
+      "object_name": "nose_bridge_massager"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/nose_bridge_massager/edited/nose_bridge_massager_rigid.usd",
+      "weight_g": 16.0,
+      "changes": [
+        {
+          "prim_path": "/World/nose_bridge_massager",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.016
+        }
+      ],
+      "object_name": "nose_bridge_massager"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/one_touch_led_light/edited/one_touch_led_light.usd",
+      "weight_g": 42.0,
+      "object_name": "one_touch_led_light"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/one_touch_led_light/edited/one_touch_led_light_rigid.usd",
+      "weight_g": 42.0,
+      "changes": [
+        {
+          "prim_path": "/World/one_touch_led_light",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.042
+        }
+      ],
+      "object_name": "one_touch_led_light"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/one_touch_led_light_remote_controller/edited/one_touch_led_light_remote_controller.usd",
+      "weight_g": 27.0,
+      "object_name": "one_touch_led_light_remote_controller"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/one_touch_led_light_remote_controller/edited/one_touch_led_light_remote_controller_rigid.usd",
+      "weight_g": 27.0,
+      "changes": [
+        {
+          "prim_path": "/World/one_touch_led_light_remote_controller",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.027
+        }
+      ],
+      "object_name": "one_touch_led_light_remote_controller"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/organic_black_tea_bags_box/edited/organic_black_tea_bags_box.usd",
+      "weight_g": 140.0,
+      "object_name": "organic_black_tea_bags_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/organic_black_tea_bags_box/edited/organic_black_tea_bags_box_rigid.usd",
+      "weight_g": 140.0,
+      "changes": [
+        {
+          "prim_path": "/World/organic_black_tea_bags_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.14
+        }
+      ],
+      "object_name": "organic_black_tea_bags_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/orion_bebe_box/edited/orion_bebe_box.usd",
+      "weight_g": 100.0,
+      "object_name": "orion_bebe_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/orion_bebe_box/edited/orion_bebe_box_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/orion_bebe_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "orion_bebe_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/oriox_bubble_hand_wash_pump/edited/oriox_bubble_hand_wash_pump.usd",
+      "weight_g": 482.0,
+      "object_name": "oriox_bubble_hand_wash_pump"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/oriox_bubble_hand_wash_pump/edited/oriox_bubble_hand_wash_pump_rigid.usd",
+      "weight_g": 482.0,
+      "changes": [
+        {
+          "prim_path": "/World/oriox_bubble_hand_wash_pump",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.482
+        }
+      ],
+      "object_name": "oriox_bubble_hand_wash_pump"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/packing_tape_dispenser/edited/packing_tape_dispenser.usd",
+      "weight_g": 51.0,
+      "object_name": "packing_tape_dispenser"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/packing_tape_dispenser/edited/packing_tape_dispenser_rigid.usd",
+      "weight_g": 51.0,
+      "changes": [
+        {
+          "prim_path": "/World/packing_tape_dispenser",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.051
+        }
+      ],
+      "object_name": "packing_tape_dispenser"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pain_relief_spray/edited/pain_relief_spray.usd",
+      "weight_g": 182.0,
+      "object_name": "pain_relief_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pain_relief_spray/edited/pain_relief_spray_rigid.usd",
+      "weight_g": 182.0,
+      "changes": [
+        {
+          "prim_path": "/World/pain_relief_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.182
+        }
+      ],
+      "object_name": "pain_relief_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/paint_roller/edited/paint_roller.usd",
+      "weight_g": 290.0,
+      "object_name": "paint_roller"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/paint_roller/edited/paint_roller_rigid.usd",
+      "weight_g": 290.0,
+      "changes": [
+        {
+          "prim_path": "/World/paint_roller",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.29
+        }
+      ],
+      "object_name": "paint_roller"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/party_snow_spray/edited/party_snow_spray.usd",
+      "weight_g": 178.0,
+      "object_name": "party_snow_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/party_snow_spray/edited/party_snow_spray_rigid.usd",
+      "weight_g": 178.0,
+      "changes": [
+        {
+          "prim_path": "/World/party_snow_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.178
+        }
+      ],
+      "object_name": "party_snow_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pat_and_mat_doll/edited/pat_and_mat_doll.usd",
+      "weight_g": 40.0,
+      "object_name": "pat_and_mat_doll"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pat_and_mat_doll/edited/pat_and_mat_doll_rigid.usd",
+      "weight_g": 40.0,
+      "changes": [
+        {
+          "prim_path": "/World/pat_and_mat_doll",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.04
+        }
+      ],
+      "object_name": "pat_and_mat_doll"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pc_webcam_box/edited/pc_webcam_box.usd",
+      "weight_g": 60.0,
+      "object_name": "pc_webcam_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pc_webcam_box/edited/pc_webcam_box_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/pc_webcam_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "pc_webcam_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/peach_kombucha_box/edited/peach_kombucha_box.usd",
+      "weight_g": 77.0,
+      "object_name": "peach_kombucha_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/peach_kombucha_box/edited/peach_kombucha_box_rigid.usd",
+      "weight_g": 77.0,
+      "changes": [
+        {
+          "prim_path": "/World/peach_kombucha_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.077
+        }
+      ],
+      "object_name": "peach_kombucha_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/perfect_gammarus_turtle_food_bottle/edited/perfect_gammarus_turtle_food_bottle.usd",
+      "weight_g": 61.0,
+      "object_name": "perfect_gammarus_turtle_food_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/perfect_gammarus_turtle_food_bottle/edited/perfect_gammarus_turtle_food_bottle_rigid.usd",
+      "weight_g": 61.0,
+      "changes": [
+        {
+          "prim_path": "/World/perfect_gammarus_turtle_food_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.061
+        }
+      ],
+      "object_name": "perfect_gammarus_turtle_food_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pet_hair_removal_brush/edited/pet_hair_removal_brush.usd",
+      "weight_g": 250.0,
+      "object_name": "pet_hair_removal_brush"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pet_hair_removal_brush/edited/pet_hair_removal_brush_rigid.usd",
+      "weight_g": 250.0,
+      "changes": [
+        {
+          "prim_path": "/World/pet_hair_removal_brush",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.25
+        }
+      ],
+      "object_name": "pet_hair_removal_brush"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pet_training_bell/edited/pet_training_bell.usd",
+      "weight_g": 84.0,
+      "object_name": "pet_training_bell"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pet_training_bell/edited/pet_training_bell_rigid.usd",
+      "weight_g": 84.0,
+      "changes": [
+        {
+          "prim_path": "/World/pet_training_bell",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.084
+        }
+      ],
+      "object_name": "pet_training_bell"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/plug_in_led_night_light/edited/plug_in_led_night_light.usd",
+      "weight_g": 47.0,
+      "object_name": "plug_in_led_night_light"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/plug_in_led_night_light/edited/plug_in_led_night_light_rigid.usd",
+      "weight_g": 47.0,
+      "changes": [
+        {
+          "prim_path": "/World/plug_in_led_night_light",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.047
+        }
+      ],
+      "object_name": "plug_in_led_night_light"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pooh_tumbler/edited/pooh_tumbler.usd",
+      "weight_g": 337.0,
+      "object_name": "pooh_tumbler"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pooh_tumbler/edited/pooh_tumbler_rigid.usd",
+      "weight_g": 337.0,
+      "changes": [
+        {
+          "prim_path": "/World/pooh_tumbler",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.337
+        }
+      ],
+      "object_name": "pooh_tumbler"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/porsche_911_toy_car/edited/porsche_911_toy_car.usd",
+      "weight_g": 107.0,
+      "object_name": "porsche_911_toy_car"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/porsche_911_toy_car/edited/porsche_911_toy_car_rigid.usd",
+      "weight_g": 107.0,
+      "changes": [
+        {
+          "prim_path": "/World/porsche_911_toy_car",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.107
+        }
+      ],
+      "object_name": "porsche_911_toy_car"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/porsche_911_toy_car_box/edited/porsche_911_toy_car_box.usd",
+      "weight_g": 159.0,
+      "object_name": "porsche_911_toy_car_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/porsche_911_toy_car_box/edited/porsche_911_toy_car_box_rigid.usd",
+      "weight_g": 159.0,
+      "changes": [
+        {
+          "prim_path": "/World/porsche_911_toy_car_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.159
+        }
+      ],
+      "object_name": "porsche_911_toy_car_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/portable_electric_shaver_box/edited/portable_electric_shaver_box.usd",
+      "weight_g": 90.0,
+      "object_name": "portable_electric_shaver_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/portable_electric_shaver_box/edited/portable_electric_shaver_box_rigid.usd",
+      "weight_g": 90.0,
+      "changes": [
+        {
+          "prim_path": "/World/portable_electric_shaver_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.09
+        }
+      ],
+      "object_name": "portable_electric_shaver_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/portable_handle_waste_bag_box/edited/portable_handle_waste_bag_box.usd",
+      "weight_g": 66.0,
+      "object_name": "portable_handle_waste_bag_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/portable_handle_waste_bag_box/edited/portable_handle_waste_bag_box_rigid.usd",
+      "weight_g": 66.0,
+      "changes": [
+        {
+          "prim_path": "/World/portable_handle_waste_bag_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.066
+        }
+      ],
+      "object_name": "portable_handle_waste_bag_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/powdery_mint_shoe_deodorizer_spray/edited/powdery_mint_shoe_deodorizer_spray.usd",
+      "weight_g": 200.0,
+      "object_name": "powdery_mint_shoe_deodorizer_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/powdery_mint_shoe_deodorizer_spray/edited/powdery_mint_shoe_deodorizer_spray_rigid.usd",
+      "weight_g": 200.0,
+      "changes": [
+        {
+          "prim_path": "/World/powdery_mint_shoe_deodorizer_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.2
+        }
+      ],
+      "object_name": "powdery_mint_shoe_deodorizer_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pp_handed_cup/edited/pp_handed_cup.usd",
+      "weight_g": 81.0,
+      "object_name": "pp_handed_cup"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pp_handed_cup/edited/pp_handed_cup_rigid.usd",
+      "weight_g": 81.0,
+      "changes": [
+        {
+          "prim_path": "/World/pp_handed_cup",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.081
+        }
+      ],
+      "object_name": "pp_handed_cup"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/push_button_round_pill_case/edited/push_button_round_pill_case.usd",
+      "weight_g": 51.0,
+      "object_name": "push_button_round_pill_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/push_button_round_pill_case/edited/push_button_round_pill_case_rigid.usd",
+      "weight_g": 51.0,
+      "changes": [
+        {
+          "prim_path": "/World/push_button_round_pill_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.051
+        }
+      ],
+      "object_name": "push_button_round_pill_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rabbit_shaped_soap_dish/edited/rabbit_shaped_soap_dish.usd",
+      "weight_g": 50.0,
+      "object_name": "rabbit_shaped_soap_dish"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rabbit_shaped_soap_dish/edited/rabbit_shaped_soap_dish_rigid.usd",
+      "weight_g": 50.0,
+      "changes": [
+        {
+          "prim_path": "/World/rabbit_shaped_soap_dish",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.05
+        }
+      ],
+      "object_name": "rabbit_shaped_soap_dish"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ratcheting_pipe_cutter/edited/ratcheting_pipe_cutter.usd",
+      "weight_g": 100.0,
+      "object_name": "ratcheting_pipe_cutter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ratcheting_pipe_cutter/edited/ratcheting_pipe_cutter_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/ratcheting_pipe_cutter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "ratcheting_pipe_cutter"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/reach_professional_care_zero_mouthwash/edited/reach_professional_care_zero_mouthwash.usd",
+      "weight_g": 384.0,
+      "object_name": "reach_professional_care_zero_mouthwash"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/reach_professional_care_zero_mouthwash/edited/reach_professional_care_zero_mouthwash_rigid.usd",
+      "weight_g": 384.0,
+      "changes": [
+        {
+          "prim_path": "/World/reach_professional_care_zero_mouthwash",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.384
+        }
+      ],
+      "object_name": "reach_professional_care_zero_mouthwash"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rectangular_pumice_stone/edited/rectangular_pumice_stone.usd",
+      "weight_g": 180.0,
+      "object_name": "rectangular_pumice_stone"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rectangular_pumice_stone/edited/rectangular_pumice_stone_rigid.usd",
+      "weight_g": 180.0,
+      "changes": [
+        {
+          "prim_path": "/World/rectangular_pumice_stone",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.18
+        }
+      ],
+      "object_name": "rectangular_pumice_stone"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/remote_control_led_light_box/edited/remote_control_led_light_box.usd",
+      "weight_g": 87.0,
+      "object_name": "remote_control_led_light_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/remote_control_led_light_box/edited/remote_control_led_light_box_rigid.usd",
+      "weight_g": 87.0,
+      "changes": [
+        {
+          "prim_path": "/World/remote_control_led_light_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.087
+        }
+      ],
+      "object_name": "remote_control_led_light_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/retinol_tightening_ampoule_box/edited/retinol_tightening_ampoule_box.usd",
+      "weight_g": 119.0,
+      "object_name": "retinol_tightening_ampoule_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/retinol_tightening_ampoule_box/edited/retinol_tightening_ampoule_box_rigid.usd",
+      "weight_g": 119.0,
+      "changes": [
+        {
+          "prim_path": "/World/retinol_tightening_ampoule_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.119
+        }
+      ],
+      "object_name": "retinol_tightening_ampoule_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/revolver_water_gun/edited/revolver_water_gun.usd",
+      "weight_g": 66.0,
+      "object_name": "revolver_water_gun"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/revolver_water_gun/edited/revolver_water_gun_rigid.usd",
+      "weight_g": 66.0,
+      "changes": [
+        {
+          "prim_path": "/World/revolver_water_gun",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.066
+        }
+      ],
+      "object_name": "revolver_water_gun"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ring_nail_polish_holder/edited/ring_nail_polish_holder.usd",
+      "weight_g": 25.0,
+      "object_name": "ring_nail_polish_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/ring_nail_polish_holder/edited/ring_nail_polish_holder_rigid.usd",
+      "weight_g": 25.0,
+      "changes": [
+        {
+          "prim_path": "/World/ring_nail_polish_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.025
+        }
+      ],
+      "object_name": "ring_nail_polish_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/robot_vacuum_cleaning_solution_tank/edited/robot_vacuum_cleaning_solution_tank.usd",
+      "weight_g": 1143.0,
+      "object_name": "robot_vacuum_cleaning_solution_tank"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/robot_vacuum_cleaning_solution_tank/edited/robot_vacuum_cleaning_solution_tank_rigid.usd",
+      "weight_g": 1143.0,
+      "changes": [
+        {
+          "prim_path": "/World/robot_vacuum_cleaning_solution_tank",
+          "old_mass_kg": null,
+          "new_mass_kg": 1.143
+        }
+      ],
+      "object_name": "robot_vacuum_cleaning_solution_tank"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/round_handle_retractable_pet_leash/edited/round_handle_retractable_pet_leash.usd",
+      "weight_g": 188.0,
+      "object_name": "round_handle_retractable_pet_leash"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/round_handle_retractable_pet_leash/edited/round_handle_retractable_pet_leash_rigid.usd",
+      "weight_g": 188.0,
+      "changes": [
+        {
+          "prim_path": "/World/round_handle_retractable_pet_leash",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.188
+        }
+      ],
+      "object_name": "round_handle_retractable_pet_leash"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rubberwood_phone_stand_and_business_card_holder/edited/rubberwood_phone_stand_and_business_card_holder.usd",
+      "weight_g": 148.0,
+      "object_name": "rubberwood_phone_stand_and_business_card_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rubberwood_phone_stand_and_business_card_holder/edited/rubberwood_phone_stand_and_business_card_holder_rigid.usd",
+      "weight_g": 148.0,
+      "changes": [
+        {
+          "prim_path": "/World/rubberwood_phone_stand_and_business_card_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.148
+        }
+      ],
+      "object_name": "rubberwood_phone_stand_and_business_card_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rubiks_cube/edited/rubiks_cube.usd",
+      "weight_g": 60.0,
+      "object_name": "rubiks_cube"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/rubiks_cube/edited/rubiks_cube_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/rubiks_cube",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "rubiks_cube"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sajo_cattiger_wild_tuna_160g_can/edited/sajo_cattiger_wild_tuna_160g_can.usd",
+      "weight_g": 206.0,
+      "object_name": "sajo_cattiger_wild_tuna_160g_can"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sajo_cattiger_wild_tuna_160g_can/edited/sajo_cattiger_wild_tuna_160g_can_rigid.usd",
+      "weight_g": 206.0,
+      "changes": [
+        {
+          "prim_path": "/World/sajo_cattiger_wild_tuna_160g_can",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.206
+        }
+      ],
+      "object_name": "sajo_cattiger_wild_tuna_160g_can"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/samyang_buldak_sauce_bottle/edited/samyang_buldak_sauce_bottle.usd",
+      "weight_g": 234.0,
+      "object_name": "samyang_buldak_sauce_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/samyang_buldak_sauce_bottle/edited/samyang_buldak_sauce_bottle_rigid.usd",
+      "weight_g": 234.0,
+      "changes": [
+        {
+          "prim_path": "/World/samyang_buldak_sauce_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.234
+        }
+      ],
+      "object_name": "samyang_buldak_sauce_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sanrio_kuromi_onigiri_case/edited/sanrio_kuromi_onigiri_case.usd",
+      "weight_g": 30.0,
+      "object_name": "sanrio_kuromi_onigiri_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sanrio_kuromi_onigiri_case/edited/sanrio_kuromi_onigiri_case_rigid.usd",
+      "weight_g": 30.0,
+      "changes": [
+        {
+          "prim_path": "/World/sanrio_kuromi_onigiri_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.03
+        }
+      ],
+      "object_name": "sanrio_kuromi_onigiri_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/schick_hydro_shave_foam_spray/edited/schick_hydro_shave_foam_spray.usd",
+      "weight_g": 340.0,
+      "object_name": "schick_hydro_shave_foam_spray"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/schick_hydro_shave_foam_spray/edited/schick_hydro_shave_foam_spray_rigid.usd",
+      "weight_g": 340.0,
+      "changes": [
+        {
+          "prim_path": "/World/schick_hydro_shave_foam_spray",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.34
+        }
+      ],
+      "object_name": "schick_hydro_shave_foam_spray"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/self_adhesive_elastic_bandage/edited/self_adhesive_elastic_bandage.usd",
+      "weight_g": 60.0,
+      "object_name": "self_adhesive_elastic_bandage"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/self_adhesive_elastic_bandage/edited/self_adhesive_elastic_bandage_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/self_adhesive_elastic_bandage",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "self_adhesive_elastic_bandage"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/silicone_rolling_pin/edited/silicone_rolling_pin.usd",
+      "weight_g": 118.0,
+      "object_name": "silicone_rolling_pin"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/silicone_rolling_pin/edited/silicone_rolling_pin_rigid.usd",
+      "weight_g": 118.0,
+      "changes": [
+        {
+          "prim_path": "/World/silicone_rolling_pin",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.118
+        }
+      ],
+      "object_name": "silicone_rolling_pin"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/silicone_sealant_removal_tool/edited/silicone_sealant_removal_tool.usd",
+      "weight_g": 49.0,
+      "object_name": "silicone_sealant_removal_tool"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/silicone_sealant_removal_tool/edited/silicone_sealant_removal_tool_rigid.usd",
+      "weight_g": 49.0,
+      "changes": [
+        {
+          "prim_path": "/World/silicone_sealant_removal_tool",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.049
+        }
+      ],
+      "object_name": "silicone_sealant_removal_tool"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sink_drain_strainer/edited/sink_drain_strainer.usd",
+      "weight_g": 25.0,
+      "object_name": "sink_drain_strainer"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sink_drain_strainer/edited/sink_drain_strainer_rigid.usd",
+      "weight_g": 25.0,
+      "changes": [
+        {
+          "prim_path": "/World/sink_drain_strainer",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.025
+        }
+      ],
+      "object_name": "sink_drain_strainer"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/slide_pill_case/edited/slide_pill_case.usd",
+      "weight_g": 44.0,
+      "object_name": "slide_pill_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/slide_pill_case/edited/slide_pill_case_rigid.usd",
+      "weight_g": 44.0,
+      "changes": [
+        {
+          "prim_path": "/World/slide_pill_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.044
+        }
+      ],
+      "object_name": "slide_pill_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/small_squeeze_bottle/edited/small_squeeze_bottle.usd",
+      "weight_g": 36.0,
+      "object_name": "small_squeeze_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/small_squeeze_bottle/edited/small_squeeze_bottle_rigid.usd",
+      "weight_g": 36.0,
+      "changes": [
+        {
+          "prim_path": "/World/small_squeeze_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.036
+        }
+      ],
+      "object_name": "small_squeeze_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/small_watering_can/edited/small_watering_can.usd",
+      "weight_g": 75.0,
+      "object_name": "small_watering_can"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/small_watering_can/edited/small_watering_can_rigid.usd",
+      "weight_g": 75.0,
+      "changes": [
+        {
+          "prim_path": "/World/small_watering_can",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.075
+        }
+      ],
+      "object_name": "small_watering_can"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/smart_watch_box/edited/smart_watch_box.usd",
+      "weight_g": 80.0,
+      "object_name": "smart_watch_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/smart_watch_box/edited/smart_watch_box_rigid.usd",
+      "weight_g": 80.0,
+      "changes": [
+        {
+          "prim_path": "/World/smart_watch_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.08
+        }
+      ],
+      "object_name": "smart_watch_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/soap_case/edited/soap_case.usd",
+      "weight_g": 40.0,
+      "object_name": "soap_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/soap_case/edited/soap_case_rigid.usd",
+      "weight_g": 40.0,
+      "changes": [
+        {
+          "prim_path": "/World/soap_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.04
+        }
+      ],
+      "object_name": "soap_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/soda_bottle_toy/edited/soda_bottle_toy.usd",
+      "weight_g": 13.0,
+      "object_name": "soda_bottle_toy"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/soda_bottle_toy/edited/soda_bottle_toy_rigid.usd",
+      "weight_g": 13.0,
+      "changes": [
+        {
+          "prim_path": "/World/soda_bottle_toy",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.013
+        }
+      ],
+      "object_name": "soda_bottle_toy"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/soft_peanut_massage_ball/edited/soft_peanut_massage_ball.usd",
+      "weight_g": 89.0,
+      "object_name": "soft_peanut_massage_ball"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/soft_peanut_massage_ball/edited/soft_peanut_massage_ball_rigid.usd",
+      "weight_g": 89.0,
+      "changes": [
+        {
+          "prim_path": "/World/soft_peanut_massage_ball",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.089
+        }
+      ],
+      "object_name": "soft_peanut_massage_ball"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/spam_classic_20G_can/edited/spam_classic_20G_can.usd",
+      "weight_g": 226.0,
+      "object_name": "spam_classic_20G_can"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/spam_classic_20G_can/edited/spam_classic_20G_can_rigid.usd",
+      "weight_g": 226.0,
+      "changes": [
+        {
+          "prim_path": "/World/spam_classic_20G_can",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.226
+        }
+      ],
+      "object_name": "spam_classic_20G_can"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/spirit_level_450/edited/spirit_level_450.usd",
+      "weight_g": 120.0,
+      "object_name": "spirit_level_450"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/spirit_level_450/edited/spirit_level_450_rigid.usd",
+      "weight_g": 120.0,
+      "changes": [
+        {
+          "prim_path": "/World/spirit_level_450",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.12
+        }
+      ],
+      "object_name": "spirit_level_450"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sponge_dart_blaster/edited/sponge_dart_blaster.usd",
+      "weight_g": 82.0,
+      "object_name": "sponge_dart_blaster"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sponge_dart_blaster/edited/sponge_dart_blaster_rigid.usd",
+      "weight_g": 82.0,
+      "changes": [
+        {
+          "prim_path": "/World/sponge_dart_blaster",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.082
+        }
+      ],
+      "object_name": "sponge_dart_blaster"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sports_tape/edited/sports_tape.usd",
+      "weight_g": 69.0,
+      "object_name": "sports_tape"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/sports_tape/edited/sports_tape_rigid.usd",
+      "weight_g": 69.0,
+      "changes": [
+        {
+          "prim_path": "/World/sports_tape",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.069
+        }
+      ],
+      "object_name": "sports_tape"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/spray_starch/edited/spray_starch.usd",
+      "weight_g": 566.0,
+      "object_name": "spray_starch"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/spray_starch/edited/spray_starch_rigid.usd",
+      "weight_g": 566.0,
+      "changes": [
+        {
+          "prim_path": "/World/spray_starch",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.566
+        }
+      ],
+      "object_name": "spray_starch"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/squeezable_blueberry_jam_tube/edited/squeezable_blueberry_jam_tube.usd",
+      "weight_g": 114.0,
+      "object_name": "squeezable_blueberry_jam_tube"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/squeezable_blueberry_jam_tube/edited/squeezable_blueberry_jam_tube_rigid.usd",
+      "weight_g": 114.0,
+      "changes": [
+        {
+          "prim_path": "/World/squeezable_blueberry_jam_tube",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.114
+        }
+      ],
+      "object_name": "squeezable_blueberry_jam_tube"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/squeezable_strawberry_jam_tube/edited/squeezable_strawberry_jam_tube.usd",
+      "weight_g": 114.0,
+      "object_name": "squeezable_strawberry_jam_tube"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/squeezable_strawberry_jam_tube/edited/squeezable_strawberry_jam_tube_rigid.usd",
+      "weight_g": 114.0,
+      "changes": [
+        {
+          "prim_path": "/World/squeezable_strawberry_jam_tube",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.114
+        }
+      ],
+      "object_name": "squeezable_strawberry_jam_tube"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/stain_remover_gel/edited/stain_remover_gel.usd",
+      "weight_g": 268.0,
+      "object_name": "stain_remover_gel"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/stain_remover_gel/edited/stain_remover_gel_rigid.usd",
+      "weight_g": 268.0,
+      "changes": [
+        {
+          "prim_path": "/World/stain_remover_gel",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.268
+        }
+      ],
+      "object_name": "stain_remover_gel"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/stainless_steel_water_bottle/edited/stainless_steel_water_bottle.usd",
+      "weight_g": 200.0,
+      "object_name": "stainless_steel_water_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/stainless_steel_water_bottle/edited/stainless_steel_water_bottle_rigid.usd",
+      "weight_g": 200.0,
+      "changes": [
+        {
+          "prim_path": "/World/stainless_steel_water_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.2
+        }
+      ],
+      "object_name": "stainless_steel_water_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/strong_suction_hook/edited/strong_suction_hook.usd",
+      "weight_g": 45.0,
+      "object_name": "strong_suction_hook"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/strong_suction_hook/edited/strong_suction_hook_rigid.usd",
+      "weight_g": 45.0,
+      "changes": [
+        {
+          "prim_path": "/World/strong_suction_hook",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.045
+        }
+      ],
+      "object_name": "strong_suction_hook"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/suction_cup_toothbrush_holder/edited/suction_cup_toothbrush_holder.usd",
+      "weight_g": 40.0,
+      "object_name": "suction_cup_toothbrush_holder"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/suction_cup_toothbrush_holder/edited/suction_cup_toothbrush_holder_rigid.usd",
+      "weight_g": 40.0,
+      "changes": [
+        {
+          "prim_path": "/World/suction_cup_toothbrush_holder",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.04
+        }
+      ],
+      "object_name": "suction_cup_toothbrush_holder"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/super_hard_hair_wax_container/edited/super_hard_hair_wax_container.usd",
+      "weight_g": 50.0,
+      "object_name": "super_hard_hair_wax_container"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/super_hard_hair_wax_container/edited/super_hard_hair_wax_container_rigid.usd",
+      "weight_g": 50.0,
+      "changes": [
+        {
+          "prim_path": "/World/super_hard_hair_wax_container",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.05
+        }
+      ],
+      "object_name": "super_hard_hair_wax_container"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/t_shaped_3_outlet_adapter/edited/t_shaped_3_outlet_adapter.usd",
+      "weight_g": 86.0,
+      "object_name": "t_shaped_3_outlet_adapter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/t_shaped_3_outlet_adapter/edited/t_shaped_3_outlet_adapter_rigid.usd",
+      "weight_g": 86.0,
+      "changes": [
+        {
+          "prim_path": "/World/t_shaped_3_outlet_adapter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.086
+        }
+      ],
+      "object_name": "t_shaped_3_outlet_adapter"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tap_hose_adapter/edited/tap_hose_adapter.usd",
+      "weight_g": 45.0,
+      "object_name": "tap_hose_adapter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tap_hose_adapter/edited/tap_hose_adapter_rigid.usd",
+      "weight_g": 45.0,
+      "changes": [
+        {
+          "prim_path": "/World/tap_hose_adapter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.045
+        }
+      ],
+      "object_name": "tap_hose_adapter"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tape_measure_7_5m/edited/tape_measure_7_5m.usd",
+      "weight_g": 332.0,
+      "object_name": "tape_measure_7_5m"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tape_measure_7_5m/edited/tape_measure_7_5m_rigid.usd",
+      "weight_g": 332.0,
+      "changes": [
+        {
+          "prim_path": "/World/tape_measure_7_5m",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.332
+        }
+      ],
+      "object_name": "tape_measure_7_5m"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/the_juicy_lasting_tint_box/edited/the_juicy_lasting_tint_box.usd",
+      "weight_g": 39.0,
+      "object_name": "the_juicy_lasting_tint_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/the_juicy_lasting_tint_box/edited/the_juicy_lasting_tint_box_rigid.usd",
+      "weight_g": 39.0,
+      "changes": [
+        {
+          "prim_path": "/World/the_juicy_lasting_tint_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.039
+        }
+      ],
+      "object_name": "the_juicy_lasting_tint_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/toy_microphone/edited/toy_microphone.usd",
+      "weight_g": 53.0,
+      "object_name": "toy_microphone"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/toy_microphone/edited/toy_microphone_rigid.usd",
+      "weight_g": 53.0,
+      "changes": [
+        {
+          "prim_path": "/World/toy_microphone",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.053
+        }
+      ],
+      "object_name": "toy_microphone"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/toy_story_pp_storage_container/edited/toy_story_pp_storage_container.usd",
+      "weight_g": 34.0,
+      "object_name": "toy_story_pp_storage_container"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/toy_story_pp_storage_container/edited/toy_story_pp_storage_container_rigid.usd",
+      "weight_g": 34.0,
+      "changes": [
+        {
+          "prim_path": "/World/toy_story_pp_storage_container",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.034
+        }
+      ],
+      "object_name": "toy_story_pp_storage_container"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tpr_handle_cheese_knife/edited/tpr_handle_cheese_knife.usd",
+      "weight_g": 51.0,
+      "object_name": "tpr_handle_cheese_knife"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tpr_handle_cheese_knife/edited/tpr_handle_cheese_knife_rigid.usd",
+      "weight_g": 51.0,
+      "changes": [
+        {
+          "prim_path": "/World/tpr_handle_cheese_knife",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.051
+        }
+      ],
+      "object_name": "tpr_handle_cheese_knife"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tpr_handle_peeler/edited/tpr_handle_peeler.usd",
+      "weight_g": 92.0,
+      "object_name": "tpr_handle_peeler"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/tpr_handle_peeler/edited/tpr_handle_peeler_rigid.usd",
+      "weight_g": 92.0,
+      "changes": [
+        {
+          "prim_path": "/World/tpr_handle_peeler",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.092
+        }
+      ],
+      "object_name": "tpr_handle_peeler"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/triple_port_car_charger/edited/triple_port_car_charger.usd",
+      "weight_g": 21.0,
+      "object_name": "triple_port_car_charger"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/triple_port_car_charger/edited/triple_port_car_charger_rigid.usd",
+      "weight_g": 21.0,
+      "changes": [
+        {
+          "prim_path": "/World/triple_port_car_charger",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.021
+        }
+      ],
+      "object_name": "triple_port_car_charger"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/usb_c_multiport_hub_box/edited/usb_c_multiport_hub_box.usd",
+      "weight_g": 60.0,
+      "object_name": "usb_c_multiport_hub_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/usb_c_multiport_hub_box/edited/usb_c_multiport_hub_box_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/usb_c_multiport_hub_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "usb_c_multiport_hub_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/utensil_case/edited/utensil_case.usd",
+      "weight_g": 55.0,
+      "object_name": "utensil_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/utensil_case/edited/utensil_case_rigid.usd",
+      "weight_g": 55.0,
+      "changes": [
+        {
+          "prim_path": "/World/utensil_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.055
+        }
+      ],
+      "object_name": "utensil_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/vaseline_intensive_care_nail_lotion_bottle/edited/vaseline_intensive_care_nail_lotion_bottle.usd",
+      "weight_g": 144.0,
+      "object_name": "vaseline_intensive_care_nail_lotion_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/vaseline_intensive_care_nail_lotion_bottle/edited/vaseline_intensive_care_nail_lotion_bottle_rigid.usd",
+      "weight_g": 144.0,
+      "changes": [
+        {
+          "prim_path": "/World/vaseline_intensive_care_nail_lotion_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.144
+        }
+      ],
+      "object_name": "vaseline_intensive_care_nail_lotion_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/voice_changer_megaphone_toy/edited/voice_changer_megaphone_toy.usd",
+      "weight_g": 79.0,
+      "object_name": "voice_changer_megaphone_toy"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/voice_changer_megaphone_toy/edited/voice_changer_megaphone_toy_rigid.usd",
+      "weight_g": 79.0,
+      "changes": [
+        {
+          "prim_path": "/World/voice_changer_megaphone_toy",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.079
+        }
+      ],
+      "object_name": "voice_changer_megaphone_toy"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wakemake_soft_sheer_multi_palette_box/edited/wakemake_soft_sheer_multi_palette_box.usd",
+      "weight_g": 77.0,
+      "object_name": "wakemake_soft_sheer_multi_palette_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wakemake_soft_sheer_multi_palette_box/edited/wakemake_soft_sheer_multi_palette_box_rigid.usd",
+      "weight_g": 77.0,
+      "changes": [
+        {
+          "prim_path": "/World/wakemake_soft_sheer_multi_palette_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.077
+        }
+      ],
+      "object_name": "wakemake_soft_sheer_multi_palette_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/washing_machine_cleaner_bottle/edited/washing_machine_cleaner_bottle.usd",
+      "weight_g": 552.0,
+      "object_name": "washing_machine_cleaner_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/washing_machine_cleaner_bottle/edited/washing_machine_cleaner_bottle_rigid.usd",
+      "weight_g": 552.0,
+      "changes": [
+        {
+          "prim_path": "/World/washing_machine_cleaner_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.552
+        }
+      ],
+      "object_name": "washing_machine_cleaner_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/white_measuring_spoon/edited/white_measuring_spoon.usd",
+      "weight_g": 13.0,
+      "object_name": "white_measuring_spoon"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/white_measuring_spoon/edited/white_measuring_spoon_rigid.usd",
+      "weight_g": 13.0,
+      "changes": [
+        {
+          "prim_path": "/World/white_measuring_spoon",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.013
+        }
+      ],
+      "object_name": "white_measuring_spoon"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_figure/edited/winnie_the_pooh_figure.usd",
+      "weight_g": 130.0,
+      "object_name": "winnie_the_pooh_figure"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_figure/edited/winnie_the_pooh_figure_rigid.usd",
+      "weight_g": 130.0,
+      "changes": [
+        {
+          "prim_path": "/World/winnie_the_pooh_figure",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.13
+        }
+      ],
+      "object_name": "winnie_the_pooh_figure"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_one_touch_tumbler/edited/winnie_the_pooh_one_touch_tumbler.usd",
+      "weight_g": 210.0,
+      "object_name": "winnie_the_pooh_one_touch_tumbler"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_one_touch_tumbler/edited/winnie_the_pooh_one_touch_tumbler_rigid.usd",
+      "weight_g": 210.0,
+      "changes": [
+        {
+          "prim_path": "/World/winnie_the_pooh_one_touch_tumbler",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.21
+        }
+      ],
+      "object_name": "winnie_the_pooh_one_touch_tumbler"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_silicone_airpods_case/edited/winnie_the_pooh_silicone_airpods_case.usd",
+      "weight_g": 39.0,
+      "object_name": "winnie_the_pooh_silicone_airpods_case"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_silicone_airpods_case/edited/winnie_the_pooh_silicone_airpods_case_rigid.usd",
+      "weight_g": 39.0,
+      "changes": [
+        {
+          "prim_path": "/World/winnie_the_pooh_silicone_airpods_case",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.039
+        }
+      ],
+      "object_name": "winnie_the_pooh_silicone_airpods_case"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_silicone_airpods_case_box/edited/winnie_the_pooh_silicone_airpods_case_box.usd",
+      "weight_g": 60.0,
+      "object_name": "winnie_the_pooh_silicone_airpods_case_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/winnie_the_pooh_silicone_airpods_case_box/edited/winnie_the_pooh_silicone_airpods_case_box_rigid.usd",
+      "weight_g": 60.0,
+      "changes": [
+        {
+          "prim_path": "/World/winnie_the_pooh_silicone_airpods_case_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.06
+        }
+      ],
+      "object_name": "winnie_the_pooh_silicone_airpods_case_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/womens_shoe_organizer/edited/womens_shoe_organizer.usd",
+      "weight_g": 88.0,
+      "object_name": "womens_shoe_organizer"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/womens_shoe_organizer/edited/womens_shoe_organizer_rigid.usd",
+      "weight_g": 88.0,
+      "changes": [
+        {
+          "prim_path": "/World/womens_shoe_organizer",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.088
+        }
+      ],
+      "object_name": "womens_shoe_organizer"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wrist_support_brace_box/edited/wrist_support_brace_box.usd",
+      "weight_g": 34.0,
+      "object_name": "wrist_support_brace_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wrist_support_brace_box/edited/wrist_support_brace_box_rigid.usd",
+      "weight_g": 34.0,
+      "changes": [
+        {
+          "prim_path": "/World/wrist_support_brace_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.034
+        }
+      ],
+      "object_name": "wrist_support_brace_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/yellow_water_based_paint_80ml_bottle/edited/yellow_water_based_paint_80ml_bottle.usd",
+      "weight_g": 113.0,
+      "object_name": "yellow_water_based_paint_80ml_bottle"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/yellow_water_based_paint_80ml_bottle/edited/yellow_water_based_paint_80ml_bottle_rigid.usd",
+      "weight_g": 113.0,
+      "changes": [
+        {
+          "prim_path": "/World/yellow_water_based_paint_80ml_bottle",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.113
+        }
+      ],
+      "object_name": "yellow_water_based_paint_80ml_bottle"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/yuja_vita_ampoule_box/edited/yuja_vita_ampoule_box.usd",
+      "weight_g": 106.0,
+      "object_name": "yuja_vita_ampoule_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/yuja_vita_ampoule_box/edited/yuja_vita_ampoule_box_rigid.usd",
+      "weight_g": 106.0,
+      "changes": [
+        {
+          "prim_path": "/World/yuja_vita_ampoule_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.106
+        }
+      ],
+      "object_name": "yuja_vita_ampoule_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_gravel_scoop/edited/aquarium_gravel_scoop.usd",
+      "weight_g": 58.0,
+      "object_name": "aquarium_gravel_scoop"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/aquarium_gravel_scoop/edited/aquarium_gravel_scoop_rigid.usd",
+      "weight_g": 58.0,
+      "changes": [
+        {
+          "prim_path": "/World/aquarium_gravel_scoop",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.058
+        }
+      ],
+      "object_name": "aquarium_gravel_scoop"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/chocolate_cereal_snack_cup/edited/chocolate_cereal_snack_cup.usd",
+      "weight_g": 100.0,
+      "object_name": "chocolate_cereal_snack_cup"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/chocolate_cereal_snack_cup/edited/chocolate_cereal_snack_cup_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/chocolate_cereal_snack_cup",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "chocolate_cereal_snack_cup"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dog_boots/edited/dog_boots.usd",
+      "weight_g": 40.0,
+      "object_name": "dog_boots"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/dog_boots/edited/dog_boots_rigid.usd",
+      "weight_g": 40.0,
+      "changes": [
+        {
+          "prim_path": "/World/dog_boots",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.04
+        }
+      ],
+      "object_name": "dog_boots"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/double_layer_lunch_box/edited/double_layer_lunch_box.usd",
+      "weight_g": 240.0,
+      "object_name": "double_layer_lunch_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/double_layer_lunch_box/edited/double_layer_lunch_box_rigid.usd",
+      "weight_g": 240.0,
+      "changes": [
+        {
+          "prim_path": "/World/double_layer_lunch_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.24
+        }
+      ],
+      "object_name": "double_layer_lunch_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/handled_neck_massager/edited/handled_neck_massager.usd",
+      "weight_g": 261.0,
+      "object_name": "handled_neck_massager"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/handled_neck_massager/edited/handled_neck_massager_rigid.usd",
+      "weight_g": 261.0,
+      "changes": [
+        {
+          "prim_path": "/World/handled_neck_massager",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.261
+        }
+      ],
+      "object_name": "handled_neck_massager"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/meta_quest_3_controller/edited/meta_quest_3_controller.usd",
+      "weight_g": 120.0,
+      "object_name": "meta_quest_3_controller"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/meta_quest_3_controller/edited/meta_quest_3_controller_rigid.usd",
+      "weight_g": 120.0,
+      "changes": [
+        {
+          "prim_path": "/World/meta_quest_3_controller",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.12
+        }
+      ],
+      "object_name": "meta_quest_3_controller"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/meta_quest_3_vr/edited/meta_quest_3_vr.usd",
+      "weight_g": 400.0,
+      "object_name": "meta_quest_3_vr"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/meta_quest_3_vr/edited/meta_quest_3_vr_rigid.usd",
+      "weight_g": 400.0,
+      "changes": [
+        {
+          "prim_path": "/World/meta_quest_3_vr",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.4
+        }
+      ],
+      "object_name": "meta_quest_3_vr"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pizza_wheel/edited/pizza_wheel.usd",
+      "weight_g": 55.0,
+      "object_name": "pizza_wheel"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/pizza_wheel/edited/pizza_wheel_rigid.usd",
+      "weight_g": 55.0,
+      "changes": [
+        {
+          "prim_path": "/World/pizza_wheel",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.055
+        }
+      ],
+      "object_name": "pizza_wheel"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/plastic_square_funnel/edited/plastic_square_funnel.usd",
+      "weight_g": 30.0,
+      "object_name": "plastic_square_funnel"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/plastic_square_funnel/edited/plastic_square_funnel_rigid.usd",
+      "weight_g": 30.0,
+      "changes": [
+        {
+          "prim_path": "/World/plastic_square_funnel",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.03
+        }
+      ],
+      "object_name": "plastic_square_funnel"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/printed_wax_paper_box/edited/printed_wax_paper_box.usd",
+      "weight_g": 72.0,
+      "object_name": "printed_wax_paper_box"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/printed_wax_paper_box/edited/printed_wax_paper_box_rigid.usd",
+      "weight_g": 72.0,
+      "changes": [
+        {
+          "prim_path": "/World/printed_wax_paper_box",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.072
+        }
+      ],
+      "object_name": "printed_wax_paper_box"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/two_stage_knife_sharpener/edited/two_stage_knife_sharpener.usd",
+      "weight_g": 100.0,
+      "object_name": "two_stage_knife_sharpener"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/two_stage_knife_sharpener/edited/two_stage_knife_sharpener_rigid.usd",
+      "weight_g": 100.0,
+      "changes": [
+        {
+          "prim_path": "/World/two_stage_knife_sharpener",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.1
+        }
+      ],
+      "object_name": "two_stage_knife_sharpener"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wire_tracker_receiver/edited/wire_tracker_receiver.usd",
+      "weight_g": 107.0,
+      "object_name": "wire_tracker_receiver"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wire_tracker_receiver/edited/wire_tracker_receiver_rigid.usd",
+      "weight_g": 107.0,
+      "changes": [
+        {
+          "prim_path": "/World/wire_tracker_receiver",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.107
+        }
+      ],
+      "object_name": "wire_tracker_receiver"
+    },
+    {
+      "status": "no_rigid_body",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wire_tracker_transmitter/edited/wire_tracker_transmitter.usd",
+      "weight_g": 89.0,
+      "object_name": "wire_tracker_transmitter"
+    },
+    {
+      "status": "updated",
+      "usd_path": "/nas/ochansol/3d_model/peel3_scan_data_2026/wire_tracker_transmitter/edited/wire_tracker_transmitter_rigid.usd",
+      "weight_g": 89.0,
+      "changes": [
+        {
+          "prim_path": "/World/wire_tracker_transmitter",
+          "old_mass_kg": null,
+          "new_mass_kg": 0.089
+        }
+      ],
+      "object_name": "wire_tracker_transmitter"
+    }
+  ],
+  "failures": [],
+  "csv_errors": [],
+  "missing_object_dirs": []
+}

@@ -985,7 +985,7 @@ class DataMonitorTUI:
 
 def main():
     parser = argparse.ArgumentParser(description="Data Structure Monitor - TUI")
-    parser.add_argument("--path", "-p", default="/nas/Dataset/Dataset_2026/dataset_v2",
+    parser.add_argument("--path", "-p", default="/nas/Dataset/Dataset_2026/dataset_v2_test",
                        help="Initial monitoring path")
     parser.add_argument("--auto-start", "-a", action="store_true",
                        help="Start monitoring automatically")

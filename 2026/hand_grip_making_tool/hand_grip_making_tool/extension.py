@@ -16,7 +16,6 @@ import random
 import shutil
 import tempfile
 import traceback
-import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Tuple
@@ -45,8 +44,8 @@ GRASP_BBOX_CURVE_PATH = f"{DEBUG_BBOX_ROOT_PATH}/GraspBBoxes"
 END_GRASP_CENTER_PATH = f"{DEBUG_BBOX_ROOT_PATH}/EndGraspCenter"
 PHYSICS_SCENE_PATH = "/World/physicsScene"
 
-DEFAULT_USD_PATH = "/nas/ochansol/isaac/USD/robots/gripper/Hand/Inspire-F1/Inspire-F1.usd"
-DEFAULT_DB_PATH = "/nas/ochansol/gripper_info/gripper_info_hand.json"
+DEFAULT_USD_PATH = "/nas/ochansol/isaac/USD/robots/gripper/Hand/Inspire-F1_right/Inspire-F1_right.usd"
+DEFAULT_DB_PATH = "/nas/ochansol/gripper_info/gripper_info_hand_2026.json"
 DEFAULT_OBJECT_FOLDER = "/nas/ochansol/3d_model/peel3_scan_data_2026"
 DEFAULT_GRIPPER_KEY = "Inspire-F1"
 GRASP_LOWEST_Z_BAND = 0.005
@@ -141,6 +140,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         self._joint_models: Dict[str, ui.AbstractValueModel] = {}
         self._base_models: Dict[str, ui.AbstractValueModel] = {}
         self._start_pose: Optional[PoseSnapshot] = None
+        self._via_pose: Optional[PoseSnapshot] = None
         self._end_pose: Optional[PoseSnapshot] = None
         self._saved_presets: List[dict] = []
         self._saved_preset_names: List[str] = []
@@ -148,7 +148,11 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         self._saved_preset_combo_model = None
         self._matched_db_key: Optional[str] = None
         self._tip_links: Dict[str, Tuple[str, ...]] = {}
+        self._tip_sets: Dict[str, int] = {}
+        self._tip_set_models: Dict[str, ui.AbstractValueModel] = {}
         self._disabled_dangling_joints: List[str] = []
+        self._skipped_unbounded_joints: List[str] = []
+        self._articulation_root_path: Optional[str] = None
         self._articulation = None
         self._preview_task: Optional[asyncio.Task] = None
         self._bbox_task: Optional[asyncio.Task] = None
@@ -185,7 +189,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             with ui.ScrollingFrame():
                 with ui.VStack(spacing=8, height=0):
                     ui.Label(
-                        "USD를 불러온 뒤 base TF와 6개 drive joint를 조절하고 Start/End를 저장하세요.",
+                        "USD를 불러오면 제어 가능한 drive joint를 자동 탐색합니다. base TF와 joint를 조절하고 Start/End를 저장하세요.",
                         word_wrap=True,
                         height=42,
                     )
@@ -193,7 +197,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                     with ui.CollapsableFrame("1. Gripper load", collapsed=False):
                         with ui.VStack(spacing=5, height=0):
                             self._usd_model = self._string_row("USD", DEFAULT_USD_PATH)
-                            self._urdf_model = self._string_row("URDF", str(Path(DEFAULT_USD_PATH).with_suffix(".urdf")))
                             self._gripper_key_model = self._string_row("DB key", DEFAULT_GRIPPER_KEY)
                             with ui.HStack(height=28, spacing=5):
                                 ui.Button("Load / Reload", clicked_fn=lambda: self._guard(self._load_gripper))
@@ -227,12 +230,16 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                             self._damping_model = self._float_row("Damping", 10.0, 0.0, 1_000_000.0)
                             self._max_force_model = self._float_row("Max force", 15.0, 0.0, 1_000_000.0)
 
-                    with ui.CollapsableFrame("4. Start / End and preview", collapsed=False):
+                    with ui.CollapsableFrame("4. Start / Via / End and preview", collapsed=False):
                         with ui.VStack(spacing=5, height=0):
                             with ui.HStack(height=30, spacing=5):
                                 ui.Button("Save START", clicked_fn=lambda: self._guard(lambda: self._capture_pose("start")))
                                 ui.Button("Restore START", clicked_fn=lambda: self._guard(lambda: self._restore_pose("start")))
                             self._start_label = ui.Label("START: not captured", word_wrap=True, height=34)
+                            with ui.HStack(height=30, spacing=5):
+                                ui.Button("Save VIA base", clicked_fn=lambda: self._guard(lambda: self._capture_pose("via")))
+                                ui.Button("Restore VIA base", clicked_fn=lambda: self._guard(lambda: self._restore_pose("via")))
+                            self._via_label = ui.Label("VIA: not captured", word_wrap=True, height=34)
                             with ui.HStack(height=30, spacing=5):
                                 ui.Button("Save END", clicked_fn=lambda: self._guard(lambda: self._capture_pose("end")))
                                 ui.Button("Restore END", clicked_fn=lambda: self._guard(lambda: self._restore_pose("end")))
@@ -249,16 +256,19 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                                     clicked_fn=lambda: self._guard(lambda: self._refresh_db_presets(auto_load=False)),
                                 )
                             self._duration_model = self._float_row("Duration (sec)", 2.0, 0.1, 60.0)
+                            self._via_ratio_model = self._float_row(
+                                "VIA timing ratio (7/10 = 0.7)", 0.5, 0.01, 0.99
+                            )
                             with ui.HStack(height=30, spacing=5):
-                                ui.Button("Preview START -> END", clicked_fn=self._start_preview)
+                                ui.Button("Preview START -> VIA -> END", clicked_fn=self._start_preview)
                                 ui.Button("Stop", clicked_fn=lambda: self._cancel_preview(stop_timeline=True))
 
                     with ui.CollapsableFrame("5. Fingertip grasp BBox", collapsed=False):
                         with ui.VStack(spacing=5, height=0):
                             ui.Label(
-                                "Viewport에서 fingertip의 mesh 또는 link를 선택한 뒤 등록하세요. START/END에서 값이 변한 joint의 finger만 표시합니다.",
+                                "Fingertip을 등록한 뒤 Set 번호를 지정하세요. 같은 Set은 하나만 통과해도 되고, 서로 다른 Set은 모두 통과해야 합니다. START/END에서 값이 변한 joint의 finger만 저장합니다.",
                                 word_wrap=True,
-                                height=40,
+                                height=54,
                             )
                             with ui.HStack(height=30, spacing=5):
                                 ui.Button(
@@ -359,6 +369,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             self._saved_preset_combo_model = combo.model
 
     def _build_tip_link_rows(self) -> None:
+        self._tip_set_models = {}
         with ui.VStack(spacing=4, height=0):
             if not self._tip_links:
                 ui.Label("Fingertips: none", height=26)
@@ -366,8 +377,31 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             for relative_path, joints in self._tip_links.items():
                 mesh_name = self._default_tip_name(relative_path)
                 joint_text = ", ".join(joints)
+                set_model = ui.SimpleIntModel(self._tip_sets.get(relative_path, 1))
+                self._tip_set_models[relative_path] = set_model
                 with ui.HStack(height=25, spacing=5):
-                    ui.Label(f"{mesh_name} <- {joint_text}", tooltip=relative_path)
+                    ui.Label(
+                        f"{mesh_name} <- {joint_text}",
+                        tooltip=relative_path,
+                        width=380,
+                    )
+                    ui.Label("Set", width=25)
+                    ui.IntDrag(set_model, min=1, max=99, step=1, width=60)
+                    set_model.add_value_changed_fn(
+                        lambda changed_model, path=relative_path: self._on_tip_set_changed(
+                            path, changed_model
+                        )
+                    )
+
+    def _on_tip_set_changed(
+        self, relative_path: str, model: ui.AbstractValueModel
+    ) -> None:
+        if relative_path not in self._tip_links:
+            return
+        set_id = max(1, int(model.get_value_as_int()))
+        self._tip_sets[relative_path] = set_id
+        if set_id != model.get_value_as_int():
+            model.set_value(set_id)
 
     def _set_status(self, message: str, error: bool = False) -> None:
         if getattr(self, "_status_label", None):
@@ -399,21 +433,24 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         usd_path = self._usd_model.get_value_as_string().strip()
         if not usd_path or not os.path.isfile(usd_path):
             raise FileNotFoundError(f"USD file not found: {usd_path}")
-        guessed_urdf = str(Path(usd_path).with_suffix(".urdf"))
-        urdf_path = self._urdf_model.get_value_as_string().strip()
-        if not urdf_path or not os.path.isfile(urdf_path):
-            urdf_path = guessed_urdf
-            self._urdf_model.set_value(urdf_path)
 
         self._cancel_preview(stop_timeline=True)
         self._cancel_bbox_task(stop_timeline=True)
         self._cancel_save_task()
         self._articulation = None
+        self._articulation_root_path = None
+        # Clear both dictionaries together before replacing the referenced
+        # asset. This also makes Open/Close safe if a later USD operation fails.
+        self._joint_infos = {}
+        self._joint_models = {}
+        self._joint_frame.rebuild()
         stage = self._stage()
         for debug_path in (DEBUG_BBOX_ROOT_PATH, LEGACY_DEBUG_BBOX_ROOT_PATH):
             if stage.GetPrimAtPath(debug_path).IsValid():
                 stage.RemovePrim(debug_path)
         self._tip_links = {}
+        self._tip_sets = {}
+        self._tip_set_models = {}
         self._refresh_tip_links_label()
         UsdGeom.Xform.Define(stage, "/World")
         UsdGeom.Xform.Define(stage, TOOL_ROOT_PATH)
@@ -426,35 +463,33 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         self._set_local_transform(HAND_PATH, (0.0, 0.0, 0.0), (1.0, 0.0, 0.0, 0.0))
 
         self._disabled_dangling_joints = self._disable_dangling_joints(asset)
-        self._joint_infos = self._discover_driven_joints(asset)
-        urdf_mimic_names = self._read_urdf_mimic_joint_names(urdf_path) if os.path.isfile(urdf_path) else set()
-        self._joint_infos = {
-            name: info for name, info in self._joint_infos.items() if name not in urdf_mimic_names
-        }
-        if not self._joint_infos:
+        self._articulation_root_path = self._prepare_articulation_root(asset)
+        joint_infos = self._discover_driven_joints(asset)
+        if not joint_infos:
             raise RuntimeError("No revolute/prismatic joint with PhysicsDriveAPI was found in the USD.")
-        self._joint_models = {
-            name: ui.SimpleFloatModel(info.lower_rad) for name, info in self._joint_infos.items()
+        joint_models = {
+            name: ui.SimpleFloatModel(info.lower_rad) for name, info in joint_infos.items()
         }
+        self._joint_infos = joint_infos
+        self._joint_models = joint_models
         self._joint_frame.rebuild()
         self._refresh_base_fields()
         if self._has_app_window():
             self._select_base()
         self._ensure_physics_scene()
         self._start_pose = None
+        self._via_pose = None
         self._end_pose = None
         self._start_label.text = "START: not captured"
+        self._via_label.text = "VIA: not captured"
         self._end_label.text = "END: not captured"
 
-        urdf_summary = self._read_urdf_summary(urdf_path) if os.path.isfile(urdf_path) else None
         message = f"Loaded {Path(usd_path).name}; {len(self._joint_infos)} driven joints"
-        if urdf_summary:
-            overlap = sorted(set(self._joint_infos) & set(urdf_summary))
-            message += f"; URDF active joints={len(urdf_summary)}, matching names={len(overlap)}"
-            if not overlap:
-                message += " (USD uses coupled/renamed drive joints, so USD limits are authoritative)"
         if self._disabled_dangling_joints:
             message += f"; disabled dangling joints={len(self._disabled_dangling_joints)}"
+        if self._skipped_unbounded_joints:
+            message += f"; skipped unbounded joints={len(self._skipped_unbounded_joints)}"
+        message += f"; articulation root={self._articulation_root_path}"
         loaded_preset = self._refresh_db_presets(auto_load=True, report=False)
         if self._matched_db_key:
             message += f"; DB matched={self._matched_db_key}"
@@ -490,9 +525,64 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         """Return false for ``--no-window`` and headless SimulationApp runs."""
         return carb.settings.get_settings().get_as_bool("/app/window/enabled")
 
+    def _prepare_articulation_root(self, root: Usd.Prim) -> str:
+        """Find the instance articulation root and upgrade legacy fixed-base layouts."""
+        articulation_roots = [
+            prim
+            for prim in Usd.PrimRange(root)
+            if prim.IsActive() and prim.HasAPI(UsdPhysics.ArticulationRootAPI)
+        ]
+        if len(articulation_roots) != 1:
+            paths = [str(prim.GetPath()) for prim in articulation_roots]
+            raise RuntimeError(
+                f"Expected one ArticulationRootAPI below {root.GetPath()}, found {paths}"
+            )
+
+        articulation_root = articulation_roots[0]
+        if articulation_root.IsA(UsdPhysics.Joint) or articulation_root.HasAPI(
+            UsdPhysics.RigidBodyAPI
+        ):
+            return str(articulation_root.GetPath())
+
+        # Isaac Sim 5.1 fixed-base articulations should put the root API on the
+        # world-to-base fixed joint, not on a grouping Xform. Apply an override
+        # only to this loaded instance; the source hand USD remains untouched.
+        fixed_base_joints = []
+        for prim in Usd.PrimRange(articulation_root):
+            if not prim.IsActive() or not prim.IsA(UsdPhysics.FixedJoint):
+                continue
+            joint = UsdPhysics.Joint(prim)
+            if not joint.GetBody0Rel().GetTargets() and len(joint.GetBody1Rel().GetTargets()) == 1:
+                fixed_base_joints.append(prim)
+        if len(fixed_base_joints) != 1:
+            paths = [str(prim.GetPath()) for prim in fixed_base_joints]
+            raise RuntimeError(
+                f"Legacy articulation root {articulation_root.GetPath()} has no unique "
+                f"world-to-base fixed joint: {paths}"
+            )
+
+        fixed_root = fixed_base_joints[0]
+        if articulation_root.HasAPI(PhysxSchema.PhysxArticulationAPI):
+            PhysxSchema.PhysxArticulationAPI.Apply(fixed_root)
+            for attribute in articulation_root.GetAttributes():
+                if not attribute.GetName().startswith("physxArticulation:"):
+                    continue
+                if not attribute.HasAuthoredValueOpinion():
+                    continue
+                fixed_root.CreateAttribute(
+                    attribute.GetName(), attribute.GetTypeName(), custom=False
+                ).Set(attribute.Get())
+            articulation_root.RemoveAPI(PhysxSchema.PhysxArticulationAPI)
+        articulation_root.RemoveAPI(UsdPhysics.ArticulationRootAPI)
+        UsdPhysics.ArticulationRootAPI.Apply(fixed_root)
+        return str(fixed_root.GetPath())
+
     def _discover_driven_joints(self, root: Usd.Prim) -> Dict[str, JointInfo]:
         result: Dict[str, JointInfo] = {}
+        self._skipped_unbounded_joints = []
         for prim in Usd.PrimRange(root):
+            if not prim.IsActive():
+                continue
             if prim.HasAPI(PhysxSchema.PhysxMimicJointAPI):
                 continue
             if prim.IsA(UsdPhysics.RevoluteJoint):
@@ -510,36 +600,25 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             upper = joint_with_limits.GetUpperLimitAttr().Get()
             lower_value = float(lower) * scale if lower is not None else -math.pi
             upper_value = float(upper) * scale if upper is not None else math.pi
-            result[prim.GetName()] = JointInfo(
-                name=prim.GetName(),
+            if not math.isfinite(lower_value) or not math.isfinite(upper_value):
+                self._skipped_unbounded_joints.append(prim.GetName())
+                continue
+            name_override = prim.GetAttribute("isaac:nameOverride")
+            dof_name = (
+                str(name_override.Get())
+                if name_override and name_override.Get()
+                else prim.GetName()
+            )
+            if dof_name in result:
+                raise RuntimeError(f"Duplicate articulation DOF name: {dof_name}")
+            result[dof_name] = JointInfo(
+                name=dof_name,
                 prim_path=str(prim.GetPath()),
                 lower_rad=lower_value,
                 upper_rad=upper_value,
                 kind=kind,
             )
         return dict(sorted(result.items()))
-
-    def _read_urdf_summary(self, path: str) -> Dict[str, Tuple[float, float]]:
-        result: Dict[str, Tuple[float, float]] = {}
-        root = ET.parse(path).getroot()
-        for joint in root.findall("joint"):
-            if joint.get("type") not in ("revolute", "continuous", "prismatic"):
-                continue
-            if joint.find("mimic") is not None:
-                continue
-            limit = joint.find("limit")
-            lower = float(limit.get("lower", "-3.141592653589793")) if limit is not None else -math.pi
-            upper = float(limit.get("upper", "3.141592653589793")) if limit is not None else math.pi
-            result[joint.get("name", "unnamed")] = (lower, upper)
-        return result
-
-    def _read_urdf_mimic_joint_names(self, path: str) -> set[str]:
-        root = ET.parse(path).getroot()
-        return {
-            joint.get("name", "")
-            for joint in root.findall("joint")
-            if joint.find("mimic") is not None and joint.get("name")
-        }
 
     def _select_base(self) -> None:
         self._hand_prim()
@@ -610,7 +689,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     # --------------------------------------------------------------- joints
     def _on_joint_changed(self, name: str, model: ui.AbstractValueModel) -> None:
-        if self._suppress_callbacks:
+        if self._suppress_callbacks or self._joint_models.get(name) is not model:
             return
         try:
             self._set_joint_target(name, model.get_value_as_float(), set_initial_state=self._timeline.is_stopped())
@@ -618,7 +697,9 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             self._set_status(str(exc), error=True)
 
     def _set_joint_target(self, name: str, value_rad: float, set_initial_state: bool = False) -> None:
-        info = self._joint_infos[name]
+        info = self._joint_infos.get(name)
+        if info is None:
+            raise RuntimeError(f"Joint {name!r} is not part of the currently loaded gripper.")
         value_rad = max(info.lower_rad, min(info.upper_rad, float(value_rad)))
         prim = self._stage().GetPrimAtPath(info.prim_path)
         drive_name = "angular" if info.kind == "revolute" else "linear"
@@ -630,6 +711,14 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             state.CreatePositionAttr().Set(usd_value)
 
     def _set_all_joints(self, close: bool) -> None:
+        if not self._joint_infos:
+            raise RuntimeError("No gripper joints are loaded.")
+        missing_models = sorted(set(self._joint_infos) - set(self._joint_models))
+        if missing_models:
+            raise RuntimeError(
+                "Joint UI is incomplete; reload the gripper. Missing models: "
+                + ", ".join(missing_models)
+            )
         self._suppress_callbacks = True
         try:
             for name, info in self._joint_infos.items():
@@ -673,24 +762,46 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         if which == "start":
             self._start_pose = pose
             self._start_label.text = self._pose_label("START", pose)
-        else:
+        elif which == "via":
+            self._via_pose = pose
+            self._via_label.text = self._pose_label("VIA", pose, include_joints=False)
+        elif which == "end":
             self._end_pose = pose
             self._end_label.text = self._pose_label("END", pose)
-        self._set_status(f"Captured {which.upper()} pose ({len(pose.joints_rad)} joints).")
+        else:
+            raise ValueError(f"Unknown pose phase: {which!r}")
+        detail = "base TF only" if which == "via" else f"{len(pose.joints_rad)} joints"
+        self._set_status(f"Captured {which.upper()} pose ({detail}).")
 
-    def _pose_label(self, name: str, pose: PoseSnapshot) -> str:
+    def _pose_label(self, name: str, pose: PoseSnapshot, include_joints: bool = True) -> str:
         p = ", ".join(f"{v:.3f}" for v in pose.position)
-        return f"{name}: base=({p}), joints={len(pose.joints_rad)}"
+        suffix = f", joints={len(pose.joints_rad)}" if include_joints else ""
+        return f"{name}: base=({p}){suffix}"
 
     def _restore_pose(self, which: str) -> None:
-        pose = self._start_pose if which == "start" else self._end_pose
+        poses = {
+            "start": self._start_pose,
+            "via": self._via_pose,
+            "end": self._end_pose,
+        }
+        if which not in poses:
+            raise ValueError(f"Unknown pose phase: {which!r}")
+        pose = poses[which]
         if pose is None:
             raise RuntimeError(f"{which.upper()} pose has not been captured.")
-        self._apply_pose(pose, set_initial_state=self._timeline.is_stopped())
-        self._set_status(f"Restored {which.upper()} pose.")
+        if which == "via":
+            self._apply_base_pose(pose)
+            self._set_status("Restored VIA base TF; joint values were kept unchanged.")
+        else:
+            self._apply_pose(pose, set_initial_state=self._timeline.is_stopped())
+            self._set_status(f"Restored {which.upper()} pose.")
+
+    def _apply_base_pose(self, pose: PoseSnapshot) -> None:
+        self._set_local_transform(HAND_PATH, pose.position, pose.orientation_wxyz)
+        self._refresh_base_fields(report=False)
 
     def _apply_pose(self, pose: PoseSnapshot, set_initial_state: bool = False) -> None:
-        self._set_local_transform(HAND_PATH, pose.position, pose.orientation_wxyz)
+        self._apply_base_pose(pose)
         self._suppress_callbacks = True
         try:
             for name, value in pose.joints_rad.items():
@@ -700,12 +811,11 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                 self._set_joint_target(name, value, set_initial_state=set_initial_state)
         finally:
             self._suppress_callbacks = False
-        self._refresh_base_fields(report=False)
 
     def _start_preview(self) -> None:
         try:
-            if self._start_pose is None or self._end_pose is None:
-                raise RuntimeError("Capture both START and END before preview.")
+            if self._start_pose is None or self._via_pose is None or self._end_pose is None:
+                raise RuntimeError("Capture START, VIA base and END before preview.")
             self._cancel_bbox_task(stop_timeline=True)
             self._cancel_preview(stop_timeline=True)
             self._preview_task = asyncio.ensure_future(self._preview_async())
@@ -713,7 +823,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             self._set_status(str(exc), error=True)
 
     async def _preview_async(self) -> None:
-        assert self._start_pose is not None and self._end_pose is not None
+        assert self._start_pose is not None and self._via_pose is not None and self._end_pose is not None
         visibility_attr = UsdGeom.Imageable(self._hand_prim()).GetVisibilityAttr()
         original_visibility = visibility_attr.Get() or UsdGeom.Tokens.inherited
         try:
@@ -737,11 +847,20 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             visibility_attr.Set(original_visibility)
 
             duration = max(0.1, self._duration_model.get_value_as_float())
+            via_ratio = max(0.01, min(0.99, self._via_ratio_model.get_value_as_float()))
             steps = max(2, int(duration * 60.0))
             for index in range(1, steps + 1):
                 linear_t = index / steps
-                t = linear_t * linear_t * (3.0 - 2.0 * linear_t)  # smoothstep
-                pose = self._interpolate_pose(self._start_pose, self._end_pose, t)
+                joint_t = linear_t * linear_t * (3.0 - 2.0 * linear_t)
+                pose = self._interpolate_pose(
+                    self._start_pose,
+                    self._end_pose,
+                    joint_t,
+                    via=self._via_pose,
+                    base_progress=linear_t,
+                    via_ratio=via_ratio,
+                    smooth_base_segments=True,
+                )
                 self._apply_pose(pose, set_initial_state=False)
                 await omni.kit.app.get_app().next_update_async()
             self._timeline.pause()
@@ -760,8 +879,10 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         import numpy as np
         from isaacsim.core.prims import SingleArticulation
 
+        if not self._articulation_root_path:
+            raise RuntimeError("Articulation root is not initialized. Reload the gripper.")
         articulation = SingleArticulation(
-            prim_path=HAND_ASSET_PATH,
+            prim_path=self._articulation_root_path,
             name="hand_grip_preset_preview",
             reset_xform_properties=False,
         )
@@ -777,9 +898,36 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         articulation.set_joint_velocities(np.zeros_like(positions), joint_indices=indices)
         self._articulation = articulation
 
-    def _interpolate_pose(self, start: PoseSnapshot, end: PoseSnapshot, t: float) -> PoseSnapshot:
-        position = tuple(a + (b - a) * t for a, b in zip(start.position, end.position))
-        quat = _slerp(start.orientation_wxyz, end.orientation_wxyz, t)
+    def _interpolate_pose(
+        self,
+        start: PoseSnapshot,
+        end: PoseSnapshot,
+        t: float,
+        via: Optional[PoseSnapshot] = None,
+        base_progress: Optional[float] = None,
+        via_ratio: float = 0.5,
+        smooth_base_segments: bool = False,
+    ) -> PoseSnapshot:
+        """Interpolate joints START->END while base optionally passes through VIA."""
+        t = max(0.0, min(1.0, float(t)))
+        path_t = t if base_progress is None else max(0.0, min(1.0, float(base_progress)))
+        via_ratio = max(0.01, min(0.99, float(via_ratio)))
+        if via is None:
+            base_start, base_end, base_t = start, end, path_t
+        elif path_t <= via_ratio:
+            base_start, base_end, base_t = start, via, path_t / via_ratio
+        else:
+            base_start, base_end, base_t = (
+                via,
+                end,
+                (path_t - via_ratio) / (1.0 - via_ratio),
+            )
+        if via is not None and smooth_base_segments:
+            base_t = base_t * base_t * (3.0 - 2.0 * base_t)
+        position = tuple(
+            a + (b - a) * base_t for a, b in zip(base_start.position, base_end.position)
+        )
+        quat = _slerp(base_start.orientation_wxyz, base_end.orientation_wxyz, base_t)
         joints = {
             name: start.joints_rad[name] + (end.joints_rad[name] - start.joints_rad[name]) * t
             for name in start.joints_rad
@@ -848,6 +996,12 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             raise ValueError(f"Selected link is not downstream of a controlled joint: {path}")
         relative_path = path[len(HAND_ASSET_PATH):]
         self._tip_links[relative_path] = joints
+        if relative_path not in self._tip_sets:
+            used_sets = set(self._tip_sets.values())
+            set_id = 1
+            while set_id in used_sets:
+                set_id += 1
+            self._tip_sets[relative_path] = set_id
 
     def _controlled_joints_for_tip(self, tip_prim: Usd.Prim) -> Tuple[str, ...]:
         """Find controlled joints on the articulation-tree path to ``tip_prim``."""
@@ -856,6 +1010,9 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         body_paths = set()
         root_bodies = set()
         body1_paths = set()
+        joint_names_by_path = {
+            info.prim_path: name for name, info in self._joint_infos.items()
+        }
         for prim in Usd.PrimRange(root):
             if not prim.IsA(UsdPhysics.Joint):
                 continue
@@ -871,8 +1028,9 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                 root_bodies.add(body0[0])
             for left in body0:
                 for right in body1:
-                    adjacency.setdefault(left, []).append((right, prim.GetName()))
-                    adjacency.setdefault(right, []).append((left, prim.GetName()))
+                    joint_name = joint_names_by_path.get(str(prim.GetPath()), prim.GetName())
+                    adjacency.setdefault(left, []).append((right, joint_name))
+                    adjacency.setdefault(right, []).append((left, joint_name))
 
         tip_path = str(tip_prim.GetPath())
         candidates = [
@@ -913,6 +1071,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             ):
                 removed.append(relative_path)
                 self._tip_links.pop(relative_path, None)
+                self._tip_sets.pop(relative_path, None)
+                self._tip_set_models.pop(relative_path, None)
         if not removed:
             raise RuntimeError("The selection does not match a registered fingertip link.")
         self._clear_tip_bboxes(report=False)
@@ -921,6 +1081,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     def _clear_tip_links(self) -> None:
         self._tip_links.clear()
+        self._tip_sets.clear()
+        self._tip_set_models.clear()
         self._clear_tip_bboxes(report=False)
         self._refresh_tip_links_label()
         self._set_status("Cleared all registered fingertip links and grasp BBoxes.")
@@ -1185,7 +1347,13 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         stage = self._stage()
         UsdGeom.Xform.Define(stage, DEBUG_BBOX_ROOT_PATH)
         UsdGeom.Xform.Define(stage, GRASP_BBOX_CURVE_PATH)
-        color = Gf.Vec3f(0.2, 0.8, 1.0)
+        set_colors = (
+            Gf.Vec3f(0.2, 0.8, 1.0),
+            Gf.Vec3f(1.0, 0.55, 0.15),
+            Gf.Vec3f(0.35, 1.0, 0.35),
+            Gf.Vec3f(0.75, 0.35, 1.0),
+            Gf.Vec3f(1.0, 0.3, 0.45),
+        )
         center_color = Gf.Vec3f(1.0, 0.15, 0.8)
         center_radius = max(0.00001, self._center_radius_model.get_value_as_float())
 
@@ -1196,9 +1364,14 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                 start_bound, end_bound
             )
             corners = self._bbox_corners((min_x, min_y, max_x, max_y, z))
+            set_id = max(1, int(self._tip_sets.get(relative_path, 1)))
+            color = set_colors[(set_id - 1) % len(set_colors)]
             curve = UsdGeom.BasisCurves.Define(stage, f"{GRASP_BBOX_CURVE_PATH}/Tip_{index}")
-            curve.GetPrim().SetDisplayName(self._default_tip_name(relative_path))
+            curve.GetPrim().SetDisplayName(
+                f"{self._default_tip_name(relative_path)} [Set {set_id}]"
+            )
             curve.GetPrim().SetCustomDataByKey("mesh_path", relative_path)
+            curve.GetPrim().SetCustomDataByKey("contact_set", set_id)
             curve.CreateTypeAttr().Set(UsdGeom.Tokens.linear)
             curve.CreateWrapAttr().Set(UsdGeom.Tokens.nonperiodic)
             curve.CreateCurveVertexCountsAttr().Set([5])
@@ -1419,9 +1592,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
         self._matched_db_key = key
         self._gripper_key_model.set_value(key)
-        db_urdf = entry.get("urdf_path")
-        if isinstance(db_urdf, str) and db_urdf:
-            self._urdf_model.set_value(db_urdf)
         presets = entry.get("preset", [])
         if isinstance(presets, list):
             self._saved_presets = [preset for preset in presets if isinstance(preset, dict)]
@@ -1452,7 +1622,10 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     def _load_tip_links_from_preset(self, preset: dict) -> None:
         self._tip_links.clear()
+        self._tip_sets.clear()
+        self._tip_set_models.clear()
         stored = preset.get("fingertip_points", {})
+        stored_sets = self._tip_sets_from_stored(stored)
         if isinstance(stored, dict):
             for value in stored.values():
                 if not isinstance(value, dict):
@@ -1469,10 +1642,45 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                     continue
                 try:
                     self._register_tip_prim(prim)
+                    self._tip_sets[relative_path] = stored_sets[relative_path]
                 except (RuntimeError, ValueError) as exc:
                     carb.log_warn(f"[{WINDOW_TITLE}] Ignored preset fingertip {raw_path}: {exc}")
         self._clear_tip_bboxes(report=False)
         self._refresh_tip_links_label()
+
+    def _tip_sets_from_stored(self, stored: object) -> Dict[str, int]:
+        """Load contact sets; legacy fingertips each become their own required set."""
+        if not isinstance(stored, dict):
+            return {}
+        entries: List[Tuple[str, object]] = []
+        explicit_sets = set()
+        for value in stored.values():
+            if not isinstance(value, dict):
+                continue
+            raw_path = value.get("mesh_path")
+            if not isinstance(raw_path, str) or not raw_path:
+                continue
+            relative_path = raw_path
+            if raw_path.startswith(HAND_ASSET_PATH + "/"):
+                relative_path = raw_path[len(HAND_ASSET_PATH):]
+            raw_set = value.get("contact_set")
+            entries.append((relative_path, raw_set))
+            if isinstance(raw_set, int) and not isinstance(raw_set, bool) and raw_set >= 1:
+                explicit_sets.add(raw_set)
+
+        result: Dict[str, int] = {}
+        used_sets = set(explicit_sets)
+        next_set = 1
+        for relative_path, raw_set in entries:
+            if isinstance(raw_set, int) and not isinstance(raw_set, bool) and raw_set >= 1:
+                result[relative_path] = raw_set
+                continue
+            while next_set in used_sets:
+                next_set += 1
+            result[relative_path] = next_set
+            used_sets.add(next_set)
+            next_set += 1
+        return result
 
     def _load_selected_saved_preset(self) -> None:
         if not self._saved_presets:
@@ -1502,9 +1710,23 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         end = self._pose_from_saved_preset(
             preset, "end", current_position, current_quat, current_joints
         )
+        raw_via_tf = preset.get("via_base_tf")
+        if isinstance(raw_via_tf, dict):
+            direct_midpoint = self._interpolate_pose(start, end, 0.5)
+            via = self._pose_from_base_tf(
+                raw_via_tf,
+                direct_midpoint.position,
+                direct_midpoint.orientation_wxyz,
+                current_joints,
+            )
+        else:
+            # Legacy presets remain a straight START->END path.
+            via = self._interpolate_pose(start, end, 0.5)
         self._start_pose = start
+        self._via_pose = via
         self._end_pose = end
         self._start_label.text = self._pose_label("START", start)
+        self._via_label.text = self._pose_label("VIA", via, include_joints=False)
         self._end_label.text = self._pose_label("END", end)
 
         name = str(preset.get("name") or self._saved_preset_names[index])
@@ -1512,12 +1734,18 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         transition = preset.get("transition")
         if isinstance(transition, dict) and isinstance(transition.get("duration_sec"), (int, float)):
             self._duration_model.set_value(max(0.1, float(transition["duration_sec"])))
+        if isinstance(transition, dict) and isinstance(transition.get("via_time_ratio"), (int, float)):
+            self._via_ratio_model.set_value(
+                max(0.01, min(0.99, float(transition["via_time_ratio"])))
+            )
+        else:
+            self._via_ratio_model.set_value(0.5)
         self._load_saved_joint_gains()
         self._apply_pose(start, set_initial_state=True)
         self._saved_preset_index = index
         if report:
             self._set_status(
-                f"Loaded saved preset {name!r}: START/END base TF, joint values, duration and gains restored."
+                f"Loaded saved preset {name!r}: START/VIA/END base TF, joint values, duration and gains restored."
             )
         return name
 
@@ -1547,20 +1775,33 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         if matched == 0:
             raise ValueError(f"Preset {prefix}_joint_pos has no joints used by the loaded gripper.")
 
+        raw_tf = preset.get(f"{prefix}_base_tf")
+        return self._pose_from_base_tf(
+            raw_tf if isinstance(raw_tf, dict) else {},
+            default_position,
+            default_quat,
+            joints,
+        )
+
+    def _pose_from_base_tf(
+        self,
+        raw_tf: dict,
+        default_position: Tuple[float, float, float],
+        default_quat: Tuple[float, float, float, float],
+        joints: Dict[str, float],
+    ) -> PoseSnapshot:
         position = default_position
         quat = default_quat
-        raw_tf = preset.get(f"{prefix}_base_tf")
-        if isinstance(raw_tf, dict):
-            raw_position = raw_tf.get("position")
-            raw_quat = raw_tf.get("orientation_wxyz")
-            raw_rpy = raw_tf.get("rpy_rad")
-            if isinstance(raw_position, list) and len(raw_position) == 3:
-                position = tuple(float(value) for value in raw_position)
-            if isinstance(raw_quat, list) and len(raw_quat) == 4:
-                quat = _normalize_quat(raw_quat)
-            elif isinstance(raw_rpy, list) and len(raw_rpy) == 3:
-                quat = _quat_from_rpy(*[float(value) for value in raw_rpy])
-        return PoseSnapshot(position, quat, _rpy_from_quat(quat), joints)
+        raw_position = raw_tf.get("position")
+        raw_quat = raw_tf.get("orientation_wxyz")
+        raw_rpy = raw_tf.get("rpy_rad")
+        if isinstance(raw_position, list) and len(raw_position) == 3:
+            position = tuple(float(value) for value in raw_position)
+        if isinstance(raw_quat, list) and len(raw_quat) == 4:
+            quat = _normalize_quat(raw_quat)
+        elif isinstance(raw_rpy, list) and len(raw_rpy) == 3:
+            quat = _quat_from_rpy(*[float(value) for value in raw_rpy])
+        return PoseSnapshot(position, quat, _rpy_from_quat(quat), dict(joints))
 
     def _load_saved_joint_gains(self) -> None:
         db_path = Path(self._db_path_model.get_value_as_string().strip())
@@ -1584,8 +1825,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     def _start_preset_save(self) -> None:
         try:
-            if self._start_pose is None or self._end_pose is None:
-                raise RuntimeError("Capture both START and END before saving.")
+            if self._start_pose is None or self._via_pose is None or self._end_pose is None:
+                raise RuntimeError("Capture START, VIA base and END before saving.")
             if not self._tip_links:
                 raise RuntimeError("Register at least one fingertip mesh/link before saving.")
             self._cancel_preview(stop_timeline=True)
@@ -1609,15 +1850,70 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             names[relative_path] = storage_name
         return names
 
+    def _contact_sensor_path_for_tip(self, relative_path: str) -> str:
+        """Return the closest rigid-body path that owns a selected fingertip.
+
+        Isaac Lab contact sensors report one force vector per rigid body.  A
+        selected fingertip is normally a mesh below that body, so storing the
+        mesh path itself would not identify the corresponding sensor row.
+        Paths are kept relative to ``HAND_ASSET_PATH`` so the same preset can
+        be used below Isaac Lab's per-environment ``.../Robot`` prim.
+        """
+        prim = self._stage().GetPrimAtPath(HAND_ASSET_PATH + relative_path)
+        if not prim.IsValid():
+            raise RuntimeError(f"Fingertip prim does not exist: {relative_path}")
+
+        while prim.IsValid() and not prim.IsPseudoRoot():
+            prim_path = str(prim.GetPath())
+            if prim.HasAPI(UsdPhysics.RigidBodyAPI):
+                if prim_path == HAND_ASSET_PATH:
+                    return "/"
+                prefix = HAND_ASSET_PATH + "/"
+                if prim_path.startswith(prefix):
+                    return "/" + prim_path[len(prefix):]
+                break
+            if prim_path == HAND_ASSET_PATH:
+                break
+            prim = prim.GetParent()
+
+        raise RuntimeError(
+            "Could not find a RigidBody prim above fingertip "
+            f"{relative_path!r}. Contact sensor paths must refer to rigid bodies."
+        )
+
+    @staticmethod
+    def _refresh_entry_contact_sensor_paths(entry: dict) -> None:
+        """Store the ordered union of preset-specific fingertip sensors."""
+        sensor_paths: List[str] = []
+        for preset in entry.get("preset", []):
+            if not isinstance(preset, dict):
+                continue
+            fingertips = preset.get("fingertip_points", {})
+            if not isinstance(fingertips, dict):
+                continue
+            for fingertip in fingertips.values():
+                if not isinstance(fingertip, dict):
+                    continue
+                sensor_path = fingertip.get("contact_sensor_path")
+                if (
+                    isinstance(sensor_path, str)
+                    and sensor_path
+                    and sensor_path not in sensor_paths
+                ):
+                    sensor_paths.append(sensor_path)
+        entry["contact_sensor_paths"] = sensor_paths
+
     def _build_preset_geometry(
         self,
         paths: List[str],
         start_bounds: List[Tuple[float, float, float, float, float]],
         end_bounds: List[Tuple[float, float, float, float, float]],
         end_centers: List[Tuple[float, float, float]],
+        tip_sets: Optional[Dict[str, int]] = None,
     ) -> Tuple[dict, dict]:
         assert self._start_pose is not None
         tip_names = self._tip_storage_names(paths)
+        active_tip_sets = self._tip_sets if tip_sets is None else tip_sets
         fingertip_points = {}
         for relative_path, start_bound, end_bound in zip(paths, start_bounds, end_bounds):
             min_x, min_y, max_x, max_y, z = self._combined_grasp_bound(
@@ -1630,6 +1926,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             ]
             fingertip_points[tip_names[relative_path]] = {
                 "mesh_path": relative_path,
+                "contact_sensor_path": self._contact_sensor_path_for_tip(relative_path),
+                "contact_set": max(1, int(active_tip_sets.get(relative_path, 1))),
                 "frame": "gripper_base",
                 "base_prim_path": HAND_PATH,
                 "base_pose": "start",
@@ -1663,8 +1961,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     async def _save_preset_async(self) -> None:
         try:
-            if self._start_pose is None or self._end_pose is None:
-                raise RuntimeError("Capture both START and END before saving.")
+            if self._start_pose is None or self._via_pose is None or self._end_pose is None:
+                raise RuntimeError("Capture START, VIA base and END before saving.")
             if not self._tip_links:
                 raise RuntimeError("Register at least one fingertip mesh/link before saving.")
             changed_joints, paths = self._moving_tip_paths(
@@ -1730,6 +2028,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                     continue
                 preset_name = str(preset.get("name") or f"preset_{updated + 1}")
                 stored_tips = preset.get("fingertip_points", {})
+                stored_tip_sets = self._tip_sets_from_stored(stored_tips)
                 paths: List[str] = []
                 if isinstance(stored_tips, dict):
                     for value in stored_tips.values():
@@ -1768,7 +2067,11 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                         await self._sample_tip_bounds_async(paths, z_offset=0.0)
                     )
                     fingertip_points, grasp_center = self._build_preset_geometry(
-                        paths, start_bounds, end_bounds, end_centers
+                        paths,
+                        start_bounds,
+                        end_bounds,
+                        end_centers,
+                        tip_sets=stored_tip_sets,
                     )
                     preset["fingertip_points"] = fingertip_points
                     preset["grasp_center"] = grasp_center
@@ -1787,6 +2090,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                 self._end_label.text = self._pose_label("END", original_end)
 
         if updated:
+            self._refresh_entry_contact_sensor_paths(entry)
             self._atomic_json_save(db_path, database)
             self._refresh_db_presets(
                 auto_load=False, report=False, preferred_name=preferred_name
@@ -1798,8 +2102,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         fingertip_points: Optional[dict] = None,
         grasp_center: Optional[dict] = None,
     ) -> None:
-        if self._start_pose is None or self._end_pose is None:
-            raise RuntimeError("Capture both START and END before saving.")
+        if self._start_pose is None or self._via_pose is None or self._end_pose is None:
+            raise RuntimeError("Capture START, VIA base and END before saving.")
         name = self._preset_name_model.get_value_as_string().strip()
         if not name:
             raise ValueError("Preset name cannot be empty.")
@@ -1814,7 +2118,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
         key = self._gripper_key_model.get_value_as_string().strip() or DEFAULT_GRIPPER_KEY
         usd_path = self._usd_model.get_value_as_string().strip()
-        urdf_path = self._urdf_model.get_value_as_string().strip()
         entry = database.setdefault(
             key,
             {"gripper_name": key, "usd_path": usd_path, "type": "Hand", "preset": []},
@@ -1823,8 +2126,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             raise ValueError(f"Database entry {key!r} must be an object.")
         entry["gripper_name"] = entry.get("gripper_name") or key
         entry["usd_path"] = usd_path
-        entry["urdf_path"] = urdf_path
         entry["type"] = "Hand"
+        entry.pop("urdf_path", None)
         # Fingertips are preset-specific. Remove legacy gripper-wide fields
         # when this entry is next saved.
         entry.pop("tip_links", None)
@@ -1835,6 +2138,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             "joint_unit": "rad",
             "base_tf_frame": "world",
             "start_base_tf": self._start_pose.base_tf_json(),
+            "via_base_tf": self._via_pose.base_tf_json(),
             "end_base_tf": self._end_pose.base_tf_json(),
             "start_joint_pos": {k: round(v, 9) for k, v in self._start_pose.joints_rad.items()},
             "end_joint_pos": {k: round(v, 9) for k, v in self._end_pose.joints_rad.items()},
@@ -1843,6 +2147,9 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             "transition": {
                 "duration_sec": round(max(0.1, self._duration_model.get_value_as_float()), 4),
                 "interpolation": "smoothstep",
+                "via_time_ratio": round(
+                    max(0.01, min(0.99, self._via_ratio_model.get_value_as_float())), 4
+                ),
             },
             "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         }
@@ -1857,6 +2164,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                 break
         if not replaced:
             presets.append(preset)
+
+        self._refresh_entry_contact_sensor_paths(entry)
 
         joint_cfg = entry.setdefault("joint_cfg", {})
         if isinstance(joint_cfg, dict):

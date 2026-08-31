@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-08-18T18:18:01",
+  "dataset_root": "/nas/Dataset/Dataset_2026/dataset_v2",
+  "expected_object_count": 5,
+  "comparisons": 180044,
+  "unique_mismatch_conf_count": 0,
+  "groups": {},
+  "details": []
+}

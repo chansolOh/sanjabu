@@ -40,15 +40,15 @@ async def _run():
         await omni.kit.app.get_app().next_update_async()
         assert len(extension._joint_infos) == 6, extension._joint_infos
         assert len(extension._joint_models) == 6, extension._joint_models
-        assert len(extension._disabled_dangling_joints) == 10, extension._disabled_dangling_joints
-        assert extension._matched_db_key == "Inspire-F1"
+        assert not extension._disabled_dangling_joints, extension._disabled_dangling_joints
+        assert extension._matched_db_key in {"Inspire-F1", "Inspire-F1_right"}
         assert "3f_grip" in extension._saved_preset_names
-        assert extension._start_pose is not None and extension._end_pose is not None
-        assert extension._preset_name_model.get_value_as_string() in extension._saved_preset_names
-        assert "right_hand_index_2_joint" in extension._read_urdf_mimic_joint_names(
-            extension._urdf_model.get_value_as_string()
+        assert (
+            extension._start_pose is not None
+            and extension._via_pose is not None
+            and extension._end_pose is not None
         )
-
+        assert extension._preset_name_model.get_value_as_string() in extension._saved_preset_names
         extension._apply_drive_gains()
         # Use a deliberately non-zero START so the historical 0 -> START
         # preview bug cannot pass this test unnoticed.
@@ -62,27 +62,69 @@ async def _run():
             extension._suppress_callbacks = False
         extension._capture_pose("start")
         assert any(abs(value) > 1e-4 for value in extension._start_pose.joints_rad.values())
+        extension._base_models["y"].set_value(
+            extension._base_models["y"].get_value_as_float() + 0.03
+        )
+        extension._apply_base_fields()
+        extension._capture_pose("via")
         extension._set_all_joints(True)
         extension._base_models["x"].set_value(
             extension._base_models["x"].get_value_as_float() + 0.05
         )
+        extension._base_models["y"].set_value(
+            extension._base_models["y"].get_value_as_float() - 0.03
+        )
         extension._apply_base_fields()
         extension._capture_pose("end")
-        halfway = extension._interpolate_pose(extension._start_pose, extension._end_pose, 0.5)
-        assert len(halfway.joints_rad) == 6
+        extension._via_ratio_model.set_value(0.7)
+        waypoint_linear_t = 0.7
+        waypoint_joint_t = waypoint_linear_t * waypoint_linear_t * (
+            3.0 - 2.0 * waypoint_linear_t
+        )
+        waypoint = extension._interpolate_pose(
+            extension._start_pose,
+            extension._end_pose,
+            waypoint_joint_t,
+            via=extension._via_pose,
+            base_progress=waypoint_linear_t,
+            via_ratio=0.7,
+            smooth_base_segments=True,
+        )
+        assert len(waypoint.joints_rad) == 6
+        assert waypoint.position == extension._via_pose.position
+        assert all(
+            abs(
+                waypoint.joints_rad[name]
+                - (
+                    extension._start_pose.joints_rad[name]
+                    + waypoint_joint_t
+                    * (
+                        extension._end_pose.joints_rad[name]
+                        - extension._start_pose.joints_rad[name]
+                    )
+                )
+            )
+            < 1e-8
+            for name in waypoint.joints_rad
+        )
 
+        # The real database may auto-load any number of saved fingertips.
+        # Isolate this test to the two links registered below.
+        extension._clear_tip_links()
         index_tip = extension._stage().GetPrimAtPath(
             "/World/HandGripPresetTool/Hand/Asset/right_hand_index_2/mesh"
         )
         middle_tip = extension._stage().GetPrimAtPath(
             "/World/HandGripPresetTool/Hand/Asset/right_hand_middle_2/mesh"
         )
-        extension._register_tip_prim(index_tip)
-        extension._register_tip_prim(middle_tip)
-        assert any("R_2_mcp_joint" in joints for joints in extension._tip_links.values())
-        assert any("R_3_mcp_joint" in joints for joints in extension._tip_links.values())
         index_path = "/right_hand_index_2/mesh"
         middle_path = "/right_hand_middle_2/mesh"
+        extension._register_tip_prim(index_tip)
+        extension._register_tip_prim(middle_tip)
+        extension._tip_sets[index_path] = 7
+        extension._tip_sets[middle_path] = 8
+        assert any("R_2_mcp_joint" in joints for joints in extension._tip_links.values())
+        assert any("R_3_mcp_joint" in joints for joints in extension._tip_links.values())
         # Keep the middle finger stationary. Its debug BBox and persisted
         # fingertip_points entry must both be omitted.
         for joint_name in extension._tip_links[middle_path]:
@@ -107,11 +149,17 @@ async def _run():
         active_tip_count = sum(
             bool(changed_joints.intersection(joints)) for joints in extension._tip_links.values()
         )
-        assert active_tip_count == 1
+        assert active_tip_count == 1, (
+            changed_joints,
+            extension._tip_links,
+            extension._start_pose.joints_rad,
+            extension._end_pose.joints_rad,
+        )
         grasp_bboxes = list(grasp_bbox_root.GetChildren())
         assert len(grasp_bboxes) == active_tip_count
         assert all(prim.IsA(UsdGeom.BasisCurves) for prim in grasp_bboxes)
         for prim in grasp_bboxes:
+            assert prim.GetCustomDataByKey("contact_set") == 7
             curve = UsdGeom.BasisCurves(prim)
             assert list(curve.GetCurveVertexCountsAttr().Get()) == [5]
             points = list(curve.GetPointsAttr().Get())
@@ -193,25 +241,35 @@ async def _run():
         with tempfile.TemporaryDirectory(prefix="hand_grip_smoke_") as directory:
             db_path = Path(directory) / "gripper_info_hand.json"
             shutil.copy2(
-                "/nas/ochansol/gripper_info/gripper_info_hand.json",
+                "/nas/ochansol/gripper_info/gripper_info_hand_2026.json",
                 db_path,
             )
             extension._db_path_model.set_value(str(db_path))
             extension._preset_name_model.set_value("__smoke_test__")
             await extension._save_preset_async()
             saved = json.loads(db_path.read_text(encoding="utf-8"))
-            presets = saved["Inspire-F1"]["preset"]
+            saved_key = extension._matched_db_key
+            assert saved_key in saved
+            presets = saved[saved_key]["preset"]
             result = next(item for item in presets if item["name"] == "__smoke_test__")
             assert len(result["start_joint_pos"]) == 6
             assert len(result["end_joint_pos"]) == 6
             assert result["joint_unit"] == "rad"
             assert result["start_base_tf"]["frame"] == "world"
-            assert "tip_links" not in saved["Inspire-F1"]
-            assert "tip_link_names" not in saved["Inspire-F1"]
+            assert result["via_base_tf"]["frame"] == "world"
+            assert result["via_base_tf"]["position"] == [
+                round(value, 9) for value in extension._via_pose.position
+            ]
+            assert result["transition"]["via_time_ratio"] == 0.7
+            assert "tip_links" not in saved[saved_key]
+            assert "tip_link_names" not in saved[saved_key]
+            assert "/right_hand_index_2" in saved[saved_key]["contact_sensor_paths"]
             assert len(result["fingertip_points"]) == 1
             assert "right_hand_middle_2" not in result["fingertip_points"]
             contact = result["fingertip_points"]["right_hand_index_2"]
             assert contact["mesh_path"] == index_path
+            assert contact["contact_sensor_path"] == "/right_hand_index_2"
+            assert contact["contact_set"] == 7
             assert contact["frame"] == "gripper_base"
             assert contact["base_prim_path"] == "/World/HandGripPresetTool/Hand"
             assert len(contact["grasp_bbox"]["points"]) == 4
@@ -249,7 +307,10 @@ async def _run():
             loaded_name = extension._load_saved_preset(extension._saved_preset_index, report=False)
             assert loaded_name == "__smoke_test__"
             assert len(extension._start_pose.joints_rad) == 6
+            assert extension._via_pose is not None
             assert len(extension._end_pose.joints_rad) == 6
+            assert abs(extension._via_ratio_model.get_value_as_float() - 0.7) < 1e-6
+            assert extension._tip_sets == {index_path: 7}
             assert set(extension._tip_links) == {
                 value["mesh_path"] for value in result["fingertip_points"].values()
             }
