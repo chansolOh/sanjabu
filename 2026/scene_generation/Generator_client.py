@@ -36,7 +36,10 @@ pre_grasp_gen_time_th = 1800
 
 grasp_reset_time_th = 300
 grasp_gen_time_th = 900
-grasp_scene_num_loop_count_th = 4
+# The first launch is not a retry.  If a grasp process exits without creating
+# its scene output (for example after a watchdog timeout), launch that same
+# scene at most three additional times before moving on.
+grasp_scene_num_max_retries = 3
 
 
 server_cmd = {} #start, stop, restart
@@ -130,7 +133,7 @@ def handle_process_exit():
 server_flag = False
 start_flag = False
 grasp_scene_num_loop_count = 0
-scene_num_old = 0
+scene_num_old = None
 while True:
     time.sleep(0.1)
     if not server_flag:
@@ -273,10 +276,15 @@ while True:
                     grasp_scene_num_loop_count = 0
                 else:
                     grasp_scene_num_loop_count += 1
-                    if grasp_scene_num_loop_count > grasp_scene_num_loop_count_th:
+                    if grasp_scene_num_loop_count > grasp_scene_num_max_retries:
                         server_cmd["scene_start"] = scene_num + 1
                         print("\033[1;31mScene number is passed....................\033[0m")
                         grasp_scene_num_loop_count = 0
+                        main_process.current_num_check(
+                            scene_start=server_cmd["scene_start"],
+                            scene_end=server_cmd["scene_end"],
+                        )
+                        scene_num = main_process.scene_num
                 scene_num_old = scene_num
                 sock.sendall(json.dumps({"cmd": "scene_num_check",
                                         "name":sock.getsockname()[0],

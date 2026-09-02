@@ -45,7 +45,6 @@ async def _run():
         assert "3f_grip" in extension._saved_preset_names
         assert (
             extension._start_pose is not None
-            and extension._via_pose is not None
             and extension._end_pose is not None
         )
         assert extension._preset_name_model.get_value_as_string() in extension._saved_preset_names
@@ -62,36 +61,34 @@ async def _run():
             extension._suppress_callbacks = False
         extension._capture_pose("start")
         assert any(abs(value) > 1e-4 for value in extension._start_pose.joints_rad.values())
-        extension._base_models["y"].set_value(
-            extension._base_models["y"].get_value_as_float() + 0.03
-        )
-        extension._apply_base_fields()
-        extension._capture_pose("via")
         extension._set_all_joints(True)
         extension._base_models["x"].set_value(
             extension._base_models["x"].get_value_as_float() + 0.05
         )
-        extension._base_models["y"].set_value(
-            extension._base_models["y"].get_value_as_float() - 0.03
-        )
         extension._apply_base_fields()
         extension._capture_pose("end")
-        extension._via_ratio_model.set_value(0.7)
-        waypoint_linear_t = 0.7
-        waypoint_joint_t = waypoint_linear_t * waypoint_linear_t * (
-            3.0 - 2.0 * waypoint_linear_t
-        )
+        waypoint_joint_t = 0.7
         waypoint = extension._interpolate_pose(
             extension._start_pose,
             extension._end_pose,
             waypoint_joint_t,
-            via=extension._via_pose,
-            base_progress=waypoint_linear_t,
-            via_ratio=0.7,
-            smooth_base_segments=True,
         )
         assert len(waypoint.joints_rad) == 6
-        assert waypoint.position == extension._via_pose.position
+        assert all(
+            abs(
+                waypoint.position[axis]
+                - (
+                    extension._start_pose.position[axis]
+                    + waypoint_joint_t
+                    * (
+                        extension._end_pose.position[axis]
+                        - extension._start_pose.position[axis]
+                    )
+                )
+            )
+            < 1e-8
+            for axis in range(3)
+        )
         assert all(
             abs(
                 waypoint.joints_rad[name]
@@ -256,11 +253,9 @@ async def _run():
             assert len(result["end_joint_pos"]) == 6
             assert result["joint_unit"] == "rad"
             assert result["start_base_tf"]["frame"] == "world"
-            assert result["via_base_tf"]["frame"] == "world"
-            assert result["via_base_tf"]["position"] == [
-                round(value, 9) for value in extension._via_pose.position
-            ]
-            assert result["transition"]["via_time_ratio"] == 0.7
+            assert "via_base_tf" not in result
+            assert "via_time_sec" not in result["transition"]
+            assert "via_time_ratio" not in result["transition"]
             assert "tip_links" not in saved[saved_key]
             assert "tip_link_names" not in saved[saved_key]
             assert "/right_hand_index_2" in saved[saved_key]["contact_sensor_paths"]
@@ -307,9 +302,7 @@ async def _run():
             loaded_name = extension._load_saved_preset(extension._saved_preset_index, report=False)
             assert loaded_name == "__smoke_test__"
             assert len(extension._start_pose.joints_rad) == 6
-            assert extension._via_pose is not None
             assert len(extension._end_pose.joints_rad) == 6
-            assert abs(extension._via_ratio_model.get_value_as_float() - 0.7) < 1e-6
             assert extension._tip_sets == {index_path: 7}
             assert set(extension._tip_links) == {
                 value["mesh_path"] for value in result["fingertip_points"].values()

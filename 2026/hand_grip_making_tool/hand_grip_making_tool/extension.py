@@ -140,7 +140,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         self._joint_models: Dict[str, ui.AbstractValueModel] = {}
         self._base_models: Dict[str, ui.AbstractValueModel] = {}
         self._start_pose: Optional[PoseSnapshot] = None
-        self._via_pose: Optional[PoseSnapshot] = None
         self._end_pose: Optional[PoseSnapshot] = None
         self._saved_presets: List[dict] = []
         self._saved_preset_names: List[str] = []
@@ -230,16 +229,12 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                             self._damping_model = self._float_row("Damping", 10.0, 0.0, 1_000_000.0)
                             self._max_force_model = self._float_row("Max force", 15.0, 0.0, 1_000_000.0)
 
-                    with ui.CollapsableFrame("4. Start / Via / End and preview", collapsed=False):
+                    with ui.CollapsableFrame("4. Start / End and preview", collapsed=False):
                         with ui.VStack(spacing=5, height=0):
                             with ui.HStack(height=30, spacing=5):
                                 ui.Button("Save START", clicked_fn=lambda: self._guard(lambda: self._capture_pose("start")))
                                 ui.Button("Restore START", clicked_fn=lambda: self._guard(lambda: self._restore_pose("start")))
                             self._start_label = ui.Label("START: not captured", word_wrap=True, height=34)
-                            with ui.HStack(height=30, spacing=5):
-                                ui.Button("Save VIA base", clicked_fn=lambda: self._guard(lambda: self._capture_pose("via")))
-                                ui.Button("Restore VIA base", clicked_fn=lambda: self._guard(lambda: self._restore_pose("via")))
-                            self._via_label = ui.Label("VIA: not captured", word_wrap=True, height=34)
                             with ui.HStack(height=30, spacing=5):
                                 ui.Button("Save END", clicked_fn=lambda: self._guard(lambda: self._capture_pose("end")))
                                 ui.Button("Restore END", clicked_fn=lambda: self._guard(lambda: self._restore_pose("end")))
@@ -256,11 +251,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                                     clicked_fn=lambda: self._guard(lambda: self._refresh_db_presets(auto_load=False)),
                                 )
                             self._duration_model = self._float_row("Duration (sec)", 2.0, 0.1, 60.0)
-                            self._via_ratio_model = self._float_row(
-                                "VIA timing ratio (7/10 = 0.7)", 0.5, 0.01, 0.99
-                            )
                             with ui.HStack(height=30, spacing=5):
-                                ui.Button("Preview START -> VIA -> END", clicked_fn=self._start_preview)
+                                ui.Button("Preview START -> END", clicked_fn=self._start_preview)
                                 ui.Button("Stop", clicked_fn=lambda: self._cancel_preview(stop_timeline=True))
 
                     with ui.CollapsableFrame("5. Fingertip grasp BBox", collapsed=False):
@@ -478,10 +470,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             self._select_base()
         self._ensure_physics_scene()
         self._start_pose = None
-        self._via_pose = None
         self._end_pose = None
         self._start_label.text = "START: not captured"
-        self._via_label.text = "VIA: not captured"
         self._end_label.text = "END: not captured"
 
         message = f"Loaded {Path(usd_path).name}; {len(self._joint_infos)} driven joints"
@@ -762,16 +752,14 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         if which == "start":
             self._start_pose = pose
             self._start_label.text = self._pose_label("START", pose)
-        elif which == "via":
-            self._via_pose = pose
-            self._via_label.text = self._pose_label("VIA", pose, include_joints=False)
         elif which == "end":
             self._end_pose = pose
             self._end_label.text = self._pose_label("END", pose)
         else:
             raise ValueError(f"Unknown pose phase: {which!r}")
-        detail = "base TF only" if which == "via" else f"{len(pose.joints_rad)} joints"
-        self._set_status(f"Captured {which.upper()} pose ({detail}).")
+        self._set_status(
+            f"Captured {which.upper()} pose ({len(pose.joints_rad)} joints)."
+        )
 
     def _pose_label(self, name: str, pose: PoseSnapshot, include_joints: bool = True) -> str:
         p = ", ".join(f"{v:.3f}" for v in pose.position)
@@ -781,7 +769,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
     def _restore_pose(self, which: str) -> None:
         poses = {
             "start": self._start_pose,
-            "via": self._via_pose,
             "end": self._end_pose,
         }
         if which not in poses:
@@ -789,12 +776,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         pose = poses[which]
         if pose is None:
             raise RuntimeError(f"{which.upper()} pose has not been captured.")
-        if which == "via":
-            self._apply_base_pose(pose)
-            self._set_status("Restored VIA base TF; joint values were kept unchanged.")
-        else:
-            self._apply_pose(pose, set_initial_state=self._timeline.is_stopped())
-            self._set_status(f"Restored {which.upper()} pose.")
+        self._apply_pose(pose, set_initial_state=self._timeline.is_stopped())
+        self._set_status(f"Restored {which.upper()} pose.")
 
     def _apply_base_pose(self, pose: PoseSnapshot) -> None:
         self._set_local_transform(HAND_PATH, pose.position, pose.orientation_wxyz)
@@ -814,8 +797,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     def _start_preview(self) -> None:
         try:
-            if self._start_pose is None or self._via_pose is None or self._end_pose is None:
-                raise RuntimeError("Capture START, VIA base and END before preview.")
+            if self._start_pose is None or self._end_pose is None:
+                raise RuntimeError("Capture START and END before preview.")
             self._cancel_bbox_task(stop_timeline=True)
             self._cancel_preview(stop_timeline=True)
             self._preview_task = asyncio.ensure_future(self._preview_async())
@@ -823,7 +806,7 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             self._set_status(str(exc), error=True)
 
     async def _preview_async(self) -> None:
-        assert self._start_pose is not None and self._via_pose is not None and self._end_pose is not None
+        assert self._start_pose is not None and self._end_pose is not None
         visibility_attr = UsdGeom.Imageable(self._hand_prim()).GetVisibilityAttr()
         original_visibility = visibility_attr.Get() or UsdGeom.Tokens.inherited
         try:
@@ -847,7 +830,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             visibility_attr.Set(original_visibility)
 
             duration = max(0.1, self._duration_model.get_value_as_float())
-            via_ratio = max(0.01, min(0.99, self._via_ratio_model.get_value_as_float()))
             steps = max(2, int(duration * 60.0))
             for index in range(1, steps + 1):
                 linear_t = index / steps
@@ -856,10 +838,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
                     self._start_pose,
                     self._end_pose,
                     joint_t,
-                    via=self._via_pose,
-                    base_progress=linear_t,
-                    via_ratio=via_ratio,
-                    smooth_base_segments=True,
                 )
                 self._apply_pose(pose, set_initial_state=False)
                 await omni.kit.app.get_app().next_update_async()
@@ -903,31 +881,13 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         start: PoseSnapshot,
         end: PoseSnapshot,
         t: float,
-        via: Optional[PoseSnapshot] = None,
-        base_progress: Optional[float] = None,
-        via_ratio: float = 0.5,
-        smooth_base_segments: bool = False,
     ) -> PoseSnapshot:
-        """Interpolate joints START->END while base optionally passes through VIA."""
+        """Interpolate base and joints directly from START to END."""
         t = max(0.0, min(1.0, float(t)))
-        path_t = t if base_progress is None else max(0.0, min(1.0, float(base_progress)))
-        via_ratio = max(0.01, min(0.99, float(via_ratio)))
-        if via is None:
-            base_start, base_end, base_t = start, end, path_t
-        elif path_t <= via_ratio:
-            base_start, base_end, base_t = start, via, path_t / via_ratio
-        else:
-            base_start, base_end, base_t = (
-                via,
-                end,
-                (path_t - via_ratio) / (1.0 - via_ratio),
-            )
-        if via is not None and smooth_base_segments:
-            base_t = base_t * base_t * (3.0 - 2.0 * base_t)
         position = tuple(
-            a + (b - a) * base_t for a, b in zip(base_start.position, base_end.position)
+            a + (b - a) * t for a, b in zip(start.position, end.position)
         )
-        quat = _slerp(base_start.orientation_wxyz, base_end.orientation_wxyz, base_t)
+        quat = _slerp(start.orientation_wxyz, end.orientation_wxyz, t)
         joints = {
             name: start.joints_rad[name] + (end.joints_rad[name] - start.joints_rad[name]) * t
             for name in start.joints_rad
@@ -1710,23 +1670,9 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         end = self._pose_from_saved_preset(
             preset, "end", current_position, current_quat, current_joints
         )
-        raw_via_tf = preset.get("via_base_tf")
-        if isinstance(raw_via_tf, dict):
-            direct_midpoint = self._interpolate_pose(start, end, 0.5)
-            via = self._pose_from_base_tf(
-                raw_via_tf,
-                direct_midpoint.position,
-                direct_midpoint.orientation_wxyz,
-                current_joints,
-            )
-        else:
-            # Legacy presets remain a straight START->END path.
-            via = self._interpolate_pose(start, end, 0.5)
         self._start_pose = start
-        self._via_pose = via
         self._end_pose = end
         self._start_label.text = self._pose_label("START", start)
-        self._via_label.text = self._pose_label("VIA", via, include_joints=False)
         self._end_label.text = self._pose_label("END", end)
 
         name = str(preset.get("name") or self._saved_preset_names[index])
@@ -1734,18 +1680,12 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         transition = preset.get("transition")
         if isinstance(transition, dict) and isinstance(transition.get("duration_sec"), (int, float)):
             self._duration_model.set_value(max(0.1, float(transition["duration_sec"])))
-        if isinstance(transition, dict) and isinstance(transition.get("via_time_ratio"), (int, float)):
-            self._via_ratio_model.set_value(
-                max(0.01, min(0.99, float(transition["via_time_ratio"])))
-            )
-        else:
-            self._via_ratio_model.set_value(0.5)
         self._load_saved_joint_gains()
         self._apply_pose(start, set_initial_state=True)
         self._saved_preset_index = index
         if report:
             self._set_status(
-                f"Loaded saved preset {name!r}: START/VIA/END base TF, joint values, duration and gains restored."
+                f"Loaded saved preset {name!r}: START/END base TF, joint values, duration and gains restored."
             )
         return name
 
@@ -1825,8 +1765,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     def _start_preset_save(self) -> None:
         try:
-            if self._start_pose is None or self._via_pose is None or self._end_pose is None:
-                raise RuntimeError("Capture START, VIA base and END before saving.")
+            if self._start_pose is None or self._end_pose is None:
+                raise RuntimeError("Capture START and END before saving.")
             if not self._tip_links:
                 raise RuntimeError("Register at least one fingertip mesh/link before saving.")
             self._cancel_preview(stop_timeline=True)
@@ -1961,8 +1901,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
 
     async def _save_preset_async(self) -> None:
         try:
-            if self._start_pose is None or self._via_pose is None or self._end_pose is None:
-                raise RuntimeError("Capture START, VIA base and END before saving.")
+            if self._start_pose is None or self._end_pose is None:
+                raise RuntimeError("Capture START and END before saving.")
             if not self._tip_links:
                 raise RuntimeError("Register at least one fingertip mesh/link before saving.")
             changed_joints, paths = self._moving_tip_paths(
@@ -2102,8 +2042,8 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
         fingertip_points: Optional[dict] = None,
         grasp_center: Optional[dict] = None,
     ) -> None:
-        if self._start_pose is None or self._via_pose is None or self._end_pose is None:
-            raise RuntimeError("Capture START, VIA base and END before saving.")
+        if self._start_pose is None or self._end_pose is None:
+            raise RuntimeError("Capture START and END before saving.")
         name = self._preset_name_model.get_value_as_string().strip()
         if not name:
             raise ValueError("Preset name cannot be empty.")
@@ -2138,7 +2078,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             "joint_unit": "rad",
             "base_tf_frame": "world",
             "start_base_tf": self._start_pose.base_tf_json(),
-            "via_base_tf": self._via_pose.base_tf_json(),
             "end_base_tf": self._end_pose.base_tf_json(),
             "start_joint_pos": {k: round(v, 9) for k, v in self._start_pose.joints_rad.items()},
             "end_joint_pos": {k: round(v, 9) for k, v in self._end_pose.joints_rad.items()},
@@ -2147,9 +2086,6 @@ class HandGripPresetMakerExtension(omni.ext.IExt):
             "transition": {
                 "duration_sec": round(max(0.1, self._duration_model.get_value_as_float()), 4),
                 "interpolation": "smoothstep",
-                "via_time_ratio": round(
-                    max(0.01, min(0.99, self._via_ratio_model.get_value_as_float())), 4
-                ),
             },
             "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         }
