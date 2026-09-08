@@ -37,7 +37,15 @@ from PIL import Image
 # =============================================================================
 DATASET_ROOT = Path("/nas/Dataset/Dataset_2026/dataset_v2")
 
-# 비어 있으면 전체 platform을 처리합니다.
+# 비어 있으면 environment 기준 필터를 사용하지 않습니다.
+# 3대의 PC에서 각각 아래처럼 하나씩 지정할 수 있습니다.
+#   PC 1: ("Home",)
+#   PC 2: ("Logistic_site",)
+#   PC 3: ("Manufactory",)
+SELECTED_ENVIRONMENTS: tuple[str, ...] = ("Home", "Logistic_site", "Manufactory")
+
+# environment 전체가 아니라 특정 platform만 처리할 때 사용합니다.
+# SELECTED_ENVIRONMENTS와 함께 지정하면 두 선택 범위를 합쳐서 처리합니다.
 # 예: ("Home/MasterBedroom/bed_01", "Home/MasterBedroom/vanity_01")
 SELECTED_PLATFORMS: tuple[str, ...] = ()
 
@@ -56,8 +64,9 @@ OVERWRITE_EXISTING = False
 # True이면 오류가 하나라도 있을 때 정상 scene의 파일도 생성하지 않습니다.
 FAIL_ON_ERROR = False
 
-# 실행 보고서를 파일로 남기려면 Path를 지정합니다.
-REPORT_JSON: Path | None = "/home/uon/ochansol/isaac_code/python/sanjabu/2026/etc/report.json"
+# 실행 보고서를 파일로 남기려면 PC마다 서로 다른 Path를 지정합니다.
+# 예: Path("/home/uon/ochansol/isaac_code/python/sanjabu/2026/etc/report_home.json")
+REPORT_JSON: Path | None = None
 
 
 CAMERA_NAMES = ("top_view_camera", "side_view_camera")
@@ -83,30 +92,61 @@ class Inspection:
     error: str | None = None
 
 
-def discover_platforms(dataset_root: Path, selected: list[Path] | None) -> list[Path]:
+def discover_platforms(
+    dataset_root: Path,
+    selected_platforms: tuple[str, ...],
+    selected_environments: tuple[str, ...],
+) -> list[Path]:
     root = dataset_root.resolve()
     if not root.is_dir():
         raise NotADirectoryError(f"dataset root not found: {root}")
-    if selected:
-        result = []
-        for value in selected:
-            platform = (value if value.is_absolute() else root / value).resolve()
-            if not platform.is_dir():
-                raise NotADirectoryError(f"platform not found: {platform}")
-            if root != platform and root not in platform.parents:
-                raise ValueError(f"platform is outside dataset root: {platform}")
-            result.append(platform)
-        return sorted(set(result))
 
-    result = []
+    result: set[Path] = set()
+    for value_text in selected_platforms:
+        value = Path(value_text)
+        platform = (value if value.is_absolute() else root / value).resolve()
+        if not platform.is_dir():
+            raise NotADirectoryError(f"platform not found: {platform}")
+        if root != platform and root not in platform.parents:
+            raise ValueError(f"platform is outside dataset root: {platform}")
+        result.add(platform)
+
+    for environment_name in selected_environments:
+        if not environment_name or Path(environment_name).name != environment_name:
+            raise ValueError(
+                "SELECTED_ENVIRONMENTS에는 environment 폴더 이름만 넣으십시오: "
+                f"{environment_name!r}"
+            )
+        environment = (root / environment_name).resolve()
+        if not environment.is_dir() or environment.parent != root:
+            raise NotADirectoryError(f"environment directory not found: {environment}")
+        if environment.name == "pregrasp_statistics":
+            raise ValueError("pregrasp_statistics is not a dataset environment")
+
+        found_platforms = 0
+        for section in environment.iterdir():
+            if not section.is_dir():
+                continue
+            for platform in section.iterdir():
+                if not platform.is_dir():
+                    continue
+                result.add(platform.resolve())
+                found_platforms += 1
+        if found_platforms == 0:
+            raise ValueError(f"no platforms found under environment: {environment}")
+
+    if selected_platforms or selected_environments:
+        return sorted(result)
+
+    all_platforms = []
     for environment in root.iterdir():
         if not environment.is_dir() or environment.name == "pregrasp_statistics":
             continue
         for section in environment.iterdir():
             if not section.is_dir():
                 continue
-            result.extend(path for path in section.iterdir() if path.is_dir())
-    return sorted(result)
+            all_platforms.extend(path for path in section.iterdir() if path.is_dir())
+    return sorted(set(all_platforms))
 
 
 def discover_candidates(
@@ -139,7 +179,7 @@ def discover_candidates(
     candidates.sort(key=lambda item: (str(item.platform), item.camera, item.scene_id))
     if limit is not None:
         if limit < 0:
-            raise ValueError("--limit-scenes must be >= 0")
+            raise ValueError("LIMIT_SCENES must be >= 0")
         candidates = candidates[:limit]
     return candidates
 
@@ -406,6 +446,7 @@ def build_report(
     return {
         "mode": "apply" if APPLY_CHANGES else "dry-run",
         "dataset_root": str(DATASET_ROOT.resolve()),
+        "selected_environments": list(SELECTED_ENVIRONMENTS),
         "selected_platforms": list(SELECTED_PLATFORMS),
         "selected_cameras": list(SELECTED_CAMERAS),
         "platform_count": len(platforms),
@@ -426,8 +467,11 @@ def main() -> int:
     if invalid_cameras:
         raise ValueError(f"invalid SELECTED_CAMERAS: {sorted(invalid_cameras)}")
 
-    selected_platforms = [Path(value) for value in SELECTED_PLATFORMS] or None
-    platforms = discover_platforms(DATASET_ROOT, selected_platforms)
+    platforms = discover_platforms(
+        DATASET_ROOT,
+        SELECTED_PLATFORMS,
+        SELECTED_ENVIRONMENTS,
+    )
     candidates = discover_candidates(platforms, SELECTED_CAMERAS, LIMIT_SCENES)
     print(
         f"mode={'APPLY' if APPLY_CHANGES else 'DRY-RUN'} "
