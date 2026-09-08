@@ -66,7 +66,7 @@ WORKERS = 8
 LIMIT_FILES: int | None = None
 
 # 반드시 dry-run 결과를 확인한 다음 True로 변경하십시오.
-APPLY_CHANGES = False
+APPLY_CHANGES = True
 
 # 실제 적용 전 원본 JSON을 백업하려면 경로를 지정합니다.
 BACKUP_ROOT: Path | None = None

@@ -28,7 +28,7 @@ WORKERS = 8
 LIMIT_FILES: int | None = None
 
 # 반드시 dry-run 결과를 확인한 다음 True로 변경하십시오.
-APPLY_CHANGES = False
+APPLY_CHANGES = True
 BACKUP_ROOT: Path | None = None
 ALLOW_UNMAPPED = False
 REPORT_JSON: Path | None = None
