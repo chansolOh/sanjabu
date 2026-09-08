@@ -523,7 +523,7 @@ class MultiPCController(App):
         self.server_socket = None
         self.server_thread = None
         
-        self.output_root_path = "/nas/Dataset/Dataset_2026/dataset_v2"
+        self.output_root_path = "/nas/Dataset/Dataset_2026/dataset_v2_val"
         # self.output_root_path = "/home/uon/test"
         root_path = "/nas/ochansol/isaac/sanjabu/envs"
         

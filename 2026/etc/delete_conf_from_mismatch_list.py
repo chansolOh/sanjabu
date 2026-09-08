@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-DATASET_ROOT = Path("/nas/Dataset/Dataset_2026/dataset_v2").resolve()
+DATASET_ROOT = Path("/nas/Dataset/Dataset_2026/dataset_v2_test").resolve()
 RESULT_ROOT = Path(__file__).resolve().parent / "conf_mismatch_results"
 
 # 특정 목록을 바로 사용하려면 절대경로 문자열을 지정한다. None이면 메뉴에서 고른다.

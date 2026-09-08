@@ -32,7 +32,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-DEFAULT_DATASET_ROOT = Path("/nas/Dataset/Dataset_2026/dataset_v2")
+DEFAULT_DATASET_ROOT = Path("/nas/Dataset/Dataset_2026/dataset_v2_test")
 DEFAULT_MAPPING_CSV = Path(
     "/nas/ochansol/3d_model/peel3_scan_data_2026/2026_objects_cat_attr.csv"
 )

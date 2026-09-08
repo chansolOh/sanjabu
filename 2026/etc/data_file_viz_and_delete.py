@@ -35,7 +35,7 @@ class DataMonitorGUI:
         path_frame.grid(row=0, column=0, sticky=(tk.W, tk.E), pady=(0, 10))
         
         ttk.Label(path_frame, text="Monitor Path:").grid(row=0, column=0, sticky=tk.W)
-        self.path_var = tk.StringVar(value="/nas/Dataset/Dataset_2026/dataset_v2_val")  # 기본 경로 설정
+        self.path_var = tk.StringVar(value="/nas/Dataset/Dataset_2026/dataset_v2")  # 기본 경로 설정
         self.path_entry = ttk.Entry(path_frame, textvariable=self.path_var, width=50)
         self.path_entry.grid(row=0, column=1, padx=(10, 10), sticky=(tk.W, tk.E))
         
@@ -421,10 +421,11 @@ class ImageViewerWindow:
         # 새로고침 버튼
         ttk.Button(control_frame, text="Refresh", command=self.refresh_data).grid(row=0, column=9)
 
-        # 현재 scene의 conf JSON만 삭제한다. 이미지 파일은 그대로 유지한다.
+        # 현재 scene의 conf, scene_meta, 이미 생성된 grasp JSON을 함께 삭제한다.
+        # 이미지/pointcloud 파일은 그대로 두어 SceneGen 재실행 시 덮어쓴다.
         self.delete_btn = ttk.Button(
             control_frame,
-            text="Delete Scene Conf",
+            text="Delete Conf + Meta + Grasp",
             command=self.delete_current_conf
         )
         self.delete_btn.grid(row=1, column=0, columnspan=10, sticky=tk.E, pady=(8, 0))
@@ -617,7 +618,7 @@ class ImageViewerWindow:
         self.update_display()
 
     def delete_current_conf(self):
-        """현재 표시 중인 scene의 conf JSON 한 파일만 확인 후 삭제한다."""
+        """현재 scene의 conf와 존재하는 meta/pre/output grasp JSON을 삭제한다."""
         if not self.available_indices:
             messagebox.showwarning(
                 "Delete Scene Conf",
@@ -628,7 +629,14 @@ class ImageViewerWindow:
 
         scene_position = self.current_image_index
         scene_index = self.available_indices[scene_position]
-        conf_path = Path(self.platform_path) / 'conf' / f"{scene_index:04d}.json"
+        scene_filename = f"{scene_index:04d}.json"
+        platform_path = Path(self.platform_path)
+        conf_path = platform_path / 'conf' / scene_filename
+        related_paths = [
+            ("scene_meta", platform_path / 'scene_meta' / scene_filename),
+            ("pre_grasp", platform_path / 'pre_grasp' / scene_filename),
+            ("output_grasp", platform_path / 'output_grasp' / scene_filename),
+        ]
 
         if not conf_path.is_file():
             messagebox.showwarning(
@@ -639,27 +647,56 @@ class ImageViewerWindow:
             self.refresh_data()
             return
 
+        related_status = "\n".join(
+            f"{name}: {'DELETE' if path.is_file() else 'not found'}"
+            for name, path in related_paths
+        )
         should_delete = messagebox.askyesno(
             "Delete Scene Conf",
-            f"Delete this scene's conf file?\n\n"
+            f"Delete this scene's conf and existing related JSON files?\n\n"
             f"Scene: {scene_index:04d}\n"
-            f"File: {conf_path}\n\n"
-            "RGB, depth, and inst_seg files will not be deleted.",
+            f"conf: DELETE\n"
+            f"{related_status}\n\n"
+            "RGB, depth, inst_seg, normals, and pointcloud files will not "
+            "be deleted.\nThis deletion cannot be undone.",
             parent=self.window
         )
         if not should_delete:
             self.window.focus_set()
             return
 
-        try:
-            conf_path.unlink()
-        except OSError as error:
-            messagebox.showerror(
-                "Delete Failed",
-                f"Failed to delete conf file:\n{conf_path}\n\n{error}",
-                parent=self.window
-            )
-            return
+        # Delete dependent data first and the conf completion marker last. If
+        # one deletion fails, keeping conf makes the scene visible for retry.
+        # Recheck all related paths at deletion time as well, in case their
+        # existence changed while the confirmation dialog was open.
+        deletion_targets = list(related_paths)
+        deletion_targets.append(("conf", conf_path))
+        deleted_paths = []
+        for data_name, data_path in deletion_targets:
+            try:
+                data_path.unlink()
+                deleted_paths.append(data_path)
+            except FileNotFoundError:
+                if data_name == "conf":
+                    messagebox.showerror(
+                        "Delete Failed",
+                        f"Conf file disappeared before deletion:\n{data_path}",
+                        parent=self.window
+                    )
+                    self.refresh_data()
+                    return
+            except OSError as error:
+                deleted_text = "\n".join(str(path) for path in deleted_paths)
+                if not deleted_text:
+                    deleted_text = "None"
+                messagebox.showerror(
+                    "Delete Failed",
+                    f"Failed to delete {data_name}:\n{data_path}\n\n"
+                    f"Already deleted:\n{deleted_text}\n\n{error}",
+                    parent=self.window
+                )
+                self.refresh_data()
+                return
 
         # 삭제한 scene을 즉시 목록에서 제외하고, 다음 scene 또는 마지막이면 이전 scene을 표시한다.
         self.available_indices.pop(scene_position)

@@ -1,0 +1,12 @@
+/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/vanity_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/conveyor_track_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/rack_small_A5_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/solid_top_rackable_pallet_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/green_conveyor_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/packing_table_01/conf/0000.json
+/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/stainless_steel_work_table_01/conf/0000.json

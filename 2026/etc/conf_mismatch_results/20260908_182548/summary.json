@@ -1,0 +1,1087 @@
+{
+  "created_at": "2026-09-08T18:25:58",
+  "dataset_root": "/nas/Dataset/Dataset_2026/dataset_v2_val",
+  "expected_object_count": 5,
+  "comparisons": 10124,
+  "unique_mismatch_conf_count": 33,
+  "groups": {
+    "class_set_mismatch": {
+      "count": 12,
+      "list_file": "class_set_mismatch.txt"
+    },
+    "missing_mapping": {
+      "count": 21,
+      "list_file": "missing_mapping.txt"
+    }
+  },
+  "details": [
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_386', 'obj_410', 'obj_463', 'obj_474', 'obj_512'], inst_only=['obj_400', 'obj_421', 'obj_469', 'obj_482', 'obj_498']",
+      "conf_classes": [
+        "obj_386",
+        "obj_410",
+        "obj_463",
+        "obj_474",
+        "obj_512"
+      ],
+      "inst_classes": [
+        "obj_400",
+        "obj_421",
+        "obj_469",
+        "obj_482",
+        "obj_498"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0148.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0148.json",
+      "conf_classes": [
+        "obj_307",
+        "obj_398",
+        "obj_399",
+        "obj_417",
+        "obj_470"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0256.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0256.json",
+      "conf_classes": [
+        "obj_400",
+        "obj_421",
+        "obj_469",
+        "obj_482",
+        "obj_498"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_386', 'obj_410', 'obj_463', 'obj_474', 'obj_512'], inst_only=['obj_400', 'obj_421', 'obj_469', 'obj_482', 'obj_498']",
+      "conf_classes": [
+        "obj_386",
+        "obj_410",
+        "obj_463",
+        "obj_474",
+        "obj_512"
+      ],
+      "inst_classes": [
+        "obj_400",
+        "obj_421",
+        "obj_469",
+        "obj_482",
+        "obj_498"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0148.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0148.json",
+      "conf_classes": [
+        "obj_307",
+        "obj_398",
+        "obj_399",
+        "obj_417",
+        "obj_470"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/bed_01/conf/0256.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0256.json",
+      "conf_classes": [
+        "obj_400",
+        "obj_421",
+        "obj_469",
+        "obj_482",
+        "obj_498"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_306', 'obj_347', 'obj_414', 'obj_438', 'obj_487'], inst_only=['obj_274', 'obj_381', 'obj_409', 'obj_486', 'obj_505']",
+      "conf_classes": [
+        "obj_306",
+        "obj_347",
+        "obj_414",
+        "obj_438",
+        "obj_487"
+      ],
+      "inst_classes": [
+        "obj_274",
+        "obj_381",
+        "obj_409",
+        "obj_486",
+        "obj_505"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0095.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0095.json",
+      "conf_classes": [
+        "obj_354",
+        "obj_355",
+        "obj_385",
+        "obj_473",
+        "obj_489"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0172.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0172.json",
+      "conf_classes": [
+        "obj_274",
+        "obj_381",
+        "obj_409",
+        "obj_486",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_306', 'obj_347', 'obj_414', 'obj_438', 'obj_487'], inst_only=['obj_274', 'obj_381', 'obj_409', 'obj_486', 'obj_505']",
+      "conf_classes": [
+        "obj_306",
+        "obj_347",
+        "obj_414",
+        "obj_438",
+        "obj_487"
+      ],
+      "inst_classes": [
+        "obj_274",
+        "obj_381",
+        "obj_409",
+        "obj_486",
+        "obj_505"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0095.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0095.json",
+      "conf_classes": [
+        "obj_354",
+        "obj_355",
+        "obj_385",
+        "obj_473",
+        "obj_489"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/beside_table_01/conf/0172.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0172.json",
+      "conf_classes": [
+        "obj_274",
+        "obj_381",
+        "obj_409",
+        "obj_486",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_316', 'obj_385', 'obj_478', 'obj_490', 'obj_500'], inst_only=['obj_285', 'obj_342', 'obj_353', 'obj_373', 'obj_519']",
+      "conf_classes": [
+        "obj_316",
+        "obj_385",
+        "obj_478",
+        "obj_490",
+        "obj_500"
+      ],
+      "inst_classes": [
+        "obj_285",
+        "obj_342",
+        "obj_353",
+        "obj_373",
+        "obj_519"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0130.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0130.json",
+      "conf_classes": [
+        "obj_351",
+        "obj_425",
+        "obj_460",
+        "obj_464",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0275.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0275.json",
+      "conf_classes": [
+        "obj_285",
+        "obj_342",
+        "obj_353",
+        "obj_373",
+        "obj_519"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_316', 'obj_385', 'obj_478', 'obj_490', 'obj_500'], inst_only=['obj_285', 'obj_342', 'obj_353', 'obj_373', 'obj_519']",
+      "conf_classes": [
+        "obj_316",
+        "obj_385",
+        "obj_478",
+        "obj_490",
+        "obj_500"
+      ],
+      "inst_classes": [
+        "obj_285",
+        "obj_342",
+        "obj_353",
+        "obj_373",
+        "obj_519"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0130.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0130.json",
+      "conf_classes": [
+        "obj_351",
+        "obj_425",
+        "obj_460",
+        "obj_464",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/desk_and_chair_01/conf/0275.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0275.json",
+      "conf_classes": [
+        "obj_285",
+        "obj_342",
+        "obj_353",
+        "obj_373",
+        "obj_519"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_277', 'obj_299', 'obj_462', 'obj_473', 'obj_478'], inst_only=['obj_314', 'obj_366', 'obj_391', 'obj_419', 'obj_516']",
+      "conf_classes": [
+        "obj_277",
+        "obj_299",
+        "obj_462",
+        "obj_473",
+        "obj_478"
+      ],
+      "inst_classes": [
+        "obj_314",
+        "obj_366",
+        "obj_391",
+        "obj_419",
+        "obj_516"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0048.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0048.json",
+      "conf_classes": [
+        "obj_336",
+        "obj_422",
+        "obj_455",
+        "obj_460",
+        "obj_473"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0093.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0093.json",
+      "conf_classes": [
+        "obj_358",
+        "obj_391",
+        "obj_410",
+        "obj_514",
+        "obj_516"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0148.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0148.json",
+      "conf_classes": [
+        "obj_296",
+        "obj_326",
+        "obj_414",
+        "obj_438",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0228.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0228.json",
+      "conf_classes": [
+        "obj_314",
+        "obj_366",
+        "obj_391",
+        "obj_419",
+        "obj_516"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_277', 'obj_299', 'obj_462', 'obj_473', 'obj_478'], inst_only=['obj_314', 'obj_366', 'obj_391', 'obj_419', 'obj_516']",
+      "conf_classes": [
+        "obj_277",
+        "obj_299",
+        "obj_462",
+        "obj_473",
+        "obj_478"
+      ],
+      "inst_classes": [
+        "obj_314",
+        "obj_366",
+        "obj_391",
+        "obj_419",
+        "obj_516"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0048.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0048.json",
+      "conf_classes": [
+        "obj_336",
+        "obj_422",
+        "obj_455",
+        "obj_460",
+        "obj_473"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0093.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0093.json",
+      "conf_classes": [
+        "obj_358",
+        "obj_391",
+        "obj_410",
+        "obj_514",
+        "obj_516"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0148.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0148.json",
+      "conf_classes": [
+        "obj_296",
+        "obj_326",
+        "obj_414",
+        "obj_438",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/floor_01/conf/0228.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0228.json",
+      "conf_classes": [
+        "obj_314",
+        "obj_366",
+        "obj_391",
+        "obj_419",
+        "obj_516"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_353', 'obj_389', 'obj_411', 'obj_494', 'obj_518'], inst_only=['obj_357', 'obj_422', 'obj_436', 'obj_438', 'obj_443']",
+      "conf_classes": [
+        "obj_353",
+        "obj_389",
+        "obj_411",
+        "obj_494",
+        "obj_518"
+      ],
+      "inst_classes": [
+        "obj_357",
+        "obj_422",
+        "obj_436",
+        "obj_438",
+        "obj_443"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0081.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0081.json",
+      "conf_classes": [
+        "obj_290",
+        "obj_313",
+        "obj_370",
+        "obj_409",
+        "obj_478"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0170.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0170.json",
+      "conf_classes": [
+        "obj_382",
+        "obj_395",
+        "obj_400",
+        "obj_454",
+        "obj_481"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0251.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0251.json",
+      "conf_classes": [
+        "obj_357",
+        "obj_422",
+        "obj_436",
+        "obj_438",
+        "obj_443"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_353', 'obj_389', 'obj_411', 'obj_494', 'obj_518'], inst_only=['obj_357', 'obj_422', 'obj_436', 'obj_438', 'obj_443']",
+      "conf_classes": [
+        "obj_353",
+        "obj_389",
+        "obj_411",
+        "obj_494",
+        "obj_518"
+      ],
+      "inst_classes": [
+        "obj_357",
+        "obj_422",
+        "obj_436",
+        "obj_438",
+        "obj_443"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0081.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0081.json",
+      "conf_classes": [
+        "obj_290",
+        "obj_313",
+        "obj_370",
+        "obj_409",
+        "obj_478"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0170.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0170.json",
+      "conf_classes": [
+        "obj_382",
+        "obj_395",
+        "obj_400",
+        "obj_454",
+        "obj_481"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/sideboard_01/conf/0251.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0251.json",
+      "conf_classes": [
+        "obj_357",
+        "obj_422",
+        "obj_436",
+        "obj_438",
+        "obj_443"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/vanity_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_357', 'obj_409', 'obj_422', 'obj_439', 'obj_500'], inst_only=['obj_276', 'obj_345', 'obj_398', 'obj_431', 'obj_517']",
+      "conf_classes": [
+        "obj_357",
+        "obj_409",
+        "obj_422",
+        "obj_439",
+        "obj_500"
+      ],
+      "inst_classes": [
+        "obj_276",
+        "obj_345",
+        "obj_398",
+        "obj_431",
+        "obj_517"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/vanity_01/conf/0158.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0158.json",
+      "conf_classes": [
+        "obj_276",
+        "obj_345",
+        "obj_398",
+        "obj_431",
+        "obj_517"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/vanity_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_357', 'obj_409', 'obj_422', 'obj_439', 'obj_500'], inst_only=['obj_276', 'obj_345', 'obj_398', 'obj_431', 'obj_517']",
+      "conf_classes": [
+        "obj_357",
+        "obj_409",
+        "obj_422",
+        "obj_439",
+        "obj_500"
+      ],
+      "inst_classes": [
+        "obj_276",
+        "obj_345",
+        "obj_398",
+        "obj_431",
+        "obj_517"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Home/MasterBedroom/vanity_01/conf/0158.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0158.json",
+      "conf_classes": [
+        "obj_276",
+        "obj_345",
+        "obj_398",
+        "obj_431",
+        "obj_517"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/conveyor_track_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_279', 'obj_360', 'obj_402', 'obj_475'], inst_only=['obj_296', 'obj_297', 'obj_473', 'obj_505']",
+      "conf_classes": [
+        "obj_279",
+        "obj_360",
+        "obj_402",
+        "obj_462",
+        "obj_475"
+      ],
+      "inst_classes": [
+        "obj_296",
+        "obj_297",
+        "obj_462",
+        "obj_473",
+        "obj_505"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/conveyor_track_01/conf/0107.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0107.json",
+      "conf_classes": [
+        "obj_296",
+        "obj_297",
+        "obj_462",
+        "obj_473",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/conveyor_track_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_279', 'obj_360', 'obj_402', 'obj_475'], inst_only=['obj_296', 'obj_297', 'obj_473', 'obj_505']",
+      "conf_classes": [
+        "obj_279",
+        "obj_360",
+        "obj_402",
+        "obj_462",
+        "obj_475"
+      ],
+      "inst_classes": [
+        "obj_296",
+        "obj_297",
+        "obj_462",
+        "obj_473",
+        "obj_505"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/conveyor_track_01/conf/0107.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0107.json",
+      "conf_classes": [
+        "obj_296",
+        "obj_297",
+        "obj_462",
+        "obj_473",
+        "obj_505"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/rack_small_A5_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_313', 'obj_355', 'obj_460', 'obj_467', 'obj_488'], inst_only=['obj_311', 'obj_340', 'obj_359', 'obj_363', 'obj_392']",
+      "conf_classes": [
+        "obj_313",
+        "obj_355",
+        "obj_460",
+        "obj_467",
+        "obj_488"
+      ],
+      "inst_classes": [
+        "obj_311",
+        "obj_340",
+        "obj_359",
+        "obj_363",
+        "obj_392"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/rack_small_A5_01/conf/0151.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0151.json",
+      "conf_classes": [
+        "obj_311",
+        "obj_340",
+        "obj_359",
+        "obj_363",
+        "obj_392"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/rack_small_A5_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_313', 'obj_355', 'obj_460', 'obj_467', 'obj_488'], inst_only=['obj_311', 'obj_340', 'obj_359', 'obj_363', 'obj_392']",
+      "conf_classes": [
+        "obj_313",
+        "obj_355",
+        "obj_460",
+        "obj_467",
+        "obj_488"
+      ],
+      "inst_classes": [
+        "obj_311",
+        "obj_340",
+        "obj_359",
+        "obj_363",
+        "obj_392"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/rack_small_A5_01/conf/0151.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0151.json",
+      "conf_classes": [
+        "obj_311",
+        "obj_340",
+        "obj_359",
+        "obj_363",
+        "obj_392"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/solid_top_rackable_pallet_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_296', 'obj_330', 'obj_354', 'obj_451', 'obj_467'], inst_only=['obj_305', 'obj_342', 'obj_366', 'obj_465', 'obj_469']",
+      "conf_classes": [
+        "obj_296",
+        "obj_330",
+        "obj_354",
+        "obj_451",
+        "obj_467"
+      ],
+      "inst_classes": [
+        "obj_305",
+        "obj_342",
+        "obj_366",
+        "obj_465",
+        "obj_469"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/solid_top_rackable_pallet_01/conf/0146.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0146.json",
+      "conf_classes": [
+        "obj_305",
+        "obj_342",
+        "obj_366",
+        "obj_465",
+        "obj_469"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/solid_top_rackable_pallet_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_296', 'obj_330', 'obj_354', 'obj_451', 'obj_467'], inst_only=['obj_305', 'obj_342', 'obj_366', 'obj_465', 'obj_469']",
+      "conf_classes": [
+        "obj_296",
+        "obj_330",
+        "obj_354",
+        "obj_451",
+        "obj_467"
+      ],
+      "inst_classes": [
+        "obj_305",
+        "obj_342",
+        "obj_366",
+        "obj_465",
+        "obj_469"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/solid_top_rackable_pallet_01/conf/0146.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0146.json",
+      "conf_classes": [
+        "obj_305",
+        "obj_342",
+        "obj_366",
+        "obj_465",
+        "obj_469"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/conf/0142.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0142.json",
+      "conf_classes": [
+        "obj_290",
+        "obj_355",
+        "obj_376",
+        "obj_436",
+        "obj_513"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Logistic_site/General_LogisticSite/two_tier_rolling_cart_01/conf/0142.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0142.json",
+      "conf_classes": [
+        "obj_290",
+        "obj_355",
+        "obj_376",
+        "obj_436",
+        "obj_513"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/green_conveyor_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_277', 'obj_278', 'obj_329', 'obj_388', 'obj_414'], inst_only=['obj_304', 'obj_307', 'obj_413', 'obj_431', 'obj_470']",
+      "conf_classes": [
+        "obj_277",
+        "obj_278",
+        "obj_329",
+        "obj_388",
+        "obj_414"
+      ],
+      "inst_classes": [
+        "obj_304",
+        "obj_307",
+        "obj_413",
+        "obj_431",
+        "obj_470"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/green_conveyor_01/conf/0199.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0199.json",
+      "conf_classes": [
+        "obj_304",
+        "obj_307",
+        "obj_413",
+        "obj_431",
+        "obj_470"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/green_conveyor_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_277', 'obj_278', 'obj_329', 'obj_388', 'obj_414'], inst_only=['obj_304', 'obj_307', 'obj_413', 'obj_431', 'obj_470']",
+      "conf_classes": [
+        "obj_277",
+        "obj_278",
+        "obj_329",
+        "obj_388",
+        "obj_414"
+      ],
+      "inst_classes": [
+        "obj_304",
+        "obj_307",
+        "obj_413",
+        "obj_431",
+        "obj_470"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/green_conveyor_01/conf/0199.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0199.json",
+      "conf_classes": [
+        "obj_304",
+        "obj_307",
+        "obj_413",
+        "obj_431",
+        "obj_470"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/packing_table_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_275', 'obj_345', 'obj_390', 'obj_437', 'obj_479'], inst_only=['obj_339', 'obj_370', 'obj_397', 'obj_414', 'obj_489']",
+      "conf_classes": [
+        "obj_275",
+        "obj_345",
+        "obj_390",
+        "obj_437",
+        "obj_479"
+      ],
+      "inst_classes": [
+        "obj_339",
+        "obj_370",
+        "obj_397",
+        "obj_414",
+        "obj_489"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/packing_table_01/conf/0096.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0096.json",
+      "conf_classes": [
+        "obj_339",
+        "obj_370",
+        "obj_397",
+        "obj_414",
+        "obj_489"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/packing_table_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_275', 'obj_345', 'obj_390', 'obj_437', 'obj_479'], inst_only=['obj_339', 'obj_370', 'obj_397', 'obj_414', 'obj_489']",
+      "conf_classes": [
+        "obj_275",
+        "obj_345",
+        "obj_390",
+        "obj_437",
+        "obj_479"
+      ],
+      "inst_classes": [
+        "obj_339",
+        "obj_370",
+        "obj_397",
+        "obj_414",
+        "obj_489"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/packing_table_01/conf/0096.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0096.json",
+      "conf_classes": [
+        "obj_339",
+        "obj_370",
+        "obj_397",
+        "obj_414",
+        "obj_489"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/stainless_steel_work_table_01/conf/0000.json",
+      "camera": "side_view_camera",
+      "reason": "conf_only=['obj_330', 'obj_360', 'obj_409', 'obj_475', 'obj_495'], inst_only=['obj_311', 'obj_315', 'obj_412', 'obj_430', 'obj_450']",
+      "conf_classes": [
+        "obj_330",
+        "obj_360",
+        "obj_409",
+        "obj_475",
+        "obj_495"
+      ],
+      "inst_classes": [
+        "obj_311",
+        "obj_315",
+        "obj_412",
+        "obj_430",
+        "obj_450"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/stainless_steel_work_table_01/conf/0179.json",
+      "camera": "side_view_camera",
+      "reason": "missing semantics_mapping_0179.json",
+      "conf_classes": [
+        "obj_311",
+        "obj_315",
+        "obj_412",
+        "obj_430",
+        "obj_450"
+      ],
+      "inst_classes": []
+    },
+    {
+      "type": "class_set_mismatch",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/stainless_steel_work_table_01/conf/0000.json",
+      "camera": "top_view_camera",
+      "reason": "conf_only=['obj_330', 'obj_360', 'obj_409', 'obj_475', 'obj_495'], inst_only=['obj_311', 'obj_315', 'obj_412', 'obj_430', 'obj_450']",
+      "conf_classes": [
+        "obj_330",
+        "obj_360",
+        "obj_409",
+        "obj_475",
+        "obj_495"
+      ],
+      "inst_classes": [
+        "obj_311",
+        "obj_315",
+        "obj_412",
+        "obj_430",
+        "obj_450"
+      ]
+    },
+    {
+      "type": "missing_mapping",
+      "conf_path": "/nas/Dataset/Dataset_2026/dataset_v2_val/Manufactory/Seongju_Melon_Processing_Facility/stainless_steel_work_table_01/conf/0179.json",
+      "camera": "top_view_camera",
+      "reason": "missing semantics_mapping_0179.json",
+      "conf_classes": [
+        "obj_311",
+        "obj_315",
+        "obj_412",
+        "obj_430",
+        "obj_450"
+      ],
+      "inst_classes": []
+    }
+  ]
+}

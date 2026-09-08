@@ -1,3 +1,6 @@
+FINAL_RENDER_MAX_ATTEMPTS = 3
+MIN_RGB_LIT_PIXEL_RATIO = 0.001
+
 
 def main(output_root_path,
          env_name, 
@@ -357,6 +360,66 @@ def main(output_root_path,
             if canonical_class is not None
         }
 
+    def rgb_frame_status(writer_data, render_product_name):
+        """Validate RGB only; an opaque alpha channel must not hide black RGB."""
+        try:
+            rgb_entry = writer_data["annotators"]["rgb"][render_product_name]
+            rgb_data = rgb_entry["data"] if isinstance(rgb_entry, dict) else rgb_entry
+            rgb_array = np.asarray(rgb_data)
+        except (KeyError, TypeError, ValueError) as error:
+            return False, f"RGB annotator data unavailable: {error}"
+
+        if rgb_array.ndim < 3 or rgb_array.shape[-1] < 3 or rgb_array.size == 0:
+            return False, f"invalid RGB shape: {rgb_array.shape}"
+
+        rgb = rgb_array[..., :3]
+        if np.issubdtype(rgb.dtype, np.floating):
+            lit_pixels = np.any(np.isfinite(rgb) & (rgb > 1.0e-6), axis=-1)
+        else:
+            lit_pixels = np.any(rgb > 0, axis=-1)
+        lit_ratio = float(np.count_nonzero(lit_pixels)) / float(lit_pixels.size)
+        valid = lit_ratio >= MIN_RGB_LIT_PIXEL_RATIO
+        return valid, f"lit_pixel_ratio={lit_ratio:.6f}, shape={rgb_array.shape}"
+
+    def final_rgb_status(writer_data):
+        statuses = {}
+        valid = True
+        for render_product_name in ("Replicator", "Replicator_01"):
+            frame_valid, detail = rgb_frame_status(
+                writer_data, render_product_name
+            )
+            statuses[render_product_name] = detail
+            valid = valid and frame_valid
+        return valid, statuses
+
+    def saved_rgb_status(platform_path, frame_name):
+        """Read the actual PNG files written by the backend and reject black RGB."""
+        from PIL import Image
+
+        statuses = {}
+        valid = True
+        for camera_name in ("top_view_camera", "side_view_camera"):
+            rgb_path = os.path.join(
+                platform_path, "rgb", camera_name, f"{frame_name}.png"
+            )
+            try:
+                with Image.open(rgb_path) as image:
+                    rgb_array = np.asarray(image.convert("RGB"))
+                lit_pixels = np.any(rgb_array > 0, axis=-1)
+                lit_ratio = float(np.count_nonzero(lit_pixels)) / float(
+                    lit_pixels.size
+                )
+                frame_valid = lit_ratio >= MIN_RGB_LIT_PIXEL_RATIO
+                statuses[camera_name] = (
+                    f"lit_pixel_ratio={lit_ratio:.6f}, "
+                    f"shape={rgb_array.shape}, path={rgb_path}"
+                )
+            except Exception as error:
+                frame_valid = False
+                statuses[camera_name] = f"unreadable PNG {rgb_path}: {error}"
+            valid = valid and frame_valid
+        return valid, statuses
+
     import time
     import select
     print("SceneGen > reset_complete")
@@ -582,14 +645,47 @@ def main(output_root_path,
 
 
         writer.output_path = platform_output_path
-        rep.orchestrator.step(
-            delta_time=0.0,
-            rt_subframes=255,
-            wait_for_render=True,
-        )
-        rep.orchestrator.wait_until_complete()
+        final_writer_data = None
+        final_rgb_valid = False
+        for render_attempt in range(1, FINAL_RENDER_MAX_ATTEMPTS + 1):
+            rep.orchestrator.step(
+                delta_time=0.0,
+                rt_subframes=255,
+                wait_for_render=True,
+            )
+            rep.orchestrator.wait_until_complete()
 
-        final_writer_data = writer.get_data()
+            candidate_writer_data = writer.get_data()
+            final_rgb_valid, rgb_statuses = final_rgb_status(
+                candidate_writer_data
+            )
+            if final_rgb_valid:
+                final_writer_data = candidate_writer_data
+                if render_attempt > 1:
+                    print(
+                        "SceneGen > RGB_RECOVERED:"
+                        f"scene={scene_num}, attempt={render_attempt}, "
+                        f"status={rgb_statuses}"
+                    )
+                break
+
+            print(
+                "SceneGen > DISCARD_BLACK_RENDER:"
+                f"scene={scene_num}, attempt={render_attempt}/"
+                f"{FINAL_RENDER_MAX_ATTEMPTS}, status={rgb_statuses}"
+            )
+            sys.stdout.flush()
+
+        if not final_rgb_valid or final_writer_data is None:
+            print(
+                "scene_reset, RGB stayed black or invalid after "
+                f"{FINAL_RENDER_MAX_ATTEMPTS} final render attempts"
+            )
+            remove_all_objects(
+                obj_rep_list, sdg_pipe_prim, sdg_pipe_children
+            )
+            continue
+
         top_object_classes = instance_object_classes(
             final_writer_data, "Replicator"
         )
@@ -626,6 +722,24 @@ def main(output_root_path,
             rep.BackendDispatch.wait_until_done()
         finally:
             writer.set_disk_writes_enabled(False)
+
+        saved_rgb_valid, saved_rgb_statuses = saved_rgb_status(
+            platform_output_path, scene_name
+        )
+        if not saved_rgb_valid:
+            print(
+                "SceneGen > DISCARD_SAVED_BLACK_SCENE:"
+                f"scene={scene_num}, status={saved_rgb_statuses}"
+            )
+            print(
+                "scene_reset, written RGB validation failed; conf completion "
+                "marker was not created"
+            )
+            sys.stdout.flush()
+            remove_all_objects(
+                obj_rep_list, sdg_pipe_prim, sdg_pipe_children
+            )
+            continue
 
         print("spp complete")
         
