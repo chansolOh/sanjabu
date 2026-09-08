@@ -5,7 +5,7 @@ from pathlib import Path
 from isaacsim import SimulationApp
 
 
-ROOT_DIR = Path("/nas/ochansol/3d_model/peel3_scan_data_2026")
+ROOT_DIR = Path("/nas/ochansol/3d_model/peel3_scan_data_2025")
 HEADLESS = True
 IMAGE_SIZE = (640, 480)
 OBJECT_SCALE = 0.01
@@ -443,6 +443,8 @@ def main():
         label = object_dir.name
         object_node = None
         object_prim = None
+        # import pdb; pdb.set_trace()
+        if label == "webcam":continue
         try:
             object_node, object_prim = load_replicator_object(stage, usd_path, label)
             prim_path = object_prim.GetPath()

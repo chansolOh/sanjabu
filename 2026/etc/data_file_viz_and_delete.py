@@ -35,7 +35,7 @@ class DataMonitorGUI:
         path_frame.grid(row=0, column=0, sticky=(tk.W, tk.E), pady=(0, 10))
         
         ttk.Label(path_frame, text="Monitor Path:").grid(row=0, column=0, sticky=tk.W)
-        self.path_var = tk.StringVar(value="/nas/Dataset/Dataset_2026/dataset_v2")  # 기본 경로 설정
+        self.path_var = tk.StringVar(value="/nas/Dataset/Dataset_2026/dataset_v2_val")  # 기본 경로 설정
         self.path_entry = ttk.Entry(path_frame, textvariable=self.path_var, width=50)
         self.path_entry.grid(row=0, column=1, padx=(10, 10), sticky=(tk.W, tk.E))
         

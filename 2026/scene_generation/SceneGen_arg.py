@@ -1,12 +1,12 @@
 import argparse
 
 parser = argparse.ArgumentParser(description="Sanjabu Scene Generator")
-parser.add_argument("--output_root_path",       default="/nas/Dataset/Dataset_2026/test",              help="", type=str)
+parser.add_argument("--output_root_path",       default="/nas/Dataset/Dataset_2026/dataset_v2_test",              help="", type=str)
 parser.add_argument("--env_name",       default="Logistic_site",              help="", type=str)
 parser.add_argument("--section_name",   default="General_LogisticSite",  help="", type=str)
-parser.add_argument("--platform_name",  default="rack_small_A5_01",              help="", type=str)
+parser.add_argument("--platform_name",  default="two_tier_rolling_cart_01",  help="", type=str)
 parser.add_argument("--scene_start",      default=0,                          help="", type=int)
-parser.add_argument("--scene_end",        default=10,                         help="", type=int)
+parser.add_argument("--scene_end",        default=210,                         help="", type=int)
 parser.add_argument("--object_num",     default=5,                          help="", type=int)
 
 args = parser.parse_args()

@@ -4,7 +4,7 @@ from tempfile import TemporaryDirectory
 from PIL import Image
 
 
-ROOT_DIR = Path("/nas/ochansol/3d_model/peel3_scan_data_2026")
+ROOT_DIR = Path("/nas/ochansol/3d_model/peel3_scan_data_2025")
 EXCEL_CELL_IMAGE_XLSX = ROOT_DIR / "peel3_scan_rendering_review_excel_cell_images.xlsx"
 GOOGLE_COMPATIBLE_XLSX = ROOT_DIR / "peel3_scan_rendering_review_google_compatible.xlsx"
 

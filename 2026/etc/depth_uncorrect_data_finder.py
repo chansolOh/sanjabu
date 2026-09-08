@@ -2,7 +2,7 @@ import numpy as np
 import os
 import tqdm
 
-root_path  = "/nas/Dataset/Dataset_2026/dataset_v2"
+root_path  = "/nas/Dataset/Dataset_2026/dataset_v2_val"
 
 for env_dir in os.listdir(root_path):
     env_dir_path = os.path.join(root_path, env_dir)
