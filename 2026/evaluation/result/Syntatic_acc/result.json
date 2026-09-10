@@ -1,0 +1,6 @@
+{
+    "inst_seg_acc_total": 99.91304347826086,
+    "bbox_acc_total": 99.95652173913044,
+    "grasp_acc_total": 98.05707706199517,
+    "scene_meta_acc_total": 99.69565217391305
+}

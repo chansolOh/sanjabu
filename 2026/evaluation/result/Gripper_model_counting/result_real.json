@@ -1,0 +1,8 @@
+{
+    "gripper_model_count": 3,
+    "gripper_model_list": [
+        "Robotiq_2f_140",
+        "Robotiq_2f_85",
+        "UON_Robotics_Jamin_Gripper"
+    ]
+}

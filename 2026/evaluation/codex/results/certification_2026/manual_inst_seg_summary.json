@@ -1,0 +1,148 @@
+{
+  "schema_version": "manual-inst-seg-summary-v1",
+  "updated_at_utc": "2026-09-09T05:10:39.917620+00:00",
+  "reviewer": "uon",
+  "manifest": "/home/uon/ochansol/isaac_code/python/sanjabu/2026/evaluation/codex/results/certification_2026/manual_inst_seg_manifest.json",
+  "manifest_sha256": "ed231fde1b9a4935de8ef63ed1f97730e5e5a686c448d647b153d5cc3127c0a9",
+  "overall": {
+    "total": 3021,
+    "correct": 1,
+    "incorrect": 2,
+    "skip": 0,
+    "pending": 3018,
+    "decided": 3,
+    "accuracy": 0.3333333333333333,
+    "wilson_95_lower": 0.06149194472039621,
+    "wilson_95_upper": 0.7923403991979522
+  },
+  "by_split": {
+    "train": {
+      "total": 1007,
+      "correct": 1,
+      "incorrect": 2,
+      "skip": 0,
+      "pending": 1004,
+      "decided": 3,
+      "accuracy": 0.3333333333333333,
+      "wilson_95_lower": 0.06149194472039621,
+      "wilson_95_upper": 0.7923403991979522
+    },
+    "validation": {
+      "total": 1007,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 1007,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    },
+    "test": {
+      "total": 1007,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 1007,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    }
+  },
+  "by_camera": {
+    "top_view_camera": {
+      "total": 1509,
+      "correct": 1,
+      "incorrect": 2,
+      "skip": 0,
+      "pending": 1506,
+      "decided": 3,
+      "accuracy": 0.3333333333333333,
+      "wilson_95_lower": 0.06149194472039621,
+      "wilson_95_upper": 0.7923403991979522
+    },
+    "side_view_camera": {
+      "total": 1512,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 1512,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    }
+  },
+  "by_split_camera": {
+    "train/top_view_camera": {
+      "total": 503,
+      "correct": 1,
+      "incorrect": 2,
+      "skip": 0,
+      "pending": 500,
+      "decided": 3,
+      "accuracy": 0.3333333333333333,
+      "wilson_95_lower": 0.06149194472039621,
+      "wilson_95_upper": 0.7923403991979522
+    },
+    "train/side_view_camera": {
+      "total": 504,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 504,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    },
+    "validation/top_view_camera": {
+      "total": 503,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 503,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    },
+    "validation/side_view_camera": {
+      "total": 504,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 504,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    },
+    "test/top_view_camera": {
+      "total": 503,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 503,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    },
+    "test/side_view_camera": {
+      "total": 504,
+      "correct": 0,
+      "incorrect": 0,
+      "skip": 0,
+      "pending": 504,
+      "decided": 0,
+      "accuracy": null,
+      "wilson_95_lower": null,
+      "wilson_95_upper": null
+    }
+  },
+  "incorrect_issue_counts": {
+    "unspecified": 2
+  }
+}

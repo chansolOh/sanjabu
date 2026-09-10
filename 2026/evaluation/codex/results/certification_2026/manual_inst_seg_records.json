@@ -1,0 +1,86 @@
+{
+  "schema_version": "manual-inst-seg-review-v1",
+  "manifest": "/home/uon/ochansol/isaac_code/python/sanjabu/2026/evaluation/codex/results/certification_2026/manual_inst_seg_manifest.json",
+  "manifest_sha256": "ed231fde1b9a4935de8ef63ed1f97730e5e5a686c448d647b153d5cc3127c0a9",
+  "reviewer": "uon",
+  "created_at_utc": "2026-09-09T05:06:30.551990+00:00",
+  "updated_at_utc": "2026-09-09T05:10:39.915593+00:00",
+  "records": {
+    "train|Logistic_site/General_LogisticSite/rack_long_A1_01/2737|top_view_camera": {
+      "decision": "correct",
+      "issue_type": "",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:10:09.433059+00:00",
+      "load_error_at_review": ""
+    },
+    "train|Logistic_site/General_LogisticSite/rack_long_A1_01/3052|top_view_camera": {
+      "decision": "incorrect",
+      "issue_type": "unspecified",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:10:02.404184+00:00",
+      "load_error_at_review": ""
+    },
+    "train|Logistic_site/General_LogisticSite/conveyor_track_02/0883|top_view_camera": {
+      "decision": "incorrect",
+      "issue_type": "unspecified",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:10:32.511008+00:00",
+      "load_error_at_review": ""
+    }
+  },
+  "history": [
+    {
+      "uid": "train|Logistic_site/General_LogisticSite/rack_long_A1_01/2737|top_view_camera",
+      "previous_decision": null,
+      "decision": "correct",
+      "issue_type": "",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:09:20.852901+00:00",
+      "load_error_at_review": ""
+    },
+    {
+      "uid": "train|Logistic_site/General_LogisticSite/rack_long_A1_01/2737|top_view_camera",
+      "previous_decision": "correct",
+      "decision": "correct",
+      "issue_type": "",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:09:32.383575+00:00",
+      "load_error_at_review": ""
+    },
+    {
+      "uid": "train|Logistic_site/General_LogisticSite/rack_long_A1_01/3052|top_view_camera",
+      "previous_decision": null,
+      "decision": "incorrect",
+      "issue_type": "unspecified",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:10:02.404184+00:00",
+      "load_error_at_review": ""
+    },
+    {
+      "uid": "train|Logistic_site/General_LogisticSite/rack_long_A1_01/2737|top_view_camera",
+      "previous_decision": "correct",
+      "decision": "correct",
+      "issue_type": "",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:10:09.433059+00:00",
+      "load_error_at_review": ""
+    },
+    {
+      "uid": "train|Logistic_site/General_LogisticSite/conveyor_track_02/0883|top_view_camera",
+      "previous_decision": null,
+      "decision": "incorrect",
+      "issue_type": "unspecified",
+      "note": "",
+      "reviewer": "uon",
+      "updated_at_utc": "2026-09-09T05:10:32.511008+00:00",
+      "load_error_at_review": ""
+    }
+  ]
+}

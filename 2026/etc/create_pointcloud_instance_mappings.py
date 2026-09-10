@@ -42,12 +42,12 @@ DATASET_ROOT = Path("/nas/Dataset/Dataset_2026/dataset_v2")
 #   PC 1: ("Home",)
 #   PC 2: ("Logistic_site",)
 #   PC 3: ("Manufactory",)
-SELECTED_ENVIRONMENTS: tuple[str, ...] = ("Home", "Logistic_site", "Manufactory")
+SELECTED_ENVIRONMENTS: tuple[str, ...] = ()
 
 # environment 전체가 아니라 특정 platform만 처리할 때 사용합니다.
 # SELECTED_ENVIRONMENTS와 함께 지정하면 두 선택 범위를 합쳐서 처리합니다.
 # 예: ("Home/MasterBedroom/bed_01", "Home/MasterBedroom/vanity_01")
-SELECTED_PLATFORMS: tuple[str, ...] = ()
+SELECTED_PLATFORMS: tuple[str, ...] = ("Manufactory/Seongju_Melon_Processing_Facility/stainless_steel_work_table_01", "Logistic_site/General_LogisticSite/rack_small_A5_02")
 
 SELECTED_CAMERAS = ("top_view_camera", "side_view_camera")
 WORKERS = 8

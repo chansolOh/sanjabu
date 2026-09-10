@@ -421,7 +421,7 @@ class ImageViewerWindow:
         # 새로고침 버튼
         ttk.Button(control_frame, text="Refresh", command=self.refresh_data).grid(row=0, column=9)
 
-        # 현재 scene의 conf, scene_meta, 이미 생성된 grasp JSON을 함께 삭제한다.
+        # 현재 scene의 conf와 파생 JSON 파일을 함께 삭제한다.
         # 이미지/pointcloud 파일은 그대로 두어 SceneGen 재실행 시 덮어쓴다.
         self.delete_btn = ttk.Button(
             control_frame,
@@ -618,7 +618,7 @@ class ImageViewerWindow:
         self.update_display()
 
     def delete_current_conf(self):
-        """현재 scene의 conf와 존재하는 meta/pre/output grasp JSON을 삭제한다."""
+        """현재 scene의 conf와 존재하는 파생 데이터를 함께 삭제한다."""
         if not self.available_indices:
             messagebox.showwarning(
                 "Delete Scene Conf",
@@ -653,11 +653,11 @@ class ImageViewerWindow:
         )
         should_delete = messagebox.askyesno(
             "Delete Scene Conf",
-            f"Delete this scene's conf and existing related JSON files?\n\n"
+            f"Delete this scene's conf and existing related files?\n\n"
             f"Scene: {scene_index:04d}\n"
             f"conf: DELETE\n"
             f"{related_status}\n\n"
-            "RGB, depth, inst_seg, normals, and pointcloud files will not "
+            "RGB, depth, depth_noise, inst_seg, normals, and pointcloud files will not "
             "be deleted.\nThis deletion cannot be undone.",
             parent=self.window
         )
